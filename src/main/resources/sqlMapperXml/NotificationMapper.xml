@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.NotificationMapper" >
+  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Notification" >
+    <id column="no_id" property="noId" jdbcType="VARCHAR" />
+    <result column="no_content" property="noContent" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="no_url" property="noUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no_id, no_content, type, no_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from notification
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from notification
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlfinfo.model.Notification" >
+    insert into notification (no_id, no_content, type, 
+      no_url)
+    values (#{noId,jdbcType=VARCHAR}, #{noContent,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, 
+      #{noUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlfinfo.model.Notification" >
+    insert into notification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="noId != null" >
+        no_id,
+      </if>
+      <if test="noContent != null" >
+        no_content,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="noUrl != null" >
+        no_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="noId != null" >
+        #{noId,jdbcType=VARCHAR},
+      </if>
+      <if test="noContent != null" >
+        #{noContent,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="noUrl != null" >
+        #{noUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Notification" >
+    update notification
+    <set >
+      <if test="noContent != null" >
+        no_content = #{noContent,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="noUrl != null" >
+        no_url = #{noUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Notification" >
+    update notification
+    set no_content = #{noContent,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      no_url = #{noUrl,jdbcType=VARCHAR}
+    where no_id = #{noId,jdbcType=VARCHAR}
+  </update>
+</mapper>

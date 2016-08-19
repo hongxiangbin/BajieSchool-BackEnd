@@ -2,23 +2,16 @@ package com.zlfinfo.mapper;
 
 import com.zlfinfo.model.User;
 
-import java.util.List;
-
-/**
- * Created by Administrator on 2016/8/18.
- */
 public interface UserMapper {
+    int deleteByPrimaryKey(String username);
 
-    int deleteById(Long id);
+    int insert(User record);
 
-    int insert(User user);
+    int insertSelective(User record);
 
-    int update(User user);
+    User selectByPrimaryKey(String username);
 
-    User findByLoginName(String username);
+    int updateByPrimaryKeySelective(User record);
 
-    User findById(Long id);
-
-    List<User> findAll();
-
+    int updateByPrimaryKey(User record);
 }

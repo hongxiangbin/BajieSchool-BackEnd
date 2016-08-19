@@ -1,1 +1,2 @@
 1.restfulApi参考网址：http://www.open-open.com/lib/view/open1435542165247.html
+2.自动生成插件 mybatis-generator:generate Goals参数：-Dmybatis.generator.overwrite=true

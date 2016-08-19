@@ -1,8 +1,8 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
-import com.zlfinfo.model.User;
-import com.zlfinfo.service.UserService;
+import com.zlfinfo.model.TestUser;
+import com.zlfinfo.service.TestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,27 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/18.
  */
 @Controller
-public class UserController extends BaseController{
+public class TestUserController extends BaseController{
 
     @Autowired
-    private UserService userService;
+    private TestUserService testUserService;
 
     /**
      * 查询所有用户
      * @return {object}
      */
-    @RequestMapping(value="/users",method = RequestMethod.GET)
+    @RequestMapping(value="/testusers",method = RequestMethod.GET)
     @ResponseBody
     public Object getAllUsers(HttpServletResponse response){
-        return renderSuccess(userService.findUsers(),response);
+        return renderSuccess(testUserService.findUsers(),response);
     }
 
     /**
@@ -38,43 +36,43 @@ public class UserController extends BaseController{
      * @param id 用户id
      * @return
      */
-    @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Object getUser(@PathVariable Long id,HttpServletResponse response){
-        User user = userService.findUserById(id);
-        return renderSuccess(user,response);
+        TestUser testUser = testUserService.findUserById(id);
+        return renderSuccess(testUser,response);
     }
 
     /**
      * 创建用户
-     * @param user
+     * @param testUser
      * @return
      */
-    @RequestMapping(value = "/users",method = RequestMethod.POST)
+    @RequestMapping(value = "/testusers",method = RequestMethod.POST)
     @ResponseBody
-    public Object createUser(User user,HttpServletResponse response){
-        userService.addUser(user);
+    public Object createUser(TestUser testUser, HttpServletResponse response){
+        testUserService.addUser(testUser);
         return renderSuccess(response);
     }
 
     /**
      * 更新{id}用户信息
      * @param id
-     * @param user
+     * @param testUser
      * @return {object}
      */
-    @RequestMapping(value = "/users/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.PUT)
     @ResponseBody
-    public Object updateUser(@PathVariable Long id,User user,HttpServletResponse response){
-        user.setId(id);
-        userService.updateUser(user);
+    public Object updateUser(@PathVariable Long id, TestUser testUser, HttpServletResponse response){
+        testUser.setId(id);
+        testUserService.updateUser(testUser);
         return renderSuccess(response);
     }
 
-    @RequestMapping(value = "/users/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.DELETE)
     @ResponseBody
     public Object deleteUser(@PathVariable Long id,HttpServletResponse response){
-        userService.deleteUser(id);
+        testUserService.deleteUser(id);
         return renderSuccess(response);
     }
 

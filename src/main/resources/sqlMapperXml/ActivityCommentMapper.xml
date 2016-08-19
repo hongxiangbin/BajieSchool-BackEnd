@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.ActivityCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.zlfinfo.model.ActivityComment" >
+    <id column="act_com_id" property="actComId" jdbcType="VARCHAR" />
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <result column="act_com_content" property="actComContent" jdbcType="VARCHAR" />
+    <result column="act-com_time" property="actComTime" jdbcType="TIMESTAMP" />
+    <result column="act_com_like" property="actComLike" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    act_com_id, username, act_com_content, act-com_time, act_com_like
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from activity-comment
+    where act_com_id = #{actComId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from activity-comment
+    where act_com_id = #{actComId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlfinfo.model.ActivityComment" >
+    insert into activity-comment (act_com_id, username, act_com_content, 
+      act-com_time, act_com_like)
+    values (#{actComId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{actComContent,jdbcType=VARCHAR}, 
+      #{actComTime,jdbcType=TIMESTAMP}, #{actComLike,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlfinfo.model.ActivityComment" >
+    insert into activity-comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="actComId != null" >
+        act_com_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="actComContent != null" >
+        act_com_content,
+      </if>
+      <if test="actComTime != null" >
+        act-com_time,
+      </if>
+      <if test="actComLike != null" >
+        act_com_like,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="actComId != null" >
+        #{actComId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="actComContent != null" >
+        #{actComContent,jdbcType=VARCHAR},
+      </if>
+      <if test="actComTime != null" >
+        #{actComTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actComLike != null" >
+        #{actComLike,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.ActivityComment" >
+    update activity-comment
+    <set >
+      <if test="actComContent != null" >
+        act_com_content = #{actComContent,jdbcType=VARCHAR},
+      </if>
+      <if test="actComTime != null" >
+        act-com_time = #{actComTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actComLike != null" >
+        act_com_like = #{actComLike,jdbcType=INTEGER},
+      </if>
+    </set>
+    where act_com_id = #{actComId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.ActivityComment" >
+    update activity-comment
+    set act_com_content = #{actComContent,jdbcType=VARCHAR},
+      act-com_time = #{actComTime,jdbcType=TIMESTAMP},
+      act_com_like = #{actComLike,jdbcType=INTEGER}
+    where act_com_id = #{actComId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>

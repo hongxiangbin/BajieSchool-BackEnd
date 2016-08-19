@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Question" >
+    <id column="que_id" property="queId" jdbcType="VARCHAR" />
+    <result column="que_title" property="queTitle" jdbcType="VARCHAR" />
+    <result column="que_content" property="queContent" jdbcType="VARCHAR" />
+    <result column="que_img" property="queImg" jdbcType="VARCHAR" />
+    <result column="que_like" property="queLike" jdbcType="INTEGER" />
+    <result column="que_comment" property="queComment" jdbcType="INTEGER" />
+    <result column="que_time" property="queTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    que_id, que_title, que_content, que_img, que_like, que_comment, que_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from question
+    where que_id = #{queId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from question
+    where que_id = #{queId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlfinfo.model.Question" >
+    insert into question (que_id, que_title, que_content, 
+      que_img, que_like, que_comment, 
+      que_time)
+    values (#{queId,jdbcType=VARCHAR}, #{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR}, 
+      #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER}, 
+      #{queTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlfinfo.model.Question" >
+    insert into question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="queId != null" >
+        que_id,
+      </if>
+      <if test="queTitle != null" >
+        que_title,
+      </if>
+      <if test="queContent != null" >
+        que_content,
+      </if>
+      <if test="queImg != null" >
+        que_img,
+      </if>
+      <if test="queLike != null" >
+        que_like,
+      </if>
+      <if test="queComment != null" >
+        que_comment,
+      </if>
+      <if test="queTime != null" >
+        que_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="queId != null" >
+        #{queId,jdbcType=VARCHAR},
+      </if>
+      <if test="queTitle != null" >
+        #{queTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="queContent != null" >
+        #{queContent,jdbcType=VARCHAR},
+      </if>
+      <if test="queImg != null" >
+        #{queImg,jdbcType=VARCHAR},
+      </if>
+      <if test="queLike != null" >
+        #{queLike,jdbcType=INTEGER},
+      </if>
+      <if test="queComment != null" >
+        #{queComment,jdbcType=INTEGER},
+      </if>
+      <if test="queTime != null" >
+        #{queTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Question" >
+    update question
+    <set >
+      <if test="queTitle != null" >
+        que_title = #{queTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="queContent != null" >
+        que_content = #{queContent,jdbcType=VARCHAR},
+      </if>
+      <if test="queImg != null" >
+        que_img = #{queImg,jdbcType=VARCHAR},
+      </if>
+      <if test="queLike != null" >
+        que_like = #{queLike,jdbcType=INTEGER},
+      </if>
+      <if test="queComment != null" >
+        que_comment = #{queComment,jdbcType=INTEGER},
+      </if>
+      <if test="queTime != null" >
+        que_time = #{queTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where que_id = #{queId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Question" >
+    update question
+    set que_title = #{queTitle,jdbcType=VARCHAR},
+      que_content = #{queContent,jdbcType=VARCHAR},
+      que_img = #{queImg,jdbcType=VARCHAR},
+      que_like = #{queLike,jdbcType=INTEGER},
+      que_comment = #{queComment,jdbcType=INTEGER},
+      que_time = #{queTime,jdbcType=TIMESTAMP}
+    where que_id = #{queId,jdbcType=VARCHAR}
+  </update>
+</mapper>

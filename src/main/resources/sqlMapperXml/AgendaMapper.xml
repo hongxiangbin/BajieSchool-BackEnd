@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.AgendaMapper" >
+  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Agenda" >
+    <id column="ag_id" property="agId" jdbcType="VARCHAR" />
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <result column="ag_title" property="agTitle" jdbcType="VARCHAR" />
+    <result column="ag_remark" property="agRemark" jdbcType="VARCHAR" />
+    <result column="ag_time" property="agTime" jdbcType="TIMESTAMP" />
+    <result column="ag_remind" property="agRemind" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ag_id, username, ag_title, ag_remark, ag_time, ag_remind
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from agenda
+    where ag_id = #{agId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from agenda
+    where ag_id = #{agId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zlfinfo.model.Agenda" >
+    insert into agenda (ag_id, username, ag_title, 
+      ag_remark, ag_time, ag_remind
+      )
+    values (#{agId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{agTitle,jdbcType=VARCHAR}, 
+      #{agRemark,jdbcType=VARCHAR}, #{agTime,jdbcType=TIMESTAMP}, #{agRemind,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlfinfo.model.Agenda" >
+    insert into agenda
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="agId != null" >
+        ag_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="agTitle != null" >
+        ag_title,
+      </if>
+      <if test="agRemark != null" >
+        ag_remark,
+      </if>
+      <if test="agTime != null" >
+        ag_time,
+      </if>
+      <if test="agRemind != null" >
+        ag_remind,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="agId != null" >
+        #{agId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="agTitle != null" >
+        #{agTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="agRemark != null" >
+        #{agRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="agTime != null" >
+        #{agTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agRemind != null" >
+        #{agRemind,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Agenda" >
+    update agenda
+    <set >
+      <if test="agTitle != null" >
+        ag_title = #{agTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="agRemark != null" >
+        ag_remark = #{agRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="agTime != null" >
+        ag_time = #{agTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agRemind != null" >
+        ag_remind = #{agRemind,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ag_id = #{agId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Agenda" >
+    update agenda
+    set ag_title = #{agTitle,jdbcType=VARCHAR},
+      ag_remark = #{agRemark,jdbcType=VARCHAR},
+      ag_time = #{agTime,jdbcType=TIMESTAMP},
+      ag_remind = #{agRemind,jdbcType=TIMESTAMP}
+    where ag_id = #{agId,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>
