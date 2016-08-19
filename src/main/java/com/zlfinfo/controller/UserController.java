@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -28,8 +29,8 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value="/users",method = RequestMethod.GET)
     @ResponseBody
-    public Object getAllUsers(){
-        return renderSuccess(userService.findUsers());
+    public Object getAllUsers(HttpServletResponse response){
+        return renderSuccess(userService.findUsers(),response);
     }
 
     /**
@@ -39,9 +40,9 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
     @ResponseBody
-    public Object getUser(@PathVariable Long id){
+    public Object getUser(@PathVariable Long id,HttpServletResponse response){
         User user = userService.findUserById(id);
-        return renderSuccess(user);
+        return renderSuccess(user,response);
     }
 
     /**
@@ -51,9 +52,9 @@ public class UserController extends BaseController{
      */
     @RequestMapping(value = "/users",method = RequestMethod.POST)
     @ResponseBody
-    public Object createUser(User user){
+    public Object createUser(User user,HttpServletResponse response){
         userService.addUser(user);
-        return renderSuccess();
+        return renderSuccess(response);
     }
 
     /**
@@ -62,19 +63,19 @@ public class UserController extends BaseController{
      * @param user
      * @return {object}
      */
-    @RequestMapping(value = "/users/{id}",method = RequestMethod.PATCH)
+    @RequestMapping(value = "/users/{id}",method = RequestMethod.PUT)
     @ResponseBody
-    public Object updateUser(@PathVariable Long id,User user){
+    public Object updateUser(@PathVariable Long id,User user,HttpServletResponse response){
         user.setId(id);
         userService.updateUser(user);
-        return renderSuccess();
+        return renderSuccess(response);
     }
 
     @RequestMapping(value = "/users/{id}",method = RequestMethod.DELETE)
     @ResponseBody
-    public Object deleteUser(@PathVariable Long id){
+    public Object deleteUser(@PathVariable Long id,HttpServletResponse response){
         userService.deleteUser(id);
-        return renderSuccess();
+        return renderSuccess(response);
     }
 
 }
