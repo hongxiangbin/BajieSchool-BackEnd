@@ -33,6 +33,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--将POST请求转化为DETLETE或者PUT 要用_method指定真正的请求参数-->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!--spring-mvc 控制器-->
     <servlet>
         <servlet-name>spring-mvc</servlet-name>
@@ -48,6 +58,8 @@
         <servlet-name>spring-mvc</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+
+
 
     <!--Logback 日志管理文件-->
     <context-param>

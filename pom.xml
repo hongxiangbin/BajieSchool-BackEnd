@@ -135,7 +135,6 @@
             <version>${mybatis-spring.version}</version>
         </dependency>
 
-
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -257,15 +256,13 @@
                         <path>/BajieSchool</path>
                         <url>http://localhost:8080/manager/text</url>
                         <server>tomcat</server>
-                        <username>admin</username>
-                        <password>admin</password>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
 
         <!--配置Maven 对resource文件 过滤 -->
-        <resources>
+        <!--<resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
@@ -282,6 +279,6 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
-        </resources>
+        </resources>-->
     </build>
 </project>

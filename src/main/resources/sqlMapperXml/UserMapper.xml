@@ -11,9 +11,6 @@
     </select>
 
     <insert id="insert" parameterType="com.zlfinfo.model.User">
-        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
-            SELECT LAST_INDEX_ID()
-        </selectKey>
         INSERT INTO user (username,password)
         VALUES (#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR})
     </insert>
@@ -33,6 +30,6 @@
 
     <delete id="deleteById" parameterType="java.lang.Long">
         DELETE FROM user
-        WHERE id = ##{id,jdbcType=BIGINT}
+        WHERE id = #{id,jdbcType=BIGINT}
     </delete>
 </mapper>
