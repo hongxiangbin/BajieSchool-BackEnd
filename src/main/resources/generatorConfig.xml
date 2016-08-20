@@ -5,7 +5,8 @@
 
 <!-- 使用 mvn mybatis-generator:generate -->
 <generatorConfiguration>
-    <classPathEntry location="C:\\Users\\Administrator\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.38\\mysql-connector-java-5.1.38.jar" />
+    <classPathEntry
+            location="C:\\Users\\Administrator\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.38\\mysql-connector-java-5.1.38.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
 
         <!-- plugin -->
@@ -19,8 +20,9 @@
 
         <!-- 连接配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/bajieSchool?useUnicode=true&amp;characterEncoding=utf-8" userId="root"
-                        password="root">
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/bajie?useUnicode=true&amp;characterEncoding=utf-8"
+                        userId="root"
+                        password="123456">
         </jdbcConnection>
 
         <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
@@ -41,11 +43,11 @@
         </javaClientGenerator>
 
         <!-- oracle 使用 schema 对应 用户名称空间 mysql 使用 catalog 对应 数据库-->
-       <!-- <table schema="bajieschool" tableName="%" enableCountByExample="false"
-        enableDeleteByExample="false" enableUpdateByExample="false"
-        selectByExampleQueryId="false" enableSelectByExample="false">
-        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+        <!-- <table schema="bajieschool" tableName="%" enableCountByExample="false"
+         enableDeleteByExample="false" enableUpdateByExample="false"
+         selectByExampleQueryId="false" enableSelectByExample="false">
+         <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>-->
 
         <table schema="bajieschool" tableName="user" domainObjectName="User"
                enableCountByExample="false"
@@ -135,14 +137,8 @@
                enableSelectByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table schema="bajieschool" tableName="study-reply" domainObjectName="StudyReply"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+
+
     </context>
 </generatorConfiguration>
 
