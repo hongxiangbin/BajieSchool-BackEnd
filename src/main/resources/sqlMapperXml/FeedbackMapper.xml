@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.FeedbackMapper">
+    <resultMap id="feedbackMap" type="com.zlfinfo.model.Feedback">
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="qq" property="qq" jdbcType="VARCHAR"/>
+        <result column="wechat" property="wechat" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
+        <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      username, content, time, qq, wechat, email, reserve1, reserve2
+    </sql>
+
+    <insert id="insertFeedback" parameterType="com.zlfinfo.model.Feedback">
+        insert into feedback (username, content, time, qq, wechat, email, reserve1, reserve2)
+        values (#{username,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP},
+          #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR},
+          #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
+    </insert>
+
+    <!--<insert id="insertFeedback" parameterType="com.zlfinfo.model.Feedback">
+        insert into feedback
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stdId != null">
+                std_id,
+            </if>
+            <if test="typeId != null">
+                type_id,
+            </if>
+            <if test="stdTitle != null">
+                std_title,
+            </if>
+            <if test="stdContent != null">
+                std_content,
+            </if>
+            <if test="stdLike != null">
+                std_like,
+            </if>
+            <if test="stdComment != null">
+                std_comment,
+            </if>
+            <if test="stdTime != null">
+                std_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stdId != null">
+                #{stdId,jdbcType=VARCHAR},
+            </if>
+            <if test="typeId != null">
+                #{typeId,jdbcType=VARCHAR},
+            </if>
+            <if test="stdTitle != null">
+                #{stdTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="stdContent != null">
+                #{stdContent,jdbcType=VARCHAR},
+            </if>
+            <if test="stdLike != null">
+                #{stdLike,jdbcType=INTEGER},
+            </if>
+            <if test="stdComment != null">
+                #{stdComment,jdbcType=INTEGER},
+            </if>
+            <if test="stdTime != null">
+                #{stdTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>-->
+
+</mapper>
