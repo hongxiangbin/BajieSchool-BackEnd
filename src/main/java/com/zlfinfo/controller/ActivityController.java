@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/22.
@@ -34,6 +35,16 @@ public class ActivityController extends BaseController {
         return renderSuccess("保存成功", response);
     }
 
+    @RequestMapping(value = "/showallact", method = RequestMethod.GET)
+    @ResponseBody
+    public Object showAllActivity(HttpServletResponse httpServletResponse) {
+        List<Activity> activityList = actService.selectAllActivity();
+        if (null != activityList) {
+            return renderSuccess(activityList, httpServletResponse);
+        } else {
+            return renderError("活动查询失败", httpServletResponse);
+        }
+    }
 
 
 }

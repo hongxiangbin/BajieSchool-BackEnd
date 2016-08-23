@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zlfinfo.mapper.ActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Activity" >
-    <id column="act_id" property="actId" jdbcType="VARCHAR" />
-    <result column="act_type" property="actType" jdbcType="VARCHAR" />
-    <result column="act_title" property="actTitle" jdbcType="VARCHAR" />
-    <result column="act_content" property="actContent" jdbcType="VARCHAR" />
-    <result column="act_img" property="actImg" jdbcType="VARCHAR" />
-    <result column="act_time" property="actTime" jdbcType="TIMESTAMP" />
-    <result column="act_like" property="actLike" jdbcType="INTEGER" />
-    <result column="act_comment" property="actComment" jdbcType="INTEGER" />
-    <result column="act_follow" property="actFollow" jdbcType="INTEGER" />
-    <result column="act_join" property="actJoin" jdbcType="INTEGER" />
-    <result column="act_signup" property="actSignup" jdbcType="INTEGER" />
-    <result column="act_place" property="actPlace" jdbcType="VARCHAR" />
-    <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
-    <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.zlfinfo.mapper.ActivityMapper">
+    <resultMap id="BaseResultMap" type="com.zlfinfo.model.Activity">
+        <id column="act_id" property="actId" jdbcType="VARCHAR"/>
+        <result column="act_type" property="actType" jdbcType="VARCHAR"/>
+        <result column="act_title" property="actTitle" jdbcType="VARCHAR"/>
+        <result column="act_content" property="actContent" jdbcType="VARCHAR"/>
+        <result column="act_img" property="actImg" jdbcType="VARCHAR"/>
+        <result column="act_time" property="actTime" jdbcType="TIMESTAMP"/>
+        <result column="act_like" property="actLike" jdbcType="INTEGER"/>
+        <result column="act_comment" property="actComment" jdbcType="INTEGER"/>
+        <result column="act_follow" property="actFollow" jdbcType="INTEGER"/>
+        <result column="act_join" property="actJoin" jdbcType="INTEGER"/>
+        <result column="act_signup" property="actSignup" jdbcType="INTEGER"/>
+        <result column="act_place" property="actPlace" jdbcType="VARCHAR"/>
+        <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
+        <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment, 
     act_follow, act_join, act_signup, act_place, reserve1, reserve2
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from activity
-    where act_id = #{actId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from activity
+        where act_id = #{actId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectAllActivity" resultMap="BaseResultMap">
+      SELECT * FROM  activity
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from activity
     where act_id = #{actId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.zlfinfo.model.Activity" >
+    <insert id="insert" parameterType="com.zlfinfo.model.Activity">
     insert into activity (act_id, act_type, act_title, 
       act_content, act_img, act_time, 
       act_like, act_comment, act_follow, 
@@ -43,143 +48,143 @@
       #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR}, 
       #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity" >
-    insert into activity
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="actId != null" >
-        act_id,
-      </if>
-      <if test="actType != null" >
-        act_type,
-      </if>
-      <if test="actTitle != null" >
-        act_title,
-      </if>
-      <if test="actContent != null" >
-        act_content,
-      </if>
-      <if test="actImg != null" >
-        act_img,
-      </if>
-      <if test="actTime != null" >
-        act_time,
-      </if>
-      <if test="actLike != null" >
-        act_like,
-      </if>
-      <if test="actComment != null" >
-        act_comment,
-      </if>
-      <if test="actFollow != null" >
-        act_follow,
-      </if>
-      <if test="actJoin != null" >
-        act_join,
-      </if>
-      <if test="actSignup != null" >
-        act_signup,
-      </if>
-      <if test="actPlace != null" >
-        act_place,
-      </if>
-      <if test="reserve1 != null" >
-        reserve1,
-      </if>
-      <if test="reserve2 != null" >
-        reserve2,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="actId != null" >
-        #{actId,jdbcType=VARCHAR},
-      </if>
-      <if test="actType != null" >
-        #{actType,jdbcType=VARCHAR},
-      </if>
-      <if test="actTitle != null" >
-        #{actTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="actContent != null" >
-        #{actContent,jdbcType=VARCHAR},
-      </if>
-      <if test="actImg != null" >
-        #{actImg,jdbcType=VARCHAR},
-      </if>
-      <if test="actTime != null" >
-        #{actTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="actLike != null" >
-        #{actLike,jdbcType=INTEGER},
-      </if>
-      <if test="actComment != null" >
-        #{actComment,jdbcType=INTEGER},
-      </if>
-      <if test="actFollow != null" >
-        #{actFollow,jdbcType=INTEGER},
-      </if>
-      <if test="actJoin != null" >
-        #{actJoin,jdbcType=INTEGER},
-      </if>
-      <if test="actSignup != null" >
-        #{actSignup,jdbcType=INTEGER},
-      </if>
-      <if test="actPlace != null" >
-        #{actPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve1 != null" >
-        #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        #{reserve2,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Activity" >
-    update activity
-    <set >
-      <if test="actType != null" >
-        act_type = #{actType,jdbcType=VARCHAR},
-      </if>
-      <if test="actTitle != null" >
-        act_title = #{actTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="actContent != null" >
-        act_content = #{actContent,jdbcType=VARCHAR},
-      </if>
-      <if test="actImg != null" >
-        act_img = #{actImg,jdbcType=VARCHAR},
-      </if>
-      <if test="actTime != null" >
-        act_time = #{actTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="actLike != null" >
-        act_like = #{actLike,jdbcType=INTEGER},
-      </if>
-      <if test="actComment != null" >
-        act_comment = #{actComment,jdbcType=INTEGER},
-      </if>
-      <if test="actFollow != null" >
-        act_follow = #{actFollow,jdbcType=INTEGER},
-      </if>
-      <if test="actJoin != null" >
-        act_join = #{actJoin,jdbcType=INTEGER},
-      </if>
-      <if test="actSignup != null" >
-        act_signup = #{actSignup,jdbcType=INTEGER},
-      </if>
-      <if test="actPlace != null" >
-        act_place = #{actPlace,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve1 != null" >
-        reserve1 = #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        reserve2 = #{reserve2,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where act_id = #{actId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Activity" >
+    <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
+        insert into activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="actId != null">
+                act_id,
+            </if>
+            <if test="actType != null">
+                act_type,
+            </if>
+            <if test="actTitle != null">
+                act_title,
+            </if>
+            <if test="actContent != null">
+                act_content,
+            </if>
+            <if test="actImg != null">
+                act_img,
+            </if>
+            <if test="actTime != null">
+                act_time,
+            </if>
+            <if test="actLike != null">
+                act_like,
+            </if>
+            <if test="actComment != null">
+                act_comment,
+            </if>
+            <if test="actFollow != null">
+                act_follow,
+            </if>
+            <if test="actJoin != null">
+                act_join,
+            </if>
+            <if test="actSignup != null">
+                act_signup,
+            </if>
+            <if test="actPlace != null">
+                act_place,
+            </if>
+            <if test="reserve1 != null">
+                reserve1,
+            </if>
+            <if test="reserve2 != null">
+                reserve2,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="actId != null">
+                #{actId,jdbcType=VARCHAR},
+            </if>
+            <if test="actType != null">
+                #{actType,jdbcType=VARCHAR},
+            </if>
+            <if test="actTitle != null">
+                #{actTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="actContent != null">
+                #{actContent,jdbcType=VARCHAR},
+            </if>
+            <if test="actImg != null">
+                #{actImg,jdbcType=VARCHAR},
+            </if>
+            <if test="actTime != null">
+                #{actTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="actLike != null">
+                #{actLike,jdbcType=INTEGER},
+            </if>
+            <if test="actComment != null">
+                #{actComment,jdbcType=INTEGER},
+            </if>
+            <if test="actFollow != null">
+                #{actFollow,jdbcType=INTEGER},
+            </if>
+            <if test="actJoin != null">
+                #{actJoin,jdbcType=INTEGER},
+            </if>
+            <if test="actSignup != null">
+                #{actSignup,jdbcType=INTEGER},
+            </if>
+            <if test="actPlace != null">
+                #{actPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                #{reserve2,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Activity">
+        update activity
+        <set>
+            <if test="actType != null">
+                act_type = #{actType,jdbcType=VARCHAR},
+            </if>
+            <if test="actTitle != null">
+                act_title = #{actTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="actContent != null">
+                act_content = #{actContent,jdbcType=VARCHAR},
+            </if>
+            <if test="actImg != null">
+                act_img = #{actImg,jdbcType=VARCHAR},
+            </if>
+            <if test="actTime != null">
+                act_time = #{actTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="actLike != null">
+                act_like = #{actLike,jdbcType=INTEGER},
+            </if>
+            <if test="actComment != null">
+                act_comment = #{actComment,jdbcType=INTEGER},
+            </if>
+            <if test="actFollow != null">
+                act_follow = #{actFollow,jdbcType=INTEGER},
+            </if>
+            <if test="actJoin != null">
+                act_join = #{actJoin,jdbcType=INTEGER},
+            </if>
+            <if test="actSignup != null">
+                act_signup = #{actSignup,jdbcType=INTEGER},
+            </if>
+            <if test="actPlace != null">
+                act_place = #{actPlace,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                reserve2 = #{reserve2,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where act_id = #{actId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Activity">
     update activity
     set act_type = #{actType,jdbcType=VARCHAR},
       act_title = #{actTitle,jdbcType=VARCHAR},

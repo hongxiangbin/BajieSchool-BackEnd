@@ -39,7 +39,7 @@ public class Activity implements Serializable {
     }
 
     public void setActId(String actId) {
-        this.actId = actId == null ? null : actId.trim();
+        this.actId = actId;
     }
 
     public String getActType() {
@@ -47,7 +47,7 @@ public class Activity implements Serializable {
     }
 
     public void setActType(String actType) {
-        this.actType = actType == null ? null : actType.trim();
+        this.actType = actType;
     }
 
     public String getActTitle() {
@@ -55,7 +55,7 @@ public class Activity implements Serializable {
     }
 
     public void setActTitle(String actTitle) {
-        this.actTitle = actTitle == null ? null : actTitle.trim();
+        this.actTitle = actTitle;
     }
 
     public String getActContent() {
@@ -63,7 +63,7 @@ public class Activity implements Serializable {
     }
 
     public void setActContent(String actContent) {
-        this.actContent = actContent == null ? null : actContent.trim();
+        this.actContent = actContent;
     }
 
     public String getActImg() {
@@ -71,7 +71,7 @@ public class Activity implements Serializable {
     }
 
     public void setActImg(String actImg) {
-        this.actImg = actImg == null ? null : actImg.trim();
+        this.actImg = actImg;
     }
 
     public Date getActTime() {
@@ -127,7 +127,7 @@ public class Activity implements Serializable {
     }
 
     public void setActPlace(String actPlace) {
-        this.actPlace = actPlace == null ? null : actPlace.trim();
+        this.actPlace = actPlace;
     }
 
     public String getReserve1() {
@@ -135,7 +135,7 @@ public class Activity implements Serializable {
     }
 
     public void setReserve1(String reserve1) {
-        this.reserve1 = reserve1 == null ? null : reserve1.trim();
+        this.reserve1 = reserve1;
     }
 
     public String getReserve2() {
@@ -143,7 +143,30 @@ public class Activity implements Serializable {
     }
 
     public void setReserve2(String reserve2) {
-        this.reserve2 = reserve2 == null ? null : reserve2.trim();
+        this.reserve2 = reserve2;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "actId='" + actId + '\'' +
+                ", actType='" + actType + '\'' +
+                ", actTitle='" + actTitle + '\'' +
+                ", actContent='" + actContent + '\'' +
+                ", actImg='" + actImg + '\'' +
+                ", actTime=" + actTime +
+                ", actLike=" + actLike +
+                ", actComment=" + actComment +
+                ", actFollow=" + actFollow +
+                ", actJoin=" + actJoin +
+                ", actSignup=" + actSignup +
+                ", actPlace='" + actPlace + '\'' +
+                ", reserve1='" + reserve1 + '\'' +
+                ", reserve2='" + reserve2 + '\'' +
+                '}';
+    }
 }

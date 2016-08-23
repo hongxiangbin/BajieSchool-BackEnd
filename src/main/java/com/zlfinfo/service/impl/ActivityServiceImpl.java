@@ -26,4 +26,9 @@ public class ActivityServiceImpl implements ActivityService {
     public int insert(Activity act) {
         return actMapper.insert(act);
     }
+
+    @Override
+    public List<Activity> selectAllActivity() {
+        return actMapper.selectAllActivity();
+    }
 }

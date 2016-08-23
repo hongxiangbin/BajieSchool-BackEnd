@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface ActivityService {
     int insert(Activity act);
+
+    List<Activity> selectAllActivity();
+
 }

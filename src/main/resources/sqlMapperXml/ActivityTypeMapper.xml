@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.ActivityTypeMapper">
+    <resultMap id="activityTypeMap" type="com.zlfinfo.model.ActivityType">
+        <id column="act_type_id" property="actTypeId" jdbcType="INTEGER"/>
+        <id column="act_type_name" property="actTypeName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectAllActType" resultMap="activityTypeMap">
+        select * from activity_type
+    </select>
+
+
+</mapper>
