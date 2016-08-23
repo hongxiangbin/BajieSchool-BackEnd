@@ -16,62 +16,66 @@ import javax.servlet.http.HttpServletResponse;
  * Created by Administrator on 2016/8/18.
  */
 @Controller
-public class TestUserController extends BaseController{
+public class TestUserController extends BaseController {
 
     @Autowired
     private TestUserService testUserService;
 
     /**
      * 查询所有用户
+     *
      * @return {object}
      */
-    @RequestMapping(value="/testusers",method = RequestMethod.GET)
+    @RequestMapping(value = "/testusers", method = RequestMethod.GET)
     @ResponseBody
-    public Object getAllUsers(HttpServletResponse response){
-        return renderSuccess(testUserService.findUsers(),response);
+    public Object getAllUsers(HttpServletResponse response) {
+        return renderSuccess(testUserService.findUsers(), response);
     }
 
     /**
      * 根据id查用户
+     *
      * @param id 用户id
      * @return
      */
-    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/testusers/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Object getUser(@PathVariable Long id,HttpServletResponse response){
+    public Object getUser(@PathVariable Long id, HttpServletResponse response) {
         TestUser testUser = testUserService.findUserById(id);
-        return renderSuccess(testUser,response);
+        return renderSuccess(testUser, response);
     }
 
     /**
      * 创建用户
+     *
      * @param testUser
      * @return
      */
-    @RequestMapping(value = "/testusers",method = RequestMethod.POST)
+    @RequestMapping(value = "/testusers", method = RequestMethod.POST)
     @ResponseBody
-    public Object createUser(TestUser testUser, HttpServletResponse response){
+    public Object createUser(TestUser testUser, HttpServletResponse response) {
         testUserService.addUser(testUser);
         return renderSuccess(response);
     }
 
     /**
      * 更新{id}用户信息
+     *
      * @param id
      * @param testUser
      * @return {object}
      */
-    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/testusers/{id}", method = RequestMethod.PUT)
     @ResponseBody
-    public Object updateUser(@PathVariable Long id, TestUser testUser, HttpServletResponse response){
+    public Object updateUser(@PathVariable Long id, TestUser testUser, HttpServletResponse response) {
         testUser.setId(id);
         testUserService.updateUser(testUser);
         return renderSuccess(response);
     }
 
-    @RequestMapping(value = "/testusers/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/testusers/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Object deleteUser(@PathVariable Long id,HttpServletResponse response){
+    public Object deleteUser(@PathVariable Long id, HttpServletResponse response) {
         testUserService.deleteUser(id);
         return renderSuccess(response);
     }

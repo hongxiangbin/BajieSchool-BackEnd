@@ -174,4 +174,27 @@ public class User implements Serializable {
     public void setReserve4(String reserve4) {
         this.reserve4 = reserve4 == null ? null : reserve4.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", noId='" + noId + '\'' +
+                ", password='" + password + '\'' +
+                ", sex='" + sex + '\'' +
+                ", cellphone='" + cellphone + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", university='" + university + '\'' +
+                ", institution='" + institution + '\'' +
+                ", enrollYear='" + enrollYear + '\'' +
+                ", level='" + level + '\'' +
+                ", qq='" + qq + '\'' +
+                ", wechat='" + wechat + '\'' +
+                ", weibo='" + weibo + '\'' +
+                ", reserve1='" + reserve1 + '\'' +
+                ", reserve2='" + reserve2 + '\'' +
+                ", reserve3='" + reserve3 + '\'' +
+                ", reserve4='" + reserve4 + '\'' +
+                '}';
+    }
 }

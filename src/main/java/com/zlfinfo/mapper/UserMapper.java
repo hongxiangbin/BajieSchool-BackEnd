@@ -2,6 +2,8 @@ package com.zlfinfo.mapper;
 
 import com.zlfinfo.model.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(String username);
 
@@ -14,4 +16,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int updatePassword(String username, String password);
+
+    List<User> findAllUsers();
 }

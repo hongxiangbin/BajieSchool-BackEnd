@@ -9,18 +9,18 @@ public class Result implements Serializable {
     public static final int SUCCESS = 1;
     public static final int FAILURE = -1;
 
-    private boolean success = false;
+    private int status;
 
     private String msg = "";
 
-    private Object obj = null;
+    private Object result = null;
 
-    public boolean isSuccess() {
-        return success;
+    public int getStatus() {
+        return status;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMsg() {
@@ -31,12 +31,12 @@ public class Result implements Serializable {
         this.msg = msg;
     }
 
-    public Object getObj() {
-        return obj;
+    public Object getResult() {
+        return result;
     }
 
-    public void setObj(Object obj) {
-        this.obj = obj;
+    public void setResult(Object result) {
+        this.result = result;
     }
 }
 

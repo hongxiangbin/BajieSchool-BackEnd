@@ -16,54 +16,59 @@ public abstract class BaseController {
 
     /**
      * ajax失败
+     *
      * @param msg 失败的信息
      * @return {Object}
      */
-    public Object renderError(String msg,HttpServletResponse response){
+    public Object renderError(String msg, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow_Methods","POST,GET,OPTIONS,PUT,DELETE");
+        response.setHeader("Access-Control-Allow_Methods", "POST,GET,OPTIONS,PUT,DELETE");
         Result result = new Result();
+        result.setStatus(1);
         result.setMsg(msg);
         return result;
     }
 
     /**
      * ajax 成功
+     *
      * @return {object}
      */
-    public Object renderSuccess(HttpServletResponse response){
+    public Object renderSuccess(HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow_Methods","POST,GET,OPTIONS,PUT,DELETE");
-        Result result =new Result();
-        result.setSuccess(true);
+        response.setHeader("Access-Control-Allow_Methods", "POST,GET,OPTIONS,PUT,DELETE");
+        Result result = new Result();
+        result.setStatus(0);
         return result;
     }
 
     /**
      * ajax 成功
+     *
      * @param msg 成功的消息
      * @return {object}
      */
-    public Object renderSuccess(String msg,HttpServletResponse response){
+    public Object renderSuccess(String msg, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow_Methods","POST,GET,OPTIONS,PUT,DELETE");
+        response.setHeader("Access-Control-Allow_Methods", "POST,GET,OPTIONS,PUT,DELETE");
         Result result = new Result();
-        result.setSuccess(true);
+        result.setStatus(0);
         result.setMsg(msg);
         return result;
     }
 
     /**
      * ajax 成功
+     *
      * @param obj 成功的对象
      * @return {object}
      */
-    public Object renderSuccess(Object obj, HttpServletResponse response){
+    public Object renderSuccess(Object obj, HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow_Methods","POST,GET,OPTIONS,PUT,DELETE");
+        response.setHeader("Access-Control-Allow_Methods", "POST,GET,OPTIONS,PUT,DELETE");
         Result result = new Result();
-        result.setSuccess(true);
-        result.setObj(obj);
+        result.setStatus(0);
+        result.setResult(obj);
         return result;
     }
 
