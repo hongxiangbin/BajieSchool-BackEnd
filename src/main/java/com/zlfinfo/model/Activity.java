@@ -145,4 +145,5 @@ public class Activity implements Serializable {
     public void setReserve2(String reserve2) {
         this.reserve2 = reserve2 == null ? null : reserve2.trim();
     }
+
 }
