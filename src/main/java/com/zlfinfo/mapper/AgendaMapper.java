@@ -3,6 +3,8 @@ package com.zlfinfo.mapper;
 import com.zlfinfo.model.Agenda;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface AgendaMapper {
     int deleteByPrimaryKey(@Param("agId") String agId, @Param("username") String username);
 
@@ -15,4 +17,6 @@ public interface AgendaMapper {
     int updateByPrimaryKeySelective(Agenda record);
 
     int updateByPrimaryKey(Agenda record);
+
+    List<Agenda> selectAgendaByUsername(String username);
 }

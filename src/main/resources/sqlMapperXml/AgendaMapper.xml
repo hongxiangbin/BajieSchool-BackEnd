@@ -12,13 +12,11 @@
   <sql id="Base_Column_List" >
     ag_id, username, ag_title, ag_remark, ag_time, ag_remind
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
-    select 
-    <include refid="Base_Column_List" />
-    from agenda
-    where ag_id = #{agId,jdbcType=VARCHAR}
-      and username = #{username,jdbcType=VARCHAR}
+
+  <select id="selectAgendaByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT ag_id, username, ag_title, ag_remark, ag_time, ag_remind FROM agenda NATURAL JOIN login_status WHERE login_status.`status` = 0 AND username = #{username}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from agenda
     where ag_id = #{agId,jdbcType=VARCHAR}

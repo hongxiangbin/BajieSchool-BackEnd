@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.VisitorMapper">
+    <resultMap id="BaseResultMap" type="com.zlfinfo.model.Visitor">
+        <id column="username" property="username" jdbcType="VARCHAR"/>
+        <id column="visitor" property="visitor" jdbcType="VARCHAR"/>
+        <id column="date" property="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      username, visitor, date
+    </sql>
+
+    <select id="selectAllVisitor" resultMap="BaseResultMap">
+        SELECT
+            visitor.username,
+            visitor.visitor,
+            visitor.date
+        FROM
+            visitor
+        NATURAL JOIN login_status
+        NATURAL JOIN USER
+        WHERE
+            login_status.`status` = 0
+        AND login_status.username = #{username}
+        AND visitor.date BETWEEN #{startdate}
+        AND #{enddate}
+    </select>
+
+    <insert id="insertVisitor" parameterType="com.zlfinfo.model.Visitor">
+        insert into visitor (username, visitor, date)
+        values (#{username,jdbcType=VARCHAR}, #{visitor,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP})
+    </insert>
+
+</mapper>
