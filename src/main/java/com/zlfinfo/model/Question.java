@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Question implements Serializable {
-    private String queId;
+    private int queId;
 
     private String queTitle;
 
@@ -12,20 +12,20 @@ public class Question implements Serializable {
 
     private String queImg;
 
-    private Integer queLike;
+    private int queLike;
 
-    private Integer queComment;
+    private int queComment;
 
     private Date queTime;
 
     private static final long serialVersionUID = 1L;
 
-    public String getQueId() {
+    public int getQueId() {
         return queId;
     }
 
-    public void setQueId(String queId) {
-        this.queId = queId == null ? null : queId.trim();
+    public void setQueId(int queId) {
+        this.queId = queId;
     }
 
     public String getQueTitle() {
@@ -52,19 +52,19 @@ public class Question implements Serializable {
         this.queImg = queImg == null ? null : queImg.trim();
     }
 
-    public Integer getQueLike() {
+    public int getQueLike() {
         return queLike;
     }
 
-    public void setQueLike(Integer queLike) {
+    public void setQueLike(int queLike) {
         this.queLike = queLike;
     }
 
-    public Integer getQueComment() {
+    public int getQueComment() {
         return queComment;
     }
 
-    public void setQueComment(Integer queComment) {
+    public void setQueComment(int queComment) {
         this.queComment = queComment;
     }
 
