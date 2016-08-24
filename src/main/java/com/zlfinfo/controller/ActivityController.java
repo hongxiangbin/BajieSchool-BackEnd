@@ -35,6 +35,14 @@ public class ActivityController extends BaseController {
         return renderSuccess("保存成功", response);
     }
 
+    /**
+     * 查询所有活动
+     *
+     * @param httpServletResponse
+     * @return
+     * @deprecated
+     */
+    @Deprecated
     @RequestMapping(value = "/showallact", method = RequestMethod.GET)
     @ResponseBody
     public Object showAllActivity(HttpServletResponse httpServletResponse) {
@@ -46,5 +54,13 @@ public class ActivityController extends BaseController {
         }
     }
 
+    @RequestMapping(value = "/{username}/activity/{type}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object showActivity(@PathVariable String username, @PathVariable String type, HttpServletResponse
+            httpServletResponse) {
+        List<Activity> activityList = actService.selectActivityByUserNType(username, type);
+        return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
+                httpServletResponse);
+    }
 
 }

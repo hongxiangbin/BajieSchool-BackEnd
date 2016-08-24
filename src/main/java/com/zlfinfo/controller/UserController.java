@@ -62,9 +62,19 @@ public class UserController extends BaseController {
      *
      * @deprecated
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @Deprecated
+    @RequestMapping(value = "/showallusers", method = RequestMethod.GET)
     @ResponseBody
     public Object getAllUsers(HttpServletResponse response) {
         return renderSuccess(userService.findAllUsers(), response);
     }
+
+    @RequestMapping(value = "/checkname/{username}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object checkUserExist(@PathVariable String username, HttpServletResponse httpServletResponse) {
+        User user = userService.findUserByUsername(username);
+        return null == user ? renderSuccess("YES", httpServletResponse) :
+                renderError("NO", httpServletResponse);
+    }
+
 }

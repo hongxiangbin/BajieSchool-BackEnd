@@ -10,4 +10,7 @@ import java.util.List;
 public interface ActivityTypeMapper {
 
     List<ActivityType> selectAllActType();
+
+    List<ActivityType> selectActTypeByUser(String username);
+
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface ActivityTypeService {
 
     List<ActivityType> selectAllActType();
+
+    List<ActivityType> selectActTypeByUser(String username);
 }

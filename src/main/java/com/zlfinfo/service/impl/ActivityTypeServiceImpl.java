@@ -21,4 +21,9 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
     public List<ActivityType> selectAllActType() {
         return activityTypeMapper.selectAllActType();
     }
+
+    @Override
+    public List<ActivityType> selectActTypeByUser(String username) {
+        return activityTypeMapper.selectActTypeByUser(username);
+    }
 }

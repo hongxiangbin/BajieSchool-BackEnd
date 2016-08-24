@@ -17,15 +17,48 @@
         <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
         <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <resultMap id="indexResultMap" type="com.zlfinfo.model.Activity">
+        <id column="act_id" property="actId" jdbcType="VARCHAR"/>
+        <result column="act_type" property="actType" jdbcType="VARCHAR"/>
+        <result column="act_title" property="actTitle" jdbcType="VARCHAR"/>
+        <result column="act_content" property="actContent" jdbcType="VARCHAR"/>
+        <result column="act_img" property="actImg" jdbcType="VARCHAR"/>
+        <result column="act_time" property="actTime" jdbcType="TIMESTAMP"/>
+        <result column="act_like" property="actLike" jdbcType="INTEGER"/>
+        <result column="act_comment" property="actComment" jdbcType="INTEGER"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
-    act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment, 
-    act_follow, act_join, act_signup, act_place, reserve1, reserve2
-  </sql>
+        act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment,
+        act_follow, act_join, act_signup, act_place, reserve1, reserve2
+    </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from activity
         where act_id = #{actId,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="selectActivityByUserNType" resultMap="indexResultMap">
+        SELECT
+            act_v.act_id,
+            act_v.act_type,
+            act_v.act_title,
+            act_v.act_content,
+            act_v.act_img,
+            act_v.act_time,
+            act_v.act_like,
+            act_v.act_comment
+        FROM
+            activity_view act_v
+        NATURAL JOIN USER
+        NATURAL JOIN login_status
+        WHERE
+            login_status.`status` = 0
+        AND act_v.act_type = #{type}
+        AND `user`.username = #{username}
     </select>
 
     <select id="selectAllActivity" resultMap="BaseResultMap">

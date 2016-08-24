@@ -10,5 +10,18 @@
         select * from activity_type
     </select>
 
+    <select id="selectActTypeByUser" parameterType="java.lang.String" resultMap="activityTypeMap">
+        SELECT DISTINCT
+	      AT.act_type_id,
+	      AT.act_type_name
+        FROM
+          activity_type AT
+        NATURAL JOIN user_acttype,
+          login_status
+        NATURAL JOIN USER
+        WHERE
+	      login_status.`status` = 0
+        AND USER .username = #{username}
+    </select>
 
 </mapper>
