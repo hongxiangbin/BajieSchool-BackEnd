@@ -10,10 +10,29 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-23 15:24:43
+Date: 2016-08-24 17:58:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for accusation
+-- ----------------------------
+DROP TABLE IF EXISTS `accusation`;
+CREATE TABLE `accusation` (
+  `informant` varchar(16) NOT NULL,
+  `against` varchar(16) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`informant`,`against`,`content`,`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of accusation
+-- ----------------------------
+INSERT INTO `accusation` VALUES ('admin', 'admin', '人身攻击', '2016-08-23 18:09:05');
+INSERT INTO `accusation` VALUES ('admin', 'dasda', 'dad', '2016-08-23 18:16:20');
+INSERT INTO `accusation` VALUES ('admin', 'xxx', 'qqq', '2016-08-23 18:16:01');
 
 -- ----------------------------
 -- Table structure for activity
@@ -43,6 +62,11 @@ CREATE TABLE `activity` (
 INSERT INTO `activity` VALUES ('10000', '0', '周杰伦演唱会', '8月17日，周杰伦将在武汉光谷广场举办演唱会', 'img/activity/act/周杰伦.jpg', '2016-08-16 14:49:44', '520', '2465', '249', '125', '154', '湖北武汉', null, null);
 INSERT INTO `activity` VALUES ('10001', '0', '科技展览', 'VR，无人机，无人驾驶，机器人等在武汉大学开办展会', 'img/activity/act/科技展览.jpeg', '2016-08-15 14:49:44', '52', '255', '199', '125', '174', '湖北武汉', null, null);
 INSERT INTO `activity` VALUES ('10002', '0', '数学建模大赛', '阿里巴巴天池大数据竞赛', 'img/activity/act/阿里巴巴.jpg', '2016-08-14 14:49:44', '52', '255', '1699', '125', '174', '浙江杭州', null, null);
+INSERT INTO `activity` VALUES ('10003', '1', '黄河落日', '大漠孤烟直，长河落日圆', 'img/activity/tabs/旅游/1.jpg', '2016-08-09 17:51:26', '26', '68', '44', '48', '156', '甘肃', null, null);
+INSERT INTO `activity` VALUES ('10004', '1', '丽江水', '丽江大学生组团游，有兴趣的小伙伴一起约在华科聊一聊', 'img/activity/tabs/旅游/2.jpg', '2016-08-08 17:52:30', '154', '65', '165', '565', '56', '桂林', null, null);
+INSERT INTO `activity` VALUES ('10005', '2', '武汉大学校庆', '珞珈山的小伙伴们，躁起来~~~', 'img/whu.png', '2016-08-16 17:54:33', '1554', '65', '56564', '4654', '565', '湖北武汉', null, null);
+INSERT INTO `activity` VALUES ('10006', '3', '周杰伦演唱会', '有一起的小伙伴么？', 'img/activity/tabs/明星/1.jpg', '2016-08-16 17:55:56', '46545', '4564', '54654', '9846', '4654', '北京', null, null);
+INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记，大家都看了吗？', 'img/activity/tabs/电影/1.jpg', '2016-08-08 17:56:36', '1654', '4654', '126', '98', '5656', '北京', null, null);
 
 -- ----------------------------
 -- Table structure for activity_comment
@@ -62,10 +86,10 @@ CREATE TABLE `activity_comment` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for activity_comment-comment
+-- Table structure for activity_comment_comment
 -- ----------------------------
-DROP TABLE IF EXISTS `activity_comment-comment`;
-CREATE TABLE `activity_comment-comment` (
+DROP TABLE IF EXISTS `activity_comment_comment`;
+CREATE TABLE `activity_comment_comment` (
   `a_c_c_id` varchar(12) NOT NULL COMMENT '评论ID',
   `act_com_id` varchar(12) NOT NULL COMMENT '原评论ID',
   `username` varchar(16) NOT NULL COMMENT '评论用户',
@@ -75,7 +99,7 @@ CREATE TABLE `activity_comment-comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of activity_comment-comment
+-- Records of activity_comment_comment
 -- ----------------------------
 
 -- ----------------------------
@@ -85,7 +109,7 @@ DROP TABLE IF EXISTS `activity_type`;
 CREATE TABLE `activity_type` (
   `act_type_id` int(2) NOT NULL,
   `act_type_name` varchar(20) NOT NULL,
-  PRIMARY KEY (`act_type_id`,`act_type_name`)
+  PRIMARY KEY (`act_type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -117,6 +141,8 @@ CREATE TABLE `agenda` (
 -- ----------------------------
 -- Records of agenda
 -- ----------------------------
+INSERT INTO `agenda` VALUES ('90000', 'LucasX', '跑步', '每天早上起来跑步', '2016-08-15 08:56:47', '2016-08-22 08:56:51');
+INSERT INTO `agenda` VALUES ('90001', 'admin', '背单词', '每天早上起来背单词', '2016-08-15 08:56:45', '2016-08-22 08:56:53');
 
 -- ----------------------------
 -- Table structure for answer
@@ -138,6 +164,23 @@ CREATE TABLE `answer` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for banner
+-- ----------------------------
+DROP TABLE IF EXISTS `banner`;
+CREATE TABLE `banner` (
+  `href` varchar(50) DEFAULT NULL,
+  `img` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of banner
+-- ----------------------------
+INSERT INTO `banner` VALUES ('https://www.baidu.com', 'img/activity/ad/4.jpg');
+INSERT INTO `banner` VALUES ('http://www.qq.com/', 'img/activity/ad/3.jpg');
+INSERT INTO `banner` VALUES ('https://www.douban.com/', 'img/activity/ad/2.jpg');
+INSERT INTO `banner` VALUES ('https://www.zhihu.com/', 'img/activity/ad/1.jpg');
+
+-- ----------------------------
 -- Table structure for collection
 -- ----------------------------
 DROP TABLE IF EXISTS `collection`;
@@ -150,6 +193,29 @@ CREATE TABLE `collection` (
 -- ----------------------------
 -- Records of collection
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for feedback
+-- ----------------------------
+DROP TABLE IF EXISTS `feedback`;
+CREATE TABLE `feedback` (
+  `username` varchar(16) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `time` datetime NOT NULL,
+  `qq` varchar(11) DEFAULT NULL,
+  `wechat` varchar(20) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `reserve1` varchar(255) DEFAULT NULL,
+  `reserve2` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of feedback
+-- ----------------------------
+INSERT INTO `feedback` VALUES ('admin', '亲，APP太卡了呀~ T_T', '2016-08-23 17:18:12', '249048056', 'xulu0620', 'xulu0620@qq.com', '', '');
+INSERT INTO `feedback` VALUES ('admin', '亲，APP太卡了呀~ T_T', '2016-08-23 17:18:46', '249048056', 'xulu0620', '', '', '');
+INSERT INTO `feedback` VALUES ('admin', '不好看', '2016-08-23 17:20:35', '10086', '1231', '1231@qq.com', '', '');
+INSERT INTO `feedback` VALUES ('admin', '卡卡卡卡啊卡卡', '2016-08-23 17:29:55', '', '10001', null, '', '');
 
 -- ----------------------------
 -- Table structure for login_status
@@ -165,8 +231,8 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '0', '2016-08-23 13:44:10');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-24 13:44:10');
+INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-24 11:19:36');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-24 16:10:29');
 
 -- ----------------------------
 -- Table structure for notification
@@ -381,6 +447,24 @@ INSERT INTO `user_activity` VALUES ('admin', '10001', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0');
 
 -- ----------------------------
+-- Table structure for user_acttype
+-- ----------------------------
+DROP TABLE IF EXISTS `user_acttype`;
+CREATE TABLE `user_acttype` (
+  `username` varchar(16) NOT NULL,
+  `act_type_id` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_acttype
+-- ----------------------------
+INSERT INTO `user_acttype` VALUES ('LucasX', '0');
+INSERT INTO `user_acttype` VALUES ('LucasX', '1');
+INSERT INTO `user_acttype` VALUES ('LucasX', '2');
+INSERT INTO `user_acttype` VALUES ('LucasX', '3');
+INSERT INTO `user_acttype` VALUES ('LucasX', '4');
+
+-- ----------------------------
 -- Table structure for user_study
 -- ----------------------------
 DROP TABLE IF EXISTS `user_study`;
@@ -422,13 +506,27 @@ INSERT INTO `user_studytype` VALUES ('LucasX', '50011');
 DROP TABLE IF EXISTS `visitor`;
 CREATE TABLE `visitor` (
   `username` varchar(16) NOT NULL COMMENT '访客用户名',
+  `visitor` varchar(16) NOT NULL,
   `date` datetime NOT NULL COMMENT '访问时间',
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of visitor
 -- ----------------------------
+INSERT INTO `visitor` VALUES ('LucasX', '9', '2016-08-18 14:26:09');
+INSERT INTO `visitor` VALUES ('LucasX', '9', '2016-08-19 12:26:09');
+INSERT INTO `visitor` VALUES ('LucasX', '9', '2016-08-20 12:26:09');
+INSERT INTO `visitor` VALUES ('LucasX', '9', '2016-08-21 11:26:09');
+INSERT INTO `visitor` VALUES ('LucasX', '11', '2016-08-22 10:26:09');
+INSERT INTO `visitor` VALUES ('LucasX', '6', '2016-08-23 10:15:09');
+INSERT INTO `visitor` VALUES ('LucasX', '2', '2016-08-24 10:15:09');
+
+-- ----------------------------
+-- View structure for activity_view
+-- ----------------------------
+DROP VIEW IF EXISTS `activity_view`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `activity_view` AS select `activity`.`act_id` AS `act_id`,`activity`.`act_type` AS `act_type`,`activity`.`act_title` AS `act_title`,`activity`.`act_content` AS `act_content`,`activity`.`act_img` AS `act_img`,`activity`.`act_time` AS `act_time`,`activity`.`act_like` AS `act_like`,`activity`.`act_comment` AS `act_comment` from `activity` ;
 
 -- ----------------------------
 -- View structure for user_activity_view
