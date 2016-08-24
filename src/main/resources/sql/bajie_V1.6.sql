@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-24 17:58:26
+Date: 2016-08-24 20:05:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -255,7 +255,7 @@ CREATE TABLE `notification` (
 -- ----------------------------
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
-  `que_id` varchar(12) NOT NULL COMMENT '问题ID',
+  `que_id` int(12) NOT NULL COMMENT '问题ID',
   `que_title` varchar(100) NOT NULL COMMENT '问题标题',
   `que_tags` varchar(50) DEFAULT NULL COMMENT '问题标签',
   `que_content` varchar(255) DEFAULT NULL COMMENT '问题内容',
@@ -269,6 +269,8 @@ CREATE TABLE `question` (
 -- ----------------------------
 -- Records of question
 -- ----------------------------
+INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '565', '56', '2016-08-09 19:13:15');
+INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '565', '4654', '2016-08-04 19:14:09');
 
 -- ----------------------------
 -- Table structure for reminder
@@ -465,6 +467,22 @@ INSERT INTO `user_acttype` VALUES ('LucasX', '3');
 INSERT INTO `user_acttype` VALUES ('LucasX', '4');
 
 -- ----------------------------
+-- Table structure for user_question
+-- ----------------------------
+DROP TABLE IF EXISTS `user_question`;
+CREATE TABLE `user_question` (
+  `username` varchar(16) NOT NULL,
+  `que_id` int(12) NOT NULL,
+  `flag` int(1) NOT NULL COMMENT '0---我的提问；1--我的回答'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_question
+-- ----------------------------
+INSERT INTO `user_question` VALUES ('LucasX', '30000', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30001', '1');
+
+-- ----------------------------
 -- Table structure for user_study
 -- ----------------------------
 DROP TABLE IF EXISTS `user_study`;
@@ -527,6 +545,12 @@ INSERT INTO `visitor` VALUES ('LucasX', '2', '2016-08-24 10:15:09');
 -- ----------------------------
 DROP VIEW IF EXISTS `activity_view`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `activity_view` AS select `activity`.`act_id` AS `act_id`,`activity`.`act_type` AS `act_type`,`activity`.`act_title` AS `act_title`,`activity`.`act_content` AS `act_content`,`activity`.`act_img` AS `act_img`,`activity`.`act_time` AS `act_time`,`activity`.`act_like` AS `act_like`,`activity`.`act_comment` AS `act_comment` from `activity` ;
+
+-- ----------------------------
+-- View structure for question_view
+-- ----------------------------
+DROP VIEW IF EXISTS `question_view`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `question_view` AS select `question`.`que_id` AS `que_id`,`question`.`que_img` AS `que_img`,`question`.`que_title` AS `que_title`,`question`.`que_time` AS `que_time`,`question`.`que_content` AS `que_content`,`question`.`que_like` AS `que_like`,`question`.`que_comment` AS `que_comment` from `question` ;
 
 -- ----------------------------
 -- View structure for user_activity_view
