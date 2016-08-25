@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-24 20:05:49
+Date: 2016-08-25 15:16:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,11 +39,11 @@ INSERT INTO `accusation` VALUES ('admin', 'xxx', 'qqq', '2016-08-23 18:16:01');
 -- ----------------------------
 DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity` (
-  `act_id` varchar(12) NOT NULL,
-  `act_type` varchar(2) DEFAULT NULL,
+  `act_id` int(12) NOT NULL,
+  `act_type` int(2) DEFAULT NULL,
   `act_title` varchar(100) NOT NULL,
   `act_content` varchar(255) DEFAULT NULL,
-  `act_img` varchar(100) DEFAULT NULL,
+  `act_img` varchar(100) DEFAULT NULL COMMENT '../img/img-default-activity.jpg',
   `act_time` datetime DEFAULT NULL,
   `act_like` int(5) DEFAULT NULL,
   `act_comment` int(5) DEFAULT NULL,
@@ -73,7 +73,7 @@ INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记
 -- ----------------------------
 DROP TABLE IF EXISTS `activity_comment`;
 CREATE TABLE `activity_comment` (
-  `act_com_id` varchar(12) NOT NULL,
+  `act_com_id` int(12) NOT NULL,
   `username` varchar(16) NOT NULL,
   `act_com_content` varchar(255) DEFAULT NULL,
   `act-com_time` datetime DEFAULT NULL,
@@ -90,8 +90,8 @@ CREATE TABLE `activity_comment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `activity_comment_comment`;
 CREATE TABLE `activity_comment_comment` (
-  `a_c_c_id` varchar(12) NOT NULL COMMENT '评论ID',
-  `act_com_id` varchar(12) NOT NULL COMMENT '原评论ID',
+  `a_c_c_id` int(12) NOT NULL COMMENT '评论ID',
+  `act_com_id` int(12) NOT NULL COMMENT '原评论ID',
   `username` varchar(16) NOT NULL COMMENT '评论用户',
   `a_c_c_content` varchar(255) DEFAULT NULL COMMENT '评论内容',
   `a_c_c_time` datetime DEFAULT NULL COMMENT '评论时间',
@@ -129,7 +129,7 @@ INSERT INTO `activity_type` VALUES ('7', '恋爱');
 -- ----------------------------
 DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
-  `ag_id` varchar(12) NOT NULL COMMENT '日程ID',
+  `ag_id` int(12) NOT NULL COMMENT '日程ID',
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `ag_title` varchar(50) NOT NULL COMMENT '日程标题',
   `ag_remark` varchar(50) DEFAULT NULL COMMENT '日程备注',
@@ -149,8 +149,8 @@ INSERT INTO `agenda` VALUES ('90001', 'admin', '背单词', '每天早上起来�
 -- ----------------------------
 DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer` (
-  `ans_id` varchar(12) NOT NULL COMMENT '答案ID',
-  `que_id` varchar(12) NOT NULL COMMENT '问题ID',
+  `ans_id` int(12) NOT NULL COMMENT '答案ID',
+  `que_id` int(12) NOT NULL COMMENT '问题ID',
   `ans_content` varchar(255) DEFAULT NULL COMMENT '答案内容',
   `username` varchar(16) NOT NULL COMMENT '答主用户名',
   `ans_like` int(5) DEFAULT NULL COMMENT '赞同',
@@ -186,8 +186,8 @@ INSERT INTO `banner` VALUES ('https://www.zhihu.com/', 'img/activity/ad/1.jpg');
 DROP TABLE IF EXISTS `collection`;
 CREATE TABLE `collection` (
   `username` varchar(16) DEFAULT NULL COMMENT '用户名',
-  `type` varchar(20) DEFAULT NULL COMMENT '收藏对象类型',
-  `id` varchar(12) DEFAULT NULL COMMENT '收藏对象ID'
+  `type` int(20) DEFAULT NULL COMMENT '收藏对象类型',
+  `id` int(12) DEFAULT NULL COMMENT '收藏对象ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -232,16 +232,16 @@ CREATE TABLE `login_status` (
 -- Records of login_status
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-24 11:19:36');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-24 16:10:29');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-25 14:31:04');
 
 -- ----------------------------
 -- Table structure for notification
 -- ----------------------------
 DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
-  `no_id` varchar(12) NOT NULL,
+  `no_id` int(12) NOT NULL,
   `no_content` varchar(255) DEFAULT NULL,
-  `type` char(1) DEFAULT NULL,
+  `type` int(1) DEFAULT NULL,
   `no_url` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`no_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -310,8 +310,8 @@ CREATE TABLE `setting` (
 -- ----------------------------
 DROP TABLE IF EXISTS `study`;
 CREATE TABLE `study` (
-  `std_id` varchar(12) NOT NULL,
-  `type_id` varchar(2) DEFAULT NULL,
+  `std_id` int(12) NOT NULL,
+  `type_id` int(2) DEFAULT NULL,
   `std_title` varchar(100) DEFAULT NULL,
   `std_content` varchar(255) DEFAULT NULL,
   `std_like` int(5) DEFAULT NULL,
@@ -323,13 +323,15 @@ CREATE TABLE `study` (
 -- ----------------------------
 -- Records of study
 -- ----------------------------
+INSERT INTO `study` VALUES ('50000', '1', '考研数学', '问一下小伙伴们，考研数学如何拿145分？', '165', '45', '2016-08-15 14:28:19');
+INSERT INTO `study` VALUES ('50001', '11', '四六级。。。', '出分数了，大家情况怎么样啊', '4654', '465', '2016-08-09 14:29:08');
 
 -- ----------------------------
 -- Table structure for study_reply
 -- ----------------------------
 DROP TABLE IF EXISTS `study_reply`;
 CREATE TABLE `study_reply` (
-  `std_id` varchar(12) NOT NULL COMMENT '学习ID',
+  `std_id` int(12) NOT NULL COMMENT '学习ID',
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `std_re_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
@@ -346,7 +348,7 @@ CREATE TABLE `study_reply` (
 -- ----------------------------
 DROP TABLE IF EXISTS `study_type`;
 CREATE TABLE `study_type` (
-  `type_id` varchar(12) NOT NULL,
+  `type_id` int(2) NOT NULL,
   `type_name` varchar(20) NOT NULL,
   PRIMARY KEY (`type_id`,`type_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -354,18 +356,18 @@ CREATE TABLE `study_type` (
 -- ----------------------------
 -- Records of study_type
 -- ----------------------------
-INSERT INTO `study_type` VALUES ('50000', '推荐');
-INSERT INTO `study_type` VALUES ('50001', '考研');
-INSERT INTO `study_type` VALUES ('50002', '英语');
-INSERT INTO `study_type` VALUES ('50003', '高数');
-INSERT INTO `study_type` VALUES ('50004', '计算机二级');
-INSERT INTO `study_type` VALUES ('50005', '财会');
-INSERT INTO `study_type` VALUES ('50006', '生科');
-INSERT INTO `study_type` VALUES ('50007', '机械');
-INSERT INTO `study_type` VALUES ('50008', '土建');
-INSERT INTO `study_type` VALUES ('50009', '经管');
-INSERT INTO `study_type` VALUES ('50010', '考公');
-INSERT INTO `study_type` VALUES ('50011', '四六级');
+INSERT INTO `study_type` VALUES ('0', '推荐');
+INSERT INTO `study_type` VALUES ('1', '考研');
+INSERT INTO `study_type` VALUES ('2', '英语');
+INSERT INTO `study_type` VALUES ('3', '高数');
+INSERT INTO `study_type` VALUES ('4', '计算机二级');
+INSERT INTO `study_type` VALUES ('5', '财会');
+INSERT INTO `study_type` VALUES ('6', '生科');
+INSERT INTO `study_type` VALUES ('7', '机械');
+INSERT INTO `study_type` VALUES ('8', '土建');
+INSERT INTO `study_type` VALUES ('9', '经管');
+INSERT INTO `study_type` VALUES ('10', '考公');
+INSERT INTO `study_type` VALUES ('11', '四六级');
 
 -- ----------------------------
 -- Table structure for test_user
@@ -388,7 +390,7 @@ INSERT INTO `test_user` VALUES ('1', 'ewqe', 'ewq');
 -- ----------------------------
 DROP TABLE IF EXISTS `university`;
 CREATE TABLE `university` (
-  `univ_id` char(5) NOT NULL COMMENT '学校ID',
+  `univ_id` int(5) NOT NULL COMMENT '学校ID',
   `univ_name` varchar(50) NOT NULL COMMENT '学校名称',
   PRIMARY KEY (`univ_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -410,7 +412,7 @@ CREATE TABLE `user` (
   `sex` char(4) DEFAULT NULL COMMENT '性别',
   `cellphone` char(11) NOT NULL COMMENT '手机号',
   `avatar` varchar(100) DEFAULT NULL COMMENT '头像',
-  `university` char(5) NOT NULL COMMENT '大学',
+  `university` int(5) NOT NULL COMMENT '大学',
   `institution` varchar(50) DEFAULT NULL COMMENT '学院',
   `enroll_year` char(4) NOT NULL COMMENT '入学年份',
   `level` char(1) DEFAULT NULL COMMENT '学位级别',
@@ -436,8 +438,8 @@ INSERT INTO `user` VALUES ('LucasX', '1234567894', '123456', '1', '13207145966',
 DROP TABLE IF EXISTS `user_activity`;
 CREATE TABLE `user_activity` (
   `username` varchar(16) NOT NULL COMMENT '用户名',
-  `act_id` varchar(12) NOT NULL COMMENT '活动ID',
-  `flag` char(1) DEFAULT NULL COMMENT '0——关注的活动；1——收藏的活动；2——参加的活动；3——报名的活动',
+  `act_id` int(12) NOT NULL COMMENT '活动ID',
+  `flag` int(1) DEFAULT NULL COMMENT '0——发布的活动；1——参加的活动；2——关注的活动；3——报名的活动',
   PRIMARY KEY (`username`,`act_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -445,8 +447,9 @@ CREATE TABLE `user_activity` (
 -- Records of user_activity
 -- ----------------------------
 INSERT INTO `user_activity` VALUES ('admin', '10000', '0');
-INSERT INTO `user_activity` VALUES ('admin', '10001', '0');
+INSERT INTO `user_activity` VALUES ('admin', '10001', '1');
 INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10003', '1');
 
 -- ----------------------------
 -- Table structure for user_acttype
@@ -488,14 +491,15 @@ INSERT INTO `user_question` VALUES ('LucasX', '30001', '1');
 DROP TABLE IF EXISTS `user_study`;
 CREATE TABLE `user_study` (
   `username` varchar(16) NOT NULL,
-  `std_id` varchar(12) NOT NULL,
-  `flag` char(1) DEFAULT NULL,
+  `std_id` int(12) NOT NULL,
+  `flag` int(1) DEFAULT NULL,
   PRIMARY KEY (`username`,`std_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_study
 -- ----------------------------
+INSERT INTO `user_study` VALUES ('LucasX', '50000', '0');
 
 -- ----------------------------
 -- Table structure for user_studytype
@@ -503,20 +507,21 @@ CREATE TABLE `user_study` (
 DROP TABLE IF EXISTS `user_studytype`;
 CREATE TABLE `user_studytype` (
   `username` varchar(16) NOT NULL,
-  `stu_type` varchar(12) NOT NULL,
+  `stu_type` int(12) NOT NULL,
   PRIMARY KEY (`username`,`stu_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_studytype
 -- ----------------------------
-INSERT INTO `user_studytype` VALUES ('admin', '50000');
-INSERT INTO `user_studytype` VALUES ('admin', '50001');
-INSERT INTO `user_studytype` VALUES ('admin', '50002');
-INSERT INTO `user_studytype` VALUES ('admin', '50003');
-INSERT INTO `user_studytype` VALUES ('admin', '50004');
-INSERT INTO `user_studytype` VALUES ('admin', '50008');
-INSERT INTO `user_studytype` VALUES ('LucasX', '50011');
+INSERT INTO `user_studytype` VALUES ('admin', '0');
+INSERT INTO `user_studytype` VALUES ('admin', '1');
+INSERT INTO `user_studytype` VALUES ('admin', '2');
+INSERT INTO `user_studytype` VALUES ('admin', '3');
+INSERT INTO `user_studytype` VALUES ('admin', '4');
+INSERT INTO `user_studytype` VALUES ('admin', '5');
+INSERT INTO `user_studytype` VALUES ('LucasX', '1');
+INSERT INTO `user_studytype` VALUES ('LucasX', '11');
 
 -- ----------------------------
 -- Table structure for visitor

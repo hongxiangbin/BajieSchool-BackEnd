@@ -5,14 +5,14 @@ package com.zlfinfo.model;
  */
 public class StudyType {
 
-    private String typeId;
+    private Integer typeId;
     private String typeName;
 
-    public String getTypeId() {
+    public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(String typeId) {
+    public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
 

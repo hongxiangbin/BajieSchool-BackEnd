@@ -3,7 +3,7 @@ package com.zlfinfo.model;
 import java.io.Serializable;
 
 public class Notification implements Serializable {
-    private String noId;
+    private Integer noId;
 
     private String noContent;
 
@@ -13,12 +13,12 @@ public class Notification implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getNoId() {
+    public Integer getNoId() {
         return noId;
     }
 
-    public void setNoId(String noId) {
-        this.noId = noId == null ? null : noId.trim();
+    public void setNoId(Integer noId) {
+        this.noId = noId;
     }
 
     public String getNoContent() {

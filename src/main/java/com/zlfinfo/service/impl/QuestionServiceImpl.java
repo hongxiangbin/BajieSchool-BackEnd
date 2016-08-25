@@ -18,7 +18,7 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionMapper questionMapper;
 
     @Override
-    public List<Question> selectQuestionByUser(String username, int flag) {
+    public List<Question> selectQuestionByUser(String username, Integer flag) {
         return questionMapper.selectQuestionByUser(username, flag);
     }
 

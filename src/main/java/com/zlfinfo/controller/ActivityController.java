@@ -56,10 +56,20 @@ public class ActivityController extends BaseController {
 
     @RequestMapping(value = "/{username}/activity/{type}", method = RequestMethod.GET)
     @ResponseBody
-    public Object showActivity(@PathVariable String username, @PathVariable String type, HttpServletResponse
+    public Object showActivity(@PathVariable String username, @PathVariable Integer type, HttpServletResponse
             httpServletResponse) {
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
+                httpServletResponse);
+    }
+
+
+    @RequestMapping(value = "/activity/launch/{username}/{flag}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object showMineAct(@PathVariable String username, @PathVariable int flag, HttpServletResponse
+            httpServletResponse) {
+        List<Activity> activityList = actService.selectMineActivity(username, flag);
+        return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("发起活动列表查询失败",
                 httpServletResponse);
     }
 

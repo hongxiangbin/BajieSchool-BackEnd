@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface QuestionService {
 
-    List<Question> selectQuestionByUser(String username, int flag);
+    List<Question> selectQuestionByUser(String username, Integer flag);
 
     List<Question> selectUserAllQuora(String username);
 }

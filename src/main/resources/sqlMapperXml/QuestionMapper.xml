@@ -24,7 +24,7 @@
     <sql id="Base_Column_List">
     que_id, que_title, que_content, que_img, que_like, que_comment, que_time
   </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from question
@@ -68,7 +68,7 @@
         AND `user`.username = #{username}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <delete id="deleteByPrimaryKey">
     delete from question
     where que_id = #{queId,jdbcType=VARCHAR}
   </delete>

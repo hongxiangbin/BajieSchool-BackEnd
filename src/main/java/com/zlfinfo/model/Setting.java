@@ -32,7 +32,7 @@ public class Setting implements Serializable {
     }
 
     public void setIsUpdate(String isUpdate) {
-        this.isUpdate = isUpdate == null ? null : isUpdate.trim();
+        this.isUpdate = isUpdate;
     }
 
     public String getIsShareloc() {
@@ -40,7 +40,7 @@ public class Setting implements Serializable {
     }
 
     public void setIsShareloc(String isShareloc) {
-        this.isShareloc = isShareloc == null ? null : isShareloc.trim();
+        this.isShareloc = isShareloc;
     }
 
     public String getIsShowimg() {
@@ -48,7 +48,7 @@ public class Setting implements Serializable {
     }
 
     public void setIsShowimg(String isShowimg) {
-        this.isShowimg = isShowimg == null ? null : isShowimg.trim();
+        this.isShowimg = isShowimg;
     }
 
     public String getReserve1() {

@@ -13,6 +13,8 @@ public interface ActivityService {
 
     List<Activity> selectAllActivity();
 
-    List<Activity> selectActivityByUserNType(String username, String type);
+    List<Activity> selectActivityByUserNType(String username, Integer type);
+
+    List<Activity> selectMineActivity(String username, Integer type);
 
 }

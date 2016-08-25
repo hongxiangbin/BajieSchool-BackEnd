@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Activity implements Serializable {
-    private String actId;
+    private Integer actId;
 
     private String actType;
 
@@ -34,11 +34,11 @@ public class Activity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getActId() {
+    public Integer getActId() {
         return actId;
     }
 
-    public void setActId(String actId) {
+    public void setActId(Integer actId) {
         this.actId = actId;
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Agenda implements Serializable {
-    private String agId;
+    private Integer agId;
 
     private String username;
 
@@ -18,12 +18,12 @@ public class Agenda implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getAgId() {
+    public Integer getAgId() {
         return agId;
     }
 
-    public void setAgId(String agId) {
-        this.agId = agId == null ? null : agId.trim();
+    public void setAgId(Integer agId) {
+        this.agId = agId;
     }
 
     public String getUsername() {

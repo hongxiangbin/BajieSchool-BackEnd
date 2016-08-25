@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ActivityCommentComment implements Serializable {
-    private String aCCId;
+    private Integer aCCId;
 
-    private String actComId;
+    private Integer actComId;
 
     private String username;
 
@@ -16,20 +16,20 @@ public class ActivityCommentComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getaCCId() {
+    public Integer getaCCId() {
         return aCCId;
     }
 
-    public void setaCCId(String aCCId) {
-        this.aCCId = aCCId == null ? null : aCCId.trim();
+    public void setaCCId(Integer aCCId) {
+        this.aCCId = aCCId;
     }
 
-    public String getActComId() {
+    public Integer getActComId() {
         return actComId;
     }
 
-    public void setActComId(String actComId) {
-        this.actComId = actComId == null ? null : actComId.trim();
+    public void setActComId(Integer actComId) {
+        this.actComId = actComId;
     }
 
     public String getUsername() {

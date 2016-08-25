@@ -3,13 +3,13 @@ package com.zlfinfo.mapper;
 import com.zlfinfo.model.Study;
 
 public interface StudyMapper {
-    int deleteByPrimaryKey(String stdId);
+    int deleteByPrimaryKey(Integer stdId);
 
     int insert(Study record);
 
     int insertSelective(Study record);
 
-    Study selectByPrimaryKey(String stdId);
+    Study selectByPrimaryKey(Integer stdId);
 
     int updateByPrimaryKeySelective(Study record);
 

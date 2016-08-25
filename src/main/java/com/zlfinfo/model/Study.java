@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Study implements Serializable {
-    private String stdId;
+    private Integer stdId;
 
-    private String typeId;
+    private Integer typeId;
 
     private String stdTitle;
 
@@ -20,20 +20,20 @@ public class Study implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getStdId() {
+    public Integer getStdId() {
         return stdId;
     }
 
-    public void setStdId(String stdId) {
-        this.stdId = stdId == null ? null : stdId.trim();
+    public void setStdId(Integer stdId) {
+        this.stdId = stdId;
     }
 
-    public String getTypeId() {
+    public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(String typeId) {
-        this.typeId = typeId == null ? null : typeId.trim();
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public String getStdTitle() {

@@ -5,12 +5,7 @@ package com.zlfinfo.model;
  */
 public class UserStudyType {
     private String username;
-    private String studyType;
-
-    public UserStudyType(String username, String studyType) {
-        this.username = username;
-        this.studyType = studyType;
-    }
+    private Integer studyType;
 
     public String getUsername() {
         return username;
@@ -20,11 +15,11 @@ public class UserStudyType {
         this.username = username;
     }
 
-    public String getStudyType() {
+    public Integer getStudyType() {
         return studyType;
     }
 
-    public void setStudyType(String studyType) {
+    public void setStudyType(Integer studyType) {
         this.studyType = studyType;
     }
 

@@ -4,19 +4,14 @@ package com.zlfinfo.model;
  * Created by Administrator on 2016/8/22.
  */
 public class University {
-    private String univId;
+    private Integer univId;
     private String univName;
 
-    public University(String univId, String univName) {
-        this.univId = univId;
-        this.univName = univName;
-    }
-
-    public String getUnivId() {
+    public Integer getUnivId() {
         return univId;
     }
 
-    public void setUnivId(String univId) {
+    public void setUnivId(Integer univId) {
         this.univId = univId;
     }
 

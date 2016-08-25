@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zlfinfo.mapper.ActivityCommentCommentMapper" >
   <resultMap id="BaseResultMap" type="com.zlfinfo.model.ActivityCommentComment" >
-    <id column="a_c_c_id" property="aCCId" jdbcType="VARCHAR" />
-    <id column="act_com_id" property="actComId" jdbcType="VARCHAR" />
+    <id column="a_c_c_id" property="aCCId" jdbcType="INTEGER" />
+    <id column="act_com_id" property="actComId" jdbcType="INTEGER" />
     <id column="username" property="username" jdbcType="VARCHAR" />
     <result column="a_c_c_content" property="aCCContent" jdbcType="VARCHAR" />
     <result column="a_c_c_time" property="aCCTime" jdbcType="TIMESTAMP" />

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zlfinfo.mapper.ActivityMapper">
     <resultMap id="BaseResultMap" type="com.zlfinfo.model.Activity">
-        <id column="act_id" property="actId" jdbcType="VARCHAR"/>
-        <result column="act_type" property="actType" jdbcType="VARCHAR"/>
+        <id column="act_id" property="actId" jdbcType="INTEGER"/>
+        <result column="act_type" property="actType" jdbcType="INTEGER"/>
         <result column="act_title" property="actTitle" jdbcType="VARCHAR"/>
         <result column="act_content" property="actContent" jdbcType="VARCHAR"/>
         <result column="act_img" property="actImg" jdbcType="VARCHAR"/>
@@ -33,7 +33,7 @@
         act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment,
         act_follow, act_join, act_signup, act_place, reserve1, reserve2
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from activity
@@ -61,11 +61,33 @@
         AND `user`.username = #{username}
     </select>
 
+
+    <select id="selectMineActivity" resultMap="indexResultMap">
+        SELECT DISTINCT
+            act_v.act_id,
+            act_v.act_type,
+            act_v.act_title,
+            act_v.act_content,
+            act_v.act_img,
+            act_v.act_time,
+            act_v.act_like,
+            act_v.act_comment
+        FROM
+            activity_view act_v
+        NATURAL JOIN user_activity
+        NATURAL JOIN USER
+        NATURAL JOIN login_status
+        WHERE
+            login_status.`status` = 0
+        AND user_activity.flag = #{flag}
+        AND `user`.username = #{username}
+    </select>
+
     <select id="selectAllActivity" resultMap="BaseResultMap">
       SELECT * FROM  activity
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <delete id="deleteByPrimaryKey">
     delete from activity
     where act_id = #{actId,jdbcType=VARCHAR}
   </delete>

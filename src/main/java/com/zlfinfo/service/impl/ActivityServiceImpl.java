@@ -33,7 +33,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> selectActivityByUserNType(String username, String type) {
+    public List<Activity> selectActivityByUserNType(String username, Integer type) {
         return actMapper.selectActivityByUserNType(username, type);
+    }
+
+    @Override
+    public List<Activity> selectMineActivity(String username, Integer flag) {
+        return actMapper.selectMineActivity(username, flag);
     }
 }

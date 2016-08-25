@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ActivityMapper {
-    int deleteByPrimaryKey(String actId);
+    int deleteByPrimaryKey(Integer actId);
 
     int insert(Activity record);
 
     int insertSelective(Activity record);
 
-    Activity selectByPrimaryKey(String actId);
+    Activity selectByPrimaryKey(Integer actId);
 
     List<Activity> selectAllActivity();
 
@@ -20,5 +20,8 @@ public interface ActivityMapper {
 
     int updateByPrimaryKey(Activity record);
 
-    List<Activity> selectActivityByUserNType(@Param("username") String username, @Param("type") String type);
+    List<Activity> selectActivityByUserNType(@Param("username") String username, @Param("type") Integer type);
+
+    List<Activity> selectMineActivity(@Param("username") String username, @Param("flag") Integer flag);
+
 }

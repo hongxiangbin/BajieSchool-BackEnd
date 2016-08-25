@@ -5,14 +5,14 @@ package com.zlfinfo.model;
  */
 public class ActivityType {
 
-    private int actTypeId;
+    private Integer actTypeId;
     private String actTypeName;
 
-    public int getActTypeId() {
+    public Integer getActTypeId() {
         return actTypeId;
     }
 
-    public void setActTypeId(int actTypeId) {
+    public void setActTypeId(Integer actTypeId) {
         this.actTypeId = actTypeId;
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Question implements Serializable {
-    private int queId;
+    private Integer queId;
 
     private String queTitle;
 
@@ -20,11 +20,11 @@ public class Question implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public int getQueId() {
+    public Integer getQueId() {
         return queId;
     }
 
-    public void setQueId(int queId) {
+    public void setQueId(Integer queId) {
         this.queId = queId;
     }
 

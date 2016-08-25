@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zlfinfo.mapper.UniversityMapper">
     <resultMap id="universityMap" type="com.zlfinfo.model.University">
-        <id column="univ_id" property="univId"/>
+        <id column="univ_id" property="univId" jdbcType="INTEGER"/>
         <result column="univ_name" property="univName"/>
     </resultMap>
 

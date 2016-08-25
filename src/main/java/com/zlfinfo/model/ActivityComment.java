@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ActivityComment implements Serializable {
-    private String actComId;
+    private Integer actComId;
 
     private String username;
 
@@ -16,12 +16,12 @@ public class ActivityComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getActComId() {
+    public Integer getActComId() {
         return actComId;
     }
 
-    public void setActComId(String actComId) {
-        this.actComId = actComId == null ? null : actComId.trim();
+    public void setActComId(Integer actComId) {
+        this.actComId = actComId;
     }
 
     public String getUsername() {

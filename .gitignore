@@ -2,3 +2,5 @@
 .idea/
 BajieSchool.iml
 target/
+pom.xml
+src/main/webapp/static/

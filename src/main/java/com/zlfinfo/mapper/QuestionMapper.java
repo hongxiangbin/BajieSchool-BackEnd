@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface QuestionMapper {
-    int deleteByPrimaryKey(String queId);
+    int deleteByPrimaryKey(Integer queId);
 
     int insert(Question record);
 
@@ -20,5 +20,5 @@ public interface QuestionMapper {
 
     List<Question> selectUserAllQuora(String username);
 
-    List<Question> selectQuestionByUser(@Param("username") String username, @Param("flag") int flag);
+    List<Question> selectQuestionByUser(@Param("username") String username, @Param("flag") Integer flag);
 }

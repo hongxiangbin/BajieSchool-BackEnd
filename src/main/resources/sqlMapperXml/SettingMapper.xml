@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zlfinfo.mapper.SettingMapper" >
-  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Setting" >
-    <id column="username" property="username" jdbcType="VARCHAR" />
-    <result column="is_update" property="isUpdate" jdbcType="CHAR" />
-    <result column="is_shareloc" property="isShareloc" jdbcType="CHAR" />
-    <result column="is_showimg" property="isShowimg" jdbcType="CHAR" />
-    <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
-    <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
-    <result column="reserve3" property="reserve3" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.zlfinfo.mapper.SettingMapper">
+    <resultMap id="BaseResultMap" type="com.zlfinfo.model.Setting">
+        <id column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="is_update" property="isUpdate" jdbcType="VARCHAR"/>
+        <result column="is_shareloc" property="isShareloc" jdbcType="VARCHAR"/>
+        <result column="is_showimg" property="isShowimg" jdbcType="VARCHAR"/>
+        <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
+        <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
+        <result column="reserve3" property="reserve3" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     username, is_update, is_shareloc, is_showimg, reserve1, reserve2, reserve3
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from setting
-    where username = #{username,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from setting
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from setting
     where username = #{username,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.zlfinfo.model.Setting" >
+    <insert id="insert" parameterType="com.zlfinfo.model.Setting">
     insert into setting (username, is_update, is_shareloc, 
       is_showimg, reserve1, reserve2, 
       reserve3)
@@ -31,80 +31,80 @@
       #{isShowimg,jdbcType=CHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, 
       #{reserve3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zlfinfo.model.Setting" >
-    insert into setting
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="isUpdate != null" >
-        is_update,
-      </if>
-      <if test="isShareloc != null" >
-        is_shareloc,
-      </if>
-      <if test="isShowimg != null" >
-        is_showimg,
-      </if>
-      <if test="reserve1 != null" >
-        reserve1,
-      </if>
-      <if test="reserve2 != null" >
-        reserve2,
-      </if>
-      <if test="reserve3 != null" >
-        reserve3,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="isUpdate != null" >
-        #{isUpdate,jdbcType=CHAR},
-      </if>
-      <if test="isShareloc != null" >
-        #{isShareloc,jdbcType=CHAR},
-      </if>
-      <if test="isShowimg != null" >
-        #{isShowimg,jdbcType=CHAR},
-      </if>
-      <if test="reserve1 != null" >
-        #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        #{reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve3 != null" >
-        #{reserve3,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Setting" >
-    update setting
-    <set >
-      <if test="isUpdate != null" >
-        is_update = #{isUpdate,jdbcType=CHAR},
-      </if>
-      <if test="isShareloc != null" >
-        is_shareloc = #{isShareloc,jdbcType=CHAR},
-      </if>
-      <if test="isShowimg != null" >
-        is_showimg = #{isShowimg,jdbcType=CHAR},
-      </if>
-      <if test="reserve1 != null" >
-        reserve1 = #{reserve1,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve2 != null" >
-        reserve2 = #{reserve2,jdbcType=VARCHAR},
-      </if>
-      <if test="reserve3 != null" >
-        reserve3 = #{reserve3,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where username = #{username,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Setting" >
+    <insert id="insertSelective" parameterType="com.zlfinfo.model.Setting">
+        insert into setting
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="isUpdate != null">
+                is_update,
+            </if>
+            <if test="isShareloc != null">
+                is_shareloc,
+            </if>
+            <if test="isShowimg != null">
+                is_showimg,
+            </if>
+            <if test="reserve1 != null">
+                reserve1,
+            </if>
+            <if test="reserve2 != null">
+                reserve2,
+            </if>
+            <if test="reserve3 != null">
+                reserve3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="isUpdate != null">
+                #{isUpdate,jdbcType=CHAR},
+            </if>
+            <if test="isShareloc != null">
+                #{isShareloc,jdbcType=CHAR},
+            </if>
+            <if test="isShowimg != null">
+                #{isShowimg,jdbcType=CHAR},
+            </if>
+            <if test="reserve1 != null">
+                #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Setting">
+        update setting
+        <set>
+            <if test="isUpdate != null">
+                is_update = #{isUpdate,jdbcType=CHAR},
+            </if>
+            <if test="isShareloc != null">
+                is_shareloc = #{isShareloc,jdbcType=CHAR},
+            </if>
+            <if test="isShowimg != null">
+                is_showimg = #{isShowimg,jdbcType=CHAR},
+            </if>
+            <if test="reserve1 != null">
+                reserve1 = #{reserve1,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve2 != null">
+                reserve2 = #{reserve2,jdbcType=VARCHAR},
+            </if>
+            <if test="reserve3 != null">
+                reserve3 = #{reserve3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where username = #{username,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Setting">
     update setting
     set is_update = #{isUpdate,jdbcType=CHAR},
       is_shareloc = #{isShareloc,jdbcType=CHAR},

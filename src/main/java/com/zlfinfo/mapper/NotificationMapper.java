@@ -3,13 +3,13 @@ package com.zlfinfo.mapper;
 import com.zlfinfo.model.Notification;
 
 public interface NotificationMapper {
-    int deleteByPrimaryKey(String noId);
+    int deleteByPrimaryKey(Integer noId);
 
     int insert(Notification record);
 
     int insertSelective(Notification record);
 
-    Notification selectByPrimaryKey(String noId);
+    Notification selectByPrimaryKey(Integer noId);
 
     int updateByPrimaryKeySelective(Notification record);
 

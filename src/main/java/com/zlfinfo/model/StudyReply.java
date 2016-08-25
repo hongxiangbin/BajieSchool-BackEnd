@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class StudyReply implements Serializable {
-    private String stdId;
+    private Integer stdId;
 
     private String username;
 
@@ -16,12 +16,12 @@ public class StudyReply implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getStdId() {
+    public Integer getStdId() {
         return stdId;
     }
 
-    public void setStdId(String stdId) {
-        this.stdId = stdId == null ? null : stdId.trim();
+    public void setStdId(Integer stdId) {
+        this.stdId = stdId;
     }
 
     public String getUsername() {

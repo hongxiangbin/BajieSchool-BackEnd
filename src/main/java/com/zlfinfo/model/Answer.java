@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Answer implements Serializable {
-    private String ansId;
+    private Integer ansId;
 
-    private String queId;
+    private Integer queId;
 
     private String username;
 
@@ -20,20 +20,20 @@ public class Answer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getAnsId() {
+    public Integer getAnsId() {
         return ansId;
     }
 
-    public void setAnsId(String ansId) {
-        this.ansId = ansId == null ? null : ansId.trim();
+    public void setAnsId(Integer ansId) {
+        this.ansId = ansId;
     }
 
-    public String getQueId() {
+    public Integer getQueId() {
         return queId;
     }
 
-    public void setQueId(String queId) {
-        this.queId = queId == null ? null : queId.trim();
+    public void setQueId(Integer queId) {
+        this.queId = queId;
     }
 
     public String getUsername() {

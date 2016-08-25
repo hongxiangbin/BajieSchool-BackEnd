@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zlfinfo.mapper.StudyReplyMapper">
   <resultMap id="BaseResultMap" type="com.zlfinfo.model.StudyReply">
-    <id column="std_id" jdbcType="VARCHAR" property="stdId" />
+    <id column="std_id" jdbcType="INTEGER" property="stdId" />
     <id column="username" jdbcType="VARCHAR" property="username" />
     <result column="std_re_content" jdbcType="VARCHAR" property="stdReContent" />
     <result column="std_re_time" jdbcType="TIMESTAMP" property="stdReTime" />
