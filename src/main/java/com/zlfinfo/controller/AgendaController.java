@@ -22,9 +22,9 @@ public class AgendaController extends BaseController {
     @Autowired
     private AgendaService agendaService;
 
-    @RequestMapping(value = "/agenda/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/agenda", method = RequestMethod.GET)
     @ResponseBody
-    public Object showAllAgenda(@PathVariable String username, HttpServletResponse httpServletResponse) {
+    public Object showAllAgenda(String username, HttpServletResponse httpServletResponse) {
         List<Agenda> agendaList = agendaService.selectAgendaByUsername(username);
         return null != agendaList ? renderSuccess(agendaList, httpServletResponse) : renderError("日程查询失败",
                 httpServletResponse);

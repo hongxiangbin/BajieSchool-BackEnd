@@ -54,9 +54,9 @@ public class ActivityController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "/{username}/activity/{type}", method = RequestMethod.GET)
+    @RequestMapping(value = "/activity/{type}", method = RequestMethod.GET)
     @ResponseBody
-    public Object showActivity(@PathVariable String username, @PathVariable Integer type, HttpServletResponse
+    public Object showActivity(String username, @PathVariable Integer type, HttpServletResponse
             httpServletResponse) {
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
