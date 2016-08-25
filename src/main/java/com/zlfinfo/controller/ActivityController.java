@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ActivityController extends BaseController {
      * @deprecated
      */
     @Deprecated
-    @RequestMapping(value = "/showallact", method = RequestMethod.GET)
+    @RequestMapping(value = "/allact", method = RequestMethod.GET)
     @ResponseBody
     public Object showAllActivity(HttpServletResponse httpServletResponse) {
         List<Activity> activityList = actService.selectAllActivity();
@@ -54,21 +55,25 @@ public class ActivityController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "/activity/{type}", method = RequestMethod.GET)
+    @RequestMapping(value = "/activity", method = RequestMethod.POST)
     @ResponseBody
-    public Object showActivity(String username, @PathVariable Integer type, HttpServletResponse
+    public Object showActivity(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
+        logger.error(username + "===============");
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
+        activityList.forEach(activity -> {
+            System.out.println(activity);
+        });
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
                 httpServletResponse);
     }
 
 
-    @RequestMapping(value = "/activity/launch/{username}/{flag}", method = RequestMethod.GET)
+    @RequestMapping(value = "/activity/launchedact", method = RequestMethod.GET)
     @ResponseBody
-    public Object showMineAct(@PathVariable String username, @PathVariable int flag, HttpServletResponse
+    public Object showMineAct(String username, HttpServletResponse
             httpServletResponse) {
-        List<Activity> activityList = actService.selectMineActivity(username, flag);
+        List<Activity> activityList = actService.selectMineActivity(username, 0);
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("发起活动列表查询失败",
                 httpServletResponse);
     }

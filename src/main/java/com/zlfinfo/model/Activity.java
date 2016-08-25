@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Activity implements Serializable {
+
+    public Activity() {
+    }
+
     private Integer actId;
 
     private String actType;

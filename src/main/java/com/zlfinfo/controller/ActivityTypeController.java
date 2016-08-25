@@ -33,9 +33,9 @@ public class ActivityTypeController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "/acttype", method = RequestMethod.GET)
+    @RequestMapping(value = "/acttype/{username}", method = RequestMethod.GET)
     @ResponseBody
-    public Object showUserActTypes(String username, HttpServletResponse httpServletResponse) {
+    public Object showUserActTypes(@PathVariable String username, HttpServletResponse httpServletResponse) {
         List<ActivityType> activityTypeList = activityTypeService.selectActTypeByUser(username);
         return null != activityTypeList ? renderSuccess(activityTypeList, httpServletResponse) : renderError
                 ("返回用户关注活动类型失败", httpServletResponse);

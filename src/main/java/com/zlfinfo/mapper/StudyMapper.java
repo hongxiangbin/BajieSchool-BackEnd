@@ -2,6 +2,8 @@ package com.zlfinfo.mapper;
 
 import com.zlfinfo.model.Study;
 
+import java.util.List;
+
 public interface StudyMapper {
     int deleteByPrimaryKey(Integer stdId);
 
@@ -14,4 +16,6 @@ public interface StudyMapper {
     int updateByPrimaryKeySelective(Study record);
 
     int updateByPrimaryKey(Study record);
+
+    List<Study> selectStudyByType(Integer type);
 }
