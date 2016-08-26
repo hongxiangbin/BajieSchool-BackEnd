@@ -21,7 +21,9 @@
         NATURAL JOIN USER
         WHERE
 	      login_status.`status` = 0
-        AND USER .username = #{username}
+        <if test="username != null and username!=''" >
+            AND USER .username = #{username,jdbcType=VARCHAR}
+        </if>
     </select>
 
 </mapper>

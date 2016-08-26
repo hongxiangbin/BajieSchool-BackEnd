@@ -19,8 +19,8 @@
     </resultMap>
 
     <resultMap id="indexResultMap" type="com.zlfinfo.model.Activity">
-        <id column="act_id" property="actId" jdbcType="VARCHAR"/>
-        <result column="act_type" property="actType" jdbcType="VARCHAR"/>
+        <id column="act_id" property="actId" jdbcType="INTEGER"/>
+        <result column="act_type" property="actType" jdbcType="INTEGER"/>
         <result column="act_title" property="actTitle" jdbcType="VARCHAR"/>
         <result column="act_content" property="actContent" jdbcType="VARCHAR"/>
         <result column="act_img" property="actImg" jdbcType="VARCHAR"/>
@@ -37,7 +37,7 @@
         select
         <include refid="Base_Column_List"/>
         from activity
-        where act_id = #{actId,jdbcType=VARCHAR}
+        where act_id = #{actId,jdbcType=INTEGER}
     </select>
 
 
@@ -97,7 +97,7 @@
       act_like, act_comment, act_follow, 
       act_join, act_signup, act_place, 
       reserve1, reserve2)
-    values (#{actId,jdbcType=VARCHAR}, #{actType,jdbcType=VARCHAR}, #{actTitle,jdbcType=VARCHAR}, 
+    values (#{actId,jdbcType=INTEGER}, #{actType,jdbcType=INTEGER}, #{actTitle,jdbcType=VARCHAR},
       #{actContent,jdbcType=VARCHAR}, #{actImg,jdbcType=VARCHAR}, #{actTime,jdbcType=TIMESTAMP}, 
       #{actLike,jdbcType=INTEGER}, #{actComment,jdbcType=INTEGER}, #{actFollow,jdbcType=INTEGER}, 
       #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR}, 
@@ -151,10 +151,10 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="actId != null">
-                #{actId,jdbcType=VARCHAR},
+                #{actId,jdbcType=INTEGER},
             </if>
             <if test="actType != null">
-                #{actType,jdbcType=VARCHAR},
+                #{actType,jdbcType=INTEGER},
             </if>
             <if test="actTitle != null">
                 #{actTitle,jdbcType=VARCHAR},
@@ -198,7 +198,7 @@
         update activity
         <set>
             <if test="actType != null">
-                act_type = #{actType,jdbcType=VARCHAR},
+                act_type = #{actType,jdbcType=INTEGER},
             </if>
             <if test="actTitle != null">
                 act_title = #{actTitle,jdbcType=VARCHAR},
@@ -241,7 +241,7 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Activity">
     update activity
-    set act_type = #{actType,jdbcType=VARCHAR},
+    set act_type = #{actType,jdbcType=INTEGER},
       act_title = #{actTitle,jdbcType=VARCHAR},
       act_content = #{actContent,jdbcType=VARCHAR},
       act_img = #{actImg,jdbcType=VARCHAR},

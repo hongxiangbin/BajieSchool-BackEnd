@@ -1,5 +1,7 @@
 package com.zlfinfo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,14 +12,14 @@ public class Activity implements Serializable {
 
     private Integer actId;
 
-    private String actType;
+    private Integer actType;
 
     private String actTitle;
 
     private String actContent;
 
     private String actImg;
-
+   /* @DateTimeFormat(pattern="yyyy-MM-dd")*/
     private Date actTime;
 
     private Integer actLike;
@@ -36,7 +38,15 @@ public class Activity implements Serializable {
 
     private String reserve2;
 
-    private static final long serialVersionUID = 1L;
+    public Activity(Integer actId, Integer actType, String actTitle, String actContent, String actImg, Date actTime, String actPlace) {
+        this.actId = actId;
+        this.actType = actType;
+        this.actTitle = actTitle;
+        this.actContent = actContent;
+        this.actImg = actImg;
+        this.actTime = actTime;
+        this.actPlace = actPlace;
+    }
 
     public Integer getActId() {
         return actId;
@@ -46,11 +56,11 @@ public class Activity implements Serializable {
         this.actId = actId;
     }
 
-    public String getActType() {
+    public Integer getActType() {
         return actType;
     }
 
-    public void setActType(String actType) {
+    public void setActType(Integer actType) {
         this.actType = actType;
     }
 
@@ -77,7 +87,7 @@ public class Activity implements Serializable {
     public void setActImg(String actImg) {
         this.actImg = actImg;
     }
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT+8", locale = "zh")
     public Date getActTime() {
         return actTime;
     }
@@ -150,9 +160,9 @@ public class Activity implements Serializable {
         this.reserve2 = reserve2;
     }
 
-    public static long getSerialVersionUID() {
+   /* public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
+    }*/
 
     @Override
     public String toString() {
