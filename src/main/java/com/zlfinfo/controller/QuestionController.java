@@ -5,12 +5,10 @@ import com.zlfinfo.model.Question;
 import com.zlfinfo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +37,17 @@ public class QuestionController extends BaseController {
         List<Question> questionList = questionService.selectUserAllQuora(username);
         return null != questionList ? renderSuccess(questionList, httpServletResponse) : renderError("问题列表查询失败",
                 httpServletResponse);
+    }
+
+    @RequestMapping(value = "/quora/ask", method = RequestMethod.POST)
+    @ResponseBody
+    public Object ask(@RequestParam String queTitle, @RequestParam String queTags, @RequestParam String queContent,
+                      @RequestParam String queImg, @RequestParam String username, HttpServletResponse
+                              httpServletResponse) {
+        Question question = new Question(queTitle, queContent, queImg, queImg, new Date());
+        return 0 != questionService.addQuestion(question, username) ? renderSuccess("提问成功！", httpServletResponse) :
+                renderError("提问失败！", httpServletResponse);
+
     }
 
 }

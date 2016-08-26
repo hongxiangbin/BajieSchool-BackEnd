@@ -31,6 +31,8 @@
 						AND login_status.`status` = 0
 					)
 			)
+		ORDER BY study_type.type_id
+
     </select>
 
 

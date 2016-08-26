@@ -8,9 +8,7 @@ import java.util.List;
 public interface QuestionMapper {
     int deleteByPrimaryKey(Integer queId);
 
-    int insert(Question record);
-
-    int insertSelective(Question record);
+    int insertQuestion(Question question, @Param("username") String username);
 
     Question selectByPrimaryKey(String queId);
 

@@ -8,17 +8,30 @@ public class Question implements Serializable {
 
     private String queTitle;
 
+    private String queTags;
+
     private String queContent;
 
     private String queImg;
 
-    private int queLike;
+    private Integer queLike;
 
-    private int queComment;
+    private Integer queComment;
 
     private Date queTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Question() {
+    }
+
+    public Question(String queTitle, String queTags, String queContent, String queImg, Date queTime) {
+        this.queTitle = queTitle;
+        this.queTags = queTags;
+        this.queContent = queContent;
+        this.queImg = queImg;
+        this.queTime = queTime;
+    }
 
     public Integer getQueId() {
         return queId;
@@ -33,7 +46,15 @@ public class Question implements Serializable {
     }
 
     public void setQueTitle(String queTitle) {
-        this.queTitle = queTitle == null ? null : queTitle.trim();
+        this.queTitle = queTitle;
+    }
+
+    public String getQueTags() {
+        return queTags;
+    }
+
+    public void setQueTags(String queTags) {
+        this.queTags = queTags;
     }
 
     public String getQueContent() {
@@ -41,7 +62,7 @@ public class Question implements Serializable {
     }
 
     public void setQueContent(String queContent) {
-        this.queContent = queContent == null ? null : queContent.trim();
+        this.queContent = queContent;
     }
 
     public String getQueImg() {
@@ -49,22 +70,22 @@ public class Question implements Serializable {
     }
 
     public void setQueImg(String queImg) {
-        this.queImg = queImg == null ? null : queImg.trim();
+        this.queImg = queImg;
     }
 
-    public int getQueLike() {
+    public Integer getQueLike() {
         return queLike;
     }
 
-    public void setQueLike(int queLike) {
+    public void setQueLike(Integer queLike) {
         this.queLike = queLike;
     }
 
-    public int getQueComment() {
+    public Integer getQueComment() {
         return queComment;
     }
 
-    public void setQueComment(int queComment) {
+    public void setQueComment(Integer queComment) {
         this.queComment = queComment;
     }
 
@@ -75,4 +96,5 @@ public class Question implements Serializable {
     public void setQueTime(Date queTime) {
         this.queTime = queTime;
     }
+
 }

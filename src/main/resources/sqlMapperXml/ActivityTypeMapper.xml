@@ -24,6 +24,7 @@
         <if test="username != null and username!=''" >
             AND USER .username = #{username,jdbcType=VARCHAR}
         </if>
+        ORDER BY AT.act_type_id
     </select>
 
 </mapper>

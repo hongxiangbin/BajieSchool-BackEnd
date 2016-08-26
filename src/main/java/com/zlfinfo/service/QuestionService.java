@@ -12,4 +12,6 @@ public interface QuestionService {
     List<Question> selectQuestionByUser(String username, Integer flag);
 
     List<Question> selectUserAllQuora(String username);
+
+    int addQuestion(Question question, String username);
 }

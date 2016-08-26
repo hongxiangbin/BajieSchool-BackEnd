@@ -29,6 +29,16 @@
         <result column="act_comment" property="actComment" jdbcType="INTEGER"/>
     </resultMap>
 
+    <resultMap id="actDetailMap" type="com.zlfinfo.model.Activity">
+        <id column="act_id" property="actId" jdbcType="INTEGER"/>
+        <result column="act_follow" property="actFollow" jdbcType="INTEGER"/>
+        <result column="act_join" property="actJoin" jdbcType="INTEGER"/>
+        <result column="act_signup" property="actSignup" jdbcType="INTEGER"/>
+        <result column="act_date" property="actDate" jdbcType="TIMESTAMP"/>
+        <result column="act_place" property="actPlace" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
     <sql id="Base_Column_List">
         act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment,
         act_follow, act_join, act_signup, act_place, reserve1, reserve2
@@ -59,6 +69,7 @@
             login_status.`status` = 0
         AND act_v.act_type = #{type}
         AND `user`.username = #{username}
+        ORDER BY act_v.act_time DESC
     </select>
 
 

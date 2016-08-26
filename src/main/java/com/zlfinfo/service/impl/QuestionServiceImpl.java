@@ -26,4 +26,9 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> selectUserAllQuora(String username) {
         return questionMapper.selectUserAllQuora(username);
     }
+
+    @Override
+    public int addQuestion(Question question, String username) {
+        return questionMapper.insertQuestion(question, username);
+    }
 }

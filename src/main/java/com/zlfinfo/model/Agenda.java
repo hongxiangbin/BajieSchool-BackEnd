@@ -20,6 +20,17 @@ public class Agenda implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Agenda() {
+    }
+
+    public Agenda(String username, String agTitle, String agRemark, Date agTime, Date agRemind) {
+        this.username = username;
+        this.agTitle = agTitle;
+        this.agRemark = agRemark;
+        this.agTime = agTime;
+        this.agRemind = agRemind;
+    }
+
     public Integer getAgId() {
         return agId;
     }
@@ -74,5 +85,18 @@ public class Agenda implements Serializable {
 
     public void setAgShow(Integer agShow) {
         this.agShow = agShow;
+    }
+
+    @Override
+    public String toString() {
+        return "Agenda{" +
+                "agId=" + agId +
+                ", username='" + username + '\'' +
+                ", agTitle='" + agTitle + '\'' +
+                ", agRemark='" + agRemark + '\'' +
+                ", agTime=" + agTime +
+                ", agRemind=" + agRemind +
+                ", agShow=" + agShow +
+                '}';
     }
 }

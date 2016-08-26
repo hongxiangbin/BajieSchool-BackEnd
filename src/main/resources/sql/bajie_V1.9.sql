@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-26 10:00:37
+Date: 2016-08-26 19:52:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ INSERT INTO `accusation` VALUES ('admin', 'xxx', 'qqq', '2016-08-23 18:16:01');
 -- ----------------------------
 DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity` (
-  `act_id` int(12) NOT NULL,
+  `act_id` int(12) NOT NULL AUTO_INCREMENT,
   `act_type` int(2) DEFAULT NULL,
   `act_title` varchar(100) NOT NULL,
   `act_content` varchar(255) DEFAULT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `activity` (
   `reserve1` varchar(255) DEFAULT NULL,
   `reserve2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`act_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10011 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of activity
@@ -67,6 +67,9 @@ INSERT INTO `activity` VALUES ('10004', '1', '丽江水', '丽江大学生组团
 INSERT INTO `activity` VALUES ('10005', '2', '武汉大学校庆', '珞珈山的小伙伴们，躁起来~~~', 'img/whu.png', '2016-08-16 17:54:33', '1554', '65', '56564', '4654', '565', '湖北武汉', null, null);
 INSERT INTO `activity` VALUES ('10006', '3', '周杰伦演唱会', '有一起的小伙伴么？', 'img/activity/tabs/明星/1.jpg', '2016-08-16 17:55:56', '46545', '4564', '54654', '9846', '4654', '北京', null, null);
 INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记，大家都看了吗？', 'img/activity/tabs/电影/1.jpg', '2016-08-08 17:56:36', '1654', '4654', '126', '98', '5656', '北京', null, null);
+INSERT INTO `activity` VALUES ('10008', '5', '周杰伦的床边故事', '新专辑哦~', 'img/activity/act/周杰伦.jpg', '2016-08-02 14:16:32', '68742', '65654', '66871', '26545', '269462', '北京', null, null);
+INSERT INTO `activity` VALUES ('10009', '6', '军训', '天气转凉快了。。', null, '2016-08-02 14:17:15', '32156', '1665', '1564', '3465', '65474', '武汉', null, null);
+INSERT INTO `activity` VALUES ('10010', '7', '恋爱。。。', '你们当时都是怎么认识对方的？', null, '2016-08-22 14:17:54', '156465', '654654', '6546789', '4987', '498', null, null, null);
 
 -- ----------------------------
 -- Table structure for activity_comment
@@ -129,20 +132,22 @@ INSERT INTO `activity_type` VALUES ('7', '恋爱');
 -- ----------------------------
 DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
-  `ag_id` int(12) NOT NULL COMMENT '日程ID',
+  `ag_id` int(12) NOT NULL AUTO_INCREMENT COMMENT '日程ID',
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `ag_title` varchar(50) NOT NULL COMMENT '日程标题',
   `ag_remark` varchar(50) DEFAULT NULL COMMENT '日程备注',
-  `ag_time` datetime NOT NULL COMMENT '开始时间',
+  `ag_time` datetime DEFAULT NULL COMMENT '开始时间',
   `ag_remind` datetime DEFAULT NULL COMMENT '提醒时间',
+  `ag_show` int(1) DEFAULT '0',
   PRIMARY KEY (`ag_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=90006 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of agenda
 -- ----------------------------
-INSERT INTO `agenda` VALUES ('90000', 'LucasX', '跑步', '每天早上起来跑步', '2016-08-15 08:56:47', '2016-08-22 08:56:51');
-INSERT INTO `agenda` VALUES ('90001', 'admin', '背单词', '每天早上起来背单词', '2016-08-15 08:56:45', '2016-08-22 08:56:53');
+INSERT INTO `agenda` VALUES ('90000', 'LucasX', '跑步', '每天早上起来跑步', '2016-08-15 08:56:47', '2016-08-22 08:56:51', '0');
+INSERT INTO `agenda` VALUES ('90001', 'admin', '背单词', '每天早上起来背单词', '2016-08-15 08:56:45', '2016-08-22 08:56:53', '1');
+INSERT INTO `agenda` VALUES ('90005', 'admin', '去看电影', '周末', '2016-08-26 18:51:00', '2016-08-26 18:51:00', '0');
 
 -- ----------------------------
 -- Table structure for answer
@@ -231,8 +236,8 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '0', '2016-08-26 09:08:29');
-INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-08-26 09:08:21');
+INSERT INTO `login_status` VALUES ('admin', '0', '2016-08-26 11:12:07');
+INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-08-26 11:11:59');
 
 -- ----------------------------
 -- Table structure for notification
@@ -251,20 +256,38 @@ CREATE TABLE `notification` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for points
+-- ----------------------------
+DROP TABLE IF EXISTS `points`;
+CREATE TABLE `points` (
+  `username` varchar(16) NOT NULL,
+  `point` int(8) DEFAULT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of points
+-- ----------------------------
+INSERT INTO `points` VALUES ('LucasX', '5', '2016-08-08 11:08:59');
+INSERT INTO `points` VALUES ('LucasX', '10', '2016-08-24 11:09:35');
+INSERT INTO `points` VALUES ('admin', '15', '2016-08-16 11:11:30');
+INSERT INTO `points` VALUES ('admin', '20', '2016-08-16 11:11:40');
+
+-- ----------------------------
 -- Table structure for question
 -- ----------------------------
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
-  `que_id` int(12) NOT NULL COMMENT '问题ID',
+  `que_id` int(12) NOT NULL AUTO_INCREMENT COMMENT '问题ID',
   `que_title` varchar(100) NOT NULL COMMENT '问题标题',
   `que_tags` varchar(50) DEFAULT NULL COMMENT '问题标签',
   `que_content` varchar(255) DEFAULT NULL COMMENT '问题内容',
   `que_img` varchar(100) DEFAULT NULL COMMENT '图片',
-  `que_like` int(5) DEFAULT NULL COMMENT '赞同数',
-  `que_comment` int(5) DEFAULT NULL COMMENT '评论数',
+  `que_like` int(5) DEFAULT '0' COMMENT '赞同数',
+  `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
   PRIMARY KEY (`que_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30002 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question
@@ -318,7 +341,7 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT NULL,
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50008 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50012 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
@@ -331,6 +354,10 @@ INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '132', '132'
 INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '498', '1265', '2016-08-23 15:25:00');
 INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '46', '465', '2016-08-03 15:25:23');
 INSERT INTO `study` VALUES ('50007', '5', '财务管理', 'CFO。。。', '495', '288', '2016-08-01 15:25:44');
+INSERT INTO `study` VALUES ('50008', '6', '生物', 'DNA。。。', '465', '98', '2016-08-09 10:18:48');
+INSERT INTO `study` VALUES ('50009', '7', '机械', '机械购期末考。。。', '79', '6', '2016-08-02 10:19:15');
+INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '95', '65', '2016-08-26 10:20:02');
+INSERT INTO `study` VALUES ('50011', '9', '经济学', '微观经济学', '79', '26', '2016-08-05 10:20:23');
 
 -- ----------------------------
 -- Table structure for study_reply
@@ -519,7 +546,7 @@ CREATE TABLE `user_studytype` (
 -- ----------------------------
 -- Records of user_studytype
 -- ----------------------------
-INSERT INTO `user_studytype` VALUES ('admin', '5');
+INSERT INTO `user_studytype` VALUES ('admin', '0');
 INSERT INTO `user_studytype` VALUES ('admin', '6');
 INSERT INTO `user_studytype` VALUES ('admin', '7');
 INSERT INTO `user_studytype` VALUES ('admin', '8');

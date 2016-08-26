@@ -21,4 +21,14 @@ public class AgendaServiceImpl implements AgendaService {
     public List<Agenda> selectAgendaByUsername(String username) {
         return agendaMapper.selectAgendaByUsername(username);
     }
+
+    @Override
+    public Integer updateAgendaShow(Integer agId, String username) {
+        return agendaMapper.updateAgendaShow(agId, username);
+    }
+
+    @Override
+    public int insertAgenda(Agenda agenda) {
+        return agendaMapper.insertAgenda(agenda);
+    }
 }

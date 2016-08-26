@@ -39,7 +39,7 @@
         AND login_status.username = #{username}
         AND study.type_id = study_type.type_id
         AND study.type_id = #{type}
-
+        ORDER BY study.std_time DESC
     </select>
 
 
@@ -110,6 +110,7 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Study">
         update study
         <set>
@@ -144,4 +145,5 @@
       std_time = #{stdTime,jdbcType=TIMESTAMP}
     where std_id = #{stdId,jdbcType=VARCHAR}
   </update>
+
 </mapper>

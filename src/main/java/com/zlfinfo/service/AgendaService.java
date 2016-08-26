@@ -10,4 +10,8 @@ import java.util.List;
 public interface AgendaService {
 
     List<Agenda> selectAgendaByUsername(String username);
+
+    Integer updateAgendaShow(Integer agId, String username);
+
+    int insertAgenda(Agenda agenda);
 }
