@@ -23,7 +23,7 @@
       std_id, type_id, std_title, std_content, std_like, std_comment, std_time
     </sql>
 
-    <select id="selectStudyByType" resultMap="studyIndexMap">
+    <select id="selectStudyByTypeNUser" resultMap="studyIndexMap">
         SELECT
         study.std_title,
         study.std_content,
@@ -33,14 +33,13 @@
         FROM
         study,
         study_type,
-        USER
-        NATURAL JOIN login_status
+        login_status
         WHERE
         login_status.`status` = 0
+        AND login_status.username = #{username}
         AND study.type_id = study_type.type_id
-        <if test="type != null">
-            AND study.type_id = #{type}
-        </if>
+        AND study.type_id = #{type}
+
     </select>
 
 

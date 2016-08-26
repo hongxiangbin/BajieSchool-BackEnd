@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface StudyService {
 
-    List<Study> selectStudyByType(Integer type);
+    List<Study> selectStudyByTypeNUser(Integer type, String username);
 }

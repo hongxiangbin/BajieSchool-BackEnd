@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-25 15:16:03
+Date: 2016-08-26 10:00:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -231,8 +231,8 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-24 11:19:36');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-25 14:31:04');
+INSERT INTO `login_status` VALUES ('admin', '0', '2016-08-26 09:08:29');
+INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-08-26 09:08:21');
 
 -- ----------------------------
 -- Table structure for notification
@@ -310,7 +310,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 DROP TABLE IF EXISTS `study`;
 CREATE TABLE `study` (
-  `std_id` int(12) NOT NULL,
+  `std_id` int(12) NOT NULL AUTO_INCREMENT,
   `type_id` int(2) DEFAULT NULL,
   `std_title` varchar(100) DEFAULT NULL,
   `std_content` varchar(255) DEFAULT NULL,
@@ -318,13 +318,19 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT NULL,
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50008 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
 -- ----------------------------
 INSERT INTO `study` VALUES ('50000', '1', '考研数学', '问一下小伙伴们，考研数学如何拿145分？', '165', '45', '2016-08-15 14:28:19');
 INSERT INTO `study` VALUES ('50001', '11', '四六级。。。', '出分数了，大家情况怎么样啊', '4654', '465', '2016-08-09 14:29:08');
+INSERT INTO `study` VALUES ('50002', '0', '计算机二级推荐', '推荐信息', '1321', '132', '2016-08-23 15:24:11');
+INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子商务中的应用', '132', '132', '2016-08-09 15:23:58');
+INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '132', '132', '2016-08-17 15:24:34');
+INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '498', '1265', '2016-08-23 15:25:00');
+INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '46', '465', '2016-08-03 15:25:23');
+INSERT INTO `study` VALUES ('50007', '5', '财务管理', 'CFO。。。', '495', '288', '2016-08-01 15:25:44');
 
 -- ----------------------------
 -- Table structure for study_reply
@@ -507,21 +513,23 @@ INSERT INTO `user_study` VALUES ('LucasX', '50000', '0');
 DROP TABLE IF EXISTS `user_studytype`;
 CREATE TABLE `user_studytype` (
   `username` varchar(16) NOT NULL,
-  `stu_type` int(12) NOT NULL,
-  PRIMARY KEY (`username`,`stu_type`)
+  `stu_type` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_studytype
 -- ----------------------------
-INSERT INTO `user_studytype` VALUES ('admin', '0');
-INSERT INTO `user_studytype` VALUES ('admin', '1');
-INSERT INTO `user_studytype` VALUES ('admin', '2');
-INSERT INTO `user_studytype` VALUES ('admin', '3');
-INSERT INTO `user_studytype` VALUES ('admin', '4');
 INSERT INTO `user_studytype` VALUES ('admin', '5');
+INSERT INTO `user_studytype` VALUES ('admin', '6');
+INSERT INTO `user_studytype` VALUES ('admin', '7');
+INSERT INTO `user_studytype` VALUES ('admin', '8');
+INSERT INTO `user_studytype` VALUES ('admin', '9');
+INSERT INTO `user_studytype` VALUES ('admin', '5');
+INSERT INTO `user_studytype` VALUES ('LucasX', '0');
 INSERT INTO `user_studytype` VALUES ('LucasX', '1');
-INSERT INTO `user_studytype` VALUES ('LucasX', '11');
+INSERT INTO `user_studytype` VALUES ('LucasX', '2');
+INSERT INTO `user_studytype` VALUES ('LucasX', '3');
+INSERT INTO `user_studytype` VALUES ('LucasX', '4');
 
 -- ----------------------------
 -- Table structure for visitor

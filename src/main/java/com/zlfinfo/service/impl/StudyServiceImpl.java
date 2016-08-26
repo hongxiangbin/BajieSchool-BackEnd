@@ -18,7 +18,7 @@ public class StudyServiceImpl implements StudyService {
     private StudyMapper studyMapper;
 
     @Override
-    public List<Study> selectStudyByType(Integer type) {
-        return studyMapper.selectStudyByType(type);
+    public List<Study> selectStudyByTypeNUser(Integer type, String username) {
+        return studyMapper.selectStudyByTypeNUser(type, username);
     }
 }

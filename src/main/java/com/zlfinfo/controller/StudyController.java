@@ -5,10 +5,7 @@ import com.zlfinfo.model.Study;
 import com.zlfinfo.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -21,10 +18,11 @@ public class StudyController extends BaseController {
     @Autowired
     private StudyService studyService;
 
-    @RequestMapping(value = "/study/{type}", method = RequestMethod.GET)
+    @RequestMapping(value = "/study/{type}", method = RequestMethod.POST)
     @ResponseBody
-    public Object showStudyByType(@PathVariable Integer type, HttpServletResponse httpServletResponse) {
-        List<Study> studyList = studyService.selectStudyByType(type);
+    public Object showStudyByType(@PathVariable Integer type, @RequestParam String username, HttpServletResponse
+            httpServletResponse) {
+        List<Study> studyList = studyService.selectStudyByTypeNUser(type, username);
         return null != studyList ? renderSuccess(studyList, httpServletResponse) : renderError("学习列表查询失败",
                 httpServletResponse);
     }
