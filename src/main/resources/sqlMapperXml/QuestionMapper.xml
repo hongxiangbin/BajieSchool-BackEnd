@@ -32,7 +32,7 @@
     </select>
 
     <select id="selectQuestionByUser" resultMap="quoraIndexResultMap">
-        SELECT
+       SELECT
             qv.que_img,
             qv.que_title,
             qv.que_time,
@@ -41,13 +41,12 @@
             qv.que_comment
         FROM
             question_view qv
-        NATURAL JOIN user_question,
-         USER
+        NATURAL JOIN user_question
         NATURAL JOIN login_status
         WHERE
             login_status.`status` = 0
         AND user_question.flag = #{flag}
-        AND `user`.username = #{username}
+        AND login_status.username = #{username}
     </select>
 
     <select id="selectUserAllQuora" parameterType="java.lang.String" resultMap="quoraIndexResultMap">

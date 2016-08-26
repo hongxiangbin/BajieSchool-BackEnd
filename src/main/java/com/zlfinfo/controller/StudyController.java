@@ -20,7 +20,7 @@ public class StudyController extends BaseController {
 
     @RequestMapping(value = "/study/{type}", method = RequestMethod.POST)
     @ResponseBody
-    public Object showStudyByType(@PathVariable Integer type, @RequestParam String username, HttpServletResponse
+    public Object showStudyByType(@PathVariable Integer type, String username, HttpServletResponse
             httpServletResponse) {
         List<Study> studyList = studyService.selectStudyByTypeNUser(type, username);
         return null != studyList ? renderSuccess(studyList, httpServletResponse) : renderError("学习列表查询失败",

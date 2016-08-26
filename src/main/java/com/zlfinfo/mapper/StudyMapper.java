@@ -1,6 +1,8 @@
 package com.zlfinfo.mapper;
 
 import com.zlfinfo.model.Study;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -17,6 +19,6 @@ public interface StudyMapper {
 
     int updateByPrimaryKey(Study record);
 
-    List<Study> selectStudyByTypeNUser(Integer type, String username);
+    List<Study> selectStudyByTypeNUser(@Param("type") Integer type, @Param("username") String username);
 
 }
