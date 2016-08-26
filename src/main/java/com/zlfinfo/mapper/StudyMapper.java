@@ -17,5 +17,6 @@ public interface StudyMapper {
 
     int updateByPrimaryKey(Study record);
 
-    List<Study> selectStudyByType(Integer type);
+    List<Study> selectStudyByTypeNUser(Integer type, String username);
+
 }

@@ -59,7 +59,6 @@ public class ActivityController extends BaseController {
     @ResponseBody
     public Object showActivity(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
-        logger.error(username + "===============");
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
         activityList.forEach(activity -> {
             System.out.println(activity);
