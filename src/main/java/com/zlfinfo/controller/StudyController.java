@@ -1,8 +1,8 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
-import com.zlfinfo.model.Agenda;
-import com.zlfinfo.service.AgendaService;
+import com.zlfinfo.model.Study;
+import com.zlfinfo.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,21 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/8/24.
+ * Created by Administrator on 2016/8/25.
  */
 @Controller
-public class AgendaController extends BaseController {
-
+public class StudyController extends BaseController {
     @Autowired
-    private AgendaService agendaService;
+    private StudyService studyService;
 
-    @RequestMapping(value = "/agenda/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/study/{type}", method = RequestMethod.GET)
     @ResponseBody
-    public Object showAllAgenda(@PathVariable String username, HttpServletResponse httpServletResponse) {
-        List<Agenda> agendaList = agendaService.selectAgendaByUsername(username);
-        return null != agendaList ? renderSuccess(agendaList, httpServletResponse) : renderError("日程查询失败",
+    public Object showStudyByType(@PathVariable Integer type, HttpServletResponse httpServletResponse) {
+        List<Study> studyList = studyService.selectStudyByType(type);
+        return null != studyList ? renderSuccess(studyList, httpServletResponse) : renderError("学习列表查询失败",
                 httpServletResponse);
     }
-
 
 }

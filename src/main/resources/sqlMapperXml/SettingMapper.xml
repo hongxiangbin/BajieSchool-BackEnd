@@ -11,14 +11,16 @@
         <result column="reserve3" property="reserve3" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    username, is_update, is_shareloc, is_showimg, reserve1, reserve2, reserve3
-  </sql>
+      username, is_update, is_shareloc, is_showimg, reserve1, reserve2, reserve3
+    </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from setting
         where username = #{username,jdbcType=VARCHAR}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from setting
     where username = #{username,jdbcType=VARCHAR}
