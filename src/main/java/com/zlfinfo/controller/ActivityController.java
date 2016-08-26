@@ -2,15 +2,14 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.Activity;
-import com.zlfinfo.model.User;
 import com.zlfinfo.service.ActivityService;
-import com.zlfinfo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,13 +24,15 @@ public class ActivityController extends BaseController {
     /**
      * 发布活动
      *
-     * @param act
+     * @param
      * @return
      */
     @RequestMapping(value = "/addact", method = RequestMethod.POST)
     @ResponseBody
-    public Object addact(@PathVariable Activity act, HttpServletResponse response) {
-        System.out.println(act);
+    public Object addact(@RequestParam(required = false) Integer actId, @RequestParam(required = false) Integer actType,
+                         @RequestParam String actTitle, @RequestParam(required = false) String actContent, @RequestParam(required = false) String actImg,
+                         @RequestParam(required = false) Date actTime, @RequestParam(required = false) String actPlace, HttpServletResponse response) {
+        Activity act = new Activity(actId,actType,actTitle,actContent,actImg,actTime,actPlace);
         actService.insert(act);
         return renderSuccess("保存成功", response);
     }
@@ -60,9 +61,6 @@ public class ActivityController extends BaseController {
     public Object showActivity(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
-        activityList.forEach(activity -> {
-            System.out.println(activity);
-        });
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
                 httpServletResponse);
     }
