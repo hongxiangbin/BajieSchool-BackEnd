@@ -7,9 +7,6 @@
         <result column="content" property="content" jdbcType="VARCHAR"/>
         <result column="date" property="date" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <sql id="Base_Column_List">
-      informant, against, content, date
-    </sql>
 
     <insert id="insertAccusation" parameterType="com.zlfinfo.model.Accusation">
         insert into accusation (informant, against, content, date)

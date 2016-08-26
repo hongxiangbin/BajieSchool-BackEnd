@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.VisitorMapper">
+    <resultMap id="myInfoResultMap" type="com.zlfinfo.model.MyInfo">
+        <result column="points" property="points" jdbcType="INTEGER"/>
+        <result column="agenda_num" property="agendaNum" jdbcType="INTEGER"/>
+        <result column="notification_num" property="notificationNum" jdbcType="INTEGER"/>
+        <result column="collection_num" property="collectionNum" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      points, agenda_num, notification_num, collection_num
+    </sql>
+
+    <select id="selectMyInfo" resultMap="myInfoResultMap">
+
+    </select>
+</mapper>

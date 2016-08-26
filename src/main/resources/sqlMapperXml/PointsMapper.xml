@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.PointsMapper">
+    <resultMap id="pointResultMap" type="com.zlfinfo.model.Points">
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="point" property="point" jdbcType="INTEGER"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      username, point, date
+    </sql>
+
+    <select id="selectPoints" resultMap="pointResultMap" parameterType="java.lang.String">
+        SELECT
+            SUM(point) point
+        FROM
+            points
+        NATURAL JOIN login_status
+        WHERE
+            login_status.`status` = 0
+        AND points.username = #{username}
+    </select>
+</mapper>

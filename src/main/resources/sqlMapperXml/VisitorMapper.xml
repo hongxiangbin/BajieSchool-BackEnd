@@ -6,9 +6,6 @@
         <id column="visitor" property="visitor" jdbcType="VARCHAR"/>
         <id column="date" property="date" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <sql id="Base_Column_List">
-      username, visitor, date
-    </sql>
 
     <select id="selectAllVisitor" resultMap="BaseResultMap">
         SELECT

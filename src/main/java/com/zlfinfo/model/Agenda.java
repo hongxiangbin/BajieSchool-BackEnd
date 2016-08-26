@@ -16,6 +16,8 @@ public class Agenda implements Serializable {
 
     private Date agRemind;
 
+    private Integer agShow;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getAgId() {
@@ -31,7 +33,7 @@ public class Agenda implements Serializable {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getAgTitle() {
@@ -39,7 +41,7 @@ public class Agenda implements Serializable {
     }
 
     public void setAgTitle(String agTitle) {
-        this.agTitle = agTitle == null ? null : agTitle.trim();
+        this.agTitle = agTitle;
     }
 
     public String getAgRemark() {
@@ -47,7 +49,7 @@ public class Agenda implements Serializable {
     }
 
     public void setAgRemark(String agRemark) {
-        this.agRemark = agRemark == null ? null : agRemark.trim();
+        this.agRemark = agRemark;
     }
 
     public Date getAgTime() {
@@ -64,5 +66,13 @@ public class Agenda implements Serializable {
 
     public void setAgRemind(Date agRemind) {
         this.agRemind = agRemind;
+    }
+
+    public Integer getAgShow() {
+        return agShow;
+    }
+
+    public void setAgShow(Integer agShow) {
+        this.agShow = agShow;
     }
 }

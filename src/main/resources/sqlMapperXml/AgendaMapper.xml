@@ -9,12 +9,9 @@
     <result column="ag_time" property="agTime" jdbcType="TIMESTAMP" />
     <result column="ag_remind" property="agRemind" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    ag_id, username, ag_title, ag_remark, ag_time, ag_remind
-  </sql>
 
   <select id="selectAgendaByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT ag_id, username, ag_title, ag_remark, ag_time, ag_remind FROM agenda NATURAL JOIN login_status WHERE login_status.`status` = 0 AND username = #{username}
+    SELECT ag_id, username, ag_title, ag_remark, ag_time, ag_remind FROM agenda NATURAL JOIN login_status WHERE login_status.`status` = 0 AND agenda.ag_show = 0 AND username = #{username}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="map" >
