@@ -41,8 +41,8 @@ public class QuestionController extends BaseController {
 
     @RequestMapping(value = "/quora/ask", method = RequestMethod.POST)
     @ResponseBody
-    public Object ask(@RequestParam String queTitle, @RequestParam String queTags, @RequestParam String queContent,
-                      @RequestParam String queImg, @RequestParam String username, HttpServletResponse
+    public Object ask(@RequestParam(required = false)  String queTitle, @RequestParam(required = false)  String queTags, @RequestParam(required = false)  String queContent,
+                      @RequestParam(required = false)  String queImg, @RequestParam String username, HttpServletResponse
                               httpServletResponse) {
         Question question = new Question(queTitle, queContent, queImg, queImg, new Date());
         return 0 != questionService.addQuestion(question, username) ? renderSuccess("提问成功！", httpServletResponse) :

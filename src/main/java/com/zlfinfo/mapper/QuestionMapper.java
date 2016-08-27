@@ -10,6 +10,8 @@ public interface QuestionMapper {
 
     int insertQuestion(Question question, @Param("username") String username);
 
+    int insert(Question question);
+
     Question selectByPrimaryKey(String queId);
 
     int updateByPrimaryKeySelective(Question record);

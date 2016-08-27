@@ -29,6 +29,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public int addQuestion(Question question, String username) {
-        return questionMapper.insertQuestion(question, username);
+        Integer qid = questionMapper.insert(question);
+
+        return qid;
+        /*return questionMapper.insertQuestion(question, username);*/
     }
 }
