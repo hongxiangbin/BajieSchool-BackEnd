@@ -53,7 +53,7 @@
       delete from study
       where std_id = #{stdId,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="com.zlfinfo.model.Study">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="stdId">
       insert into study (std_id, type_id, std_title,
         std_content, std_like, std_comment,
         std_time)

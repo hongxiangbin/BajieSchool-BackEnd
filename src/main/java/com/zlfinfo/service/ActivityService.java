@@ -2,6 +2,7 @@ package com.zlfinfo.service;
 
 import com.zlfinfo.model.Activity;
 import com.zlfinfo.model.User;
+import com.zlfinfo.model.UserActivity;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import java.util.List;
  */
 public interface ActivityService {
     int insert(Activity act);
+
+    int insertuserActivity(UserActivity userActivity);
 
     List<Activity> selectAllActivity();
 

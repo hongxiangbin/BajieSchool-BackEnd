@@ -2,6 +2,7 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.Activity;
+import com.zlfinfo.model.UserActivity;
 import com.zlfinfo.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,10 +32,19 @@ public class ActivityController extends BaseController {
     @ResponseBody
     public Object addact(@RequestParam(required = false) Integer actId, @RequestParam(required = false) Integer actType,
                          @RequestParam String actTitle, @RequestParam(required = false) String actContent, @RequestParam(required = false) String actImg,
-                         @RequestParam(required = false) Date actTime, @RequestParam(required = false) String actPlace, HttpServletResponse response) {
-        Activity act = new Activity(actId,actType,actTitle,actContent,actImg,actTime,actPlace);
-        actService.insert(act);
-        return renderSuccess("保存成功", response);
+                         @RequestParam(required = false) Date actTime, @RequestParam(required = false) String actPlace, @RequestParam String username, HttpServletResponse response) {
+        Activity act = new Activity(actId, actType, actTitle, actContent, actImg, actTime, actPlace);
+        Integer actid = actService.insert(act);
+        if (actid == 0) {
+            return renderError("保存失败", response);
+        } else {
+            UserActivity userActivity = new UserActivity();
+            userActivity.setActId(actid);
+            userActivity.setUsername(username);
+            userActivity.setFlag(0);
+            actService.insertuserActivity(userActivity);
+            return renderSuccess("保存成功", response);
+        }
     }
 
     /**

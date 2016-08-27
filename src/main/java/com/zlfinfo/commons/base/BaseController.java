@@ -56,7 +56,20 @@ public abstract class BaseController {
         result.setMsg(msg);
         return result;
     }
-
+    /**
+     * ajax 返回结果
+     *
+     * @param msg 消息 status(0,成功,:1，失败)
+     * @return {object}
+     */
+    public Object render(String msg,Integer status, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow_Methods", "POST,GET,OPTIONS,PUT,DELETE");
+        Result result = new Result();
+        result.setStatus(status);
+        result.setMsg(msg);
+        return result;
+    }
     /**
      * ajax 成功
      *

@@ -48,8 +48,10 @@ public class QuestionController extends BaseController {
         Question question = new Question(queId,queTitle,queTags, queContent, queImg, new Date());
         Integer qid=questionService.addQuestion(question);
         String msg="提问成功！";
+        Integer status =0;
         if(qid==0){
             msg="提问失败！";
+            status = 1;
         }else{
             UserQuestion userQuestion = new UserQuestion();
             userQuestion.setUsername(username);
@@ -57,7 +59,7 @@ public class QuestionController extends BaseController {
             userQuestion.setFlag(0);
             questionService.addUserque(userQuestion);
         }
-    return renderSuccess(msg, httpServletResponse);
+        return render(msg,status, httpServletResponse);
     }
 
 }

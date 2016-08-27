@@ -1,9 +1,11 @@
 package com.zlfinfo.service.impl;
 
 import com.zlfinfo.mapper.ActivityMapper;
+import com.zlfinfo.mapper.UserActivityMapper;
 import com.zlfinfo.mapper.UserMapper;
 import com.zlfinfo.model.Activity;
 import com.zlfinfo.model.User;
+import com.zlfinfo.model.UserActivity;
 import com.zlfinfo.service.ActivityService;
 import com.zlfinfo.service.UserService;
 import org.slf4j.Logger;
@@ -21,12 +23,22 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Autowired
     public ActivityMapper actMapper;
-
+    @Autowired
+    public UserActivityMapper userActivityMapper;
     @Override
     public int insert(Activity act) {
-        return actMapper.insert(act);
+        Integer num = actMapper.insert(act);
+        if(num==1){
+            return act.getActId();
+        }else{
+            return 0;
+        }
     }
-
+    @Override
+    public int insertuserActivity(UserActivity userActivity) {
+        userActivityMapper.insert(userActivity);
+        return 0;
+    }
     @Override
     public List<Activity> selectAllActivity() {
         return actMapper.selectAllActivity();
