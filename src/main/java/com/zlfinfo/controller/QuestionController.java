@@ -2,6 +2,7 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.Question;
+import com.zlfinfo.model.UserQuestion;
 import com.zlfinfo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,13 +42,22 @@ public class QuestionController extends BaseController {
 
     @RequestMapping(value = "/quora/ask", method = RequestMethod.POST)
     @ResponseBody
-    public Object ask(@RequestParam(required = false)  String queTitle, @RequestParam(required = false)  String queTags, @RequestParam(required = false)  String queContent,
+    public Object ask(@RequestParam(required = false)  Integer queId,@RequestParam(required = false)  String queTitle, @RequestParam(required = false)  String queTags, @RequestParam(required = false)  String queContent,
                       @RequestParam(required = false)  String queImg, @RequestParam String username, HttpServletResponse
                               httpServletResponse) {
-        Question question = new Question(queTitle, queContent, queImg, queImg, new Date());
-        return 0 != questionService.addQuestion(question, username) ? renderSuccess("提问成功！", httpServletResponse) :
-                renderError("提问失败！", httpServletResponse);
-
+        Question question = new Question(queId,queTitle,queTags, queContent, queImg, new Date());
+        Integer qid=questionService.addQuestion(question);
+        String msg="提问成功！";
+        if(qid==0){
+            msg="提问失败！";
+        }else{
+            UserQuestion userQuestion = new UserQuestion();
+            userQuestion.setUsername(username);
+            userQuestion.setQueId(qid);
+            userQuestion.setFlag(0);
+            questionService.addUserque(userQuestion);
+        }
+    return renderSuccess(msg, httpServletResponse);
     }
 
 }

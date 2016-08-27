@@ -1,6 +1,7 @@
 package com.zlfinfo.service;
 
 import com.zlfinfo.model.Question;
+import com.zlfinfo.model.UserQuestion;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface QuestionService {
 
     List<Question> selectUserAllQuora(String username);
 
-    int addQuestion(Question question, String username);
+    int addQuestion(Question question);
+
+    int addUserque(UserQuestion userQuestion);
 }

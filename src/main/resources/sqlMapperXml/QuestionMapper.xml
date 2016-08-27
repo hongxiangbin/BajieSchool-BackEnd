@@ -72,11 +72,11 @@
       where que_id = #{queId,jdbcType=VARCHAR}
     </delete>
 
-    <insert id="insert">
-        insert into question (que_title, que_content,
+    <insert id="insert" useGeneratedKeys="true" keyProperty="queId">
+        insert into question (que_id,que_title, que_content,
         que_img, que_like, que_comment,
         que_time)
-        values (#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
+        values (#{queId,jdbcType=INTEGER},#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
         #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER},
         #{queTime,jdbcType=TIMESTAMP})
     </insert>

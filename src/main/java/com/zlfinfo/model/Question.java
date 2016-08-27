@@ -25,7 +25,8 @@ public class Question implements Serializable {
     public Question() {
     }
 
-    public Question(String queTitle, String queTags, String queContent, String queImg, Date queTime) {
+    public Question(Integer queId, String queTitle, String queTags, String queContent, String queImg, Date queTime) {
+        this.queId = queId;
         this.queTitle = queTitle;
         this.queTags = queTags;
         this.queContent = queContent;
