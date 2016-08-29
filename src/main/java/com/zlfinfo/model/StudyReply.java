@@ -6,6 +6,8 @@ import java.util.Date;
 public class StudyReply implements Serializable {
     private Integer stdId;
 
+    private Integer stdReId;
+
     private String username;
 
     private String stdReContent;
@@ -22,6 +24,14 @@ public class StudyReply implements Serializable {
 
     public void setStdId(Integer stdId) {
         this.stdId = stdId;
+    }
+
+    public Integer getStdReId() {
+        return stdReId;
+    }
+
+    public void setStdReId(Integer stdReId) {
+        this.stdReId = stdReId;
     }
 
     public String getUsername() {

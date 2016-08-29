@@ -18,7 +18,10 @@ public class Study implements Serializable {
 
     private Date stdTime;
 
-    public Study(Integer stdId, Integer typeId, String stdTitle, String stdContent,  Date stdTime) {
+    public Study() {
+    }
+
+    public Study(Integer stdId, Integer typeId, String stdTitle, String stdContent, Date stdTime) {
         this.stdId = stdId;
         this.typeId = typeId;
         this.stdTitle = stdTitle;

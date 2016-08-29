@@ -20,21 +20,25 @@ public class StudyServiceImpl implements StudyService {
     private StudyMapper studyMapper;
     @Autowired
     private UserStudyMapper userStudyMapper;
+
     @Override
     public int insert(Study study) {
         Integer num = studyMapper.insert(study);
-        if(num==1){
+        if (num == 1) {
             return study.getStdId();
-        }else{
+        } else {
             return 0;
         }
     }
+
     @Override
     public int insertUserStudy(UserStudy userStudy) {
-         return userStudyMapper.insert(userStudy);
+        return userStudyMapper.insert(userStudy);
     }
+
     @Override
     public List<Study> selectStudyByTypeNUser(Integer type, String username) {
         return studyMapper.selectStudyByTypeNUser(type, username);
     }
+
 }

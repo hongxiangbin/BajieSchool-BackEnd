@@ -3,11 +3,14 @@ package com.zlfinfo.controller;
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.User;
 import com.zlfinfo.service.UserService;
+import com.zlfinfo.util.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by Administrator on 2016/8/22.
@@ -26,11 +29,12 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/login/{username}", method = RequestMethod.POST)
     @ResponseBody
-    public Object login(@PathVariable String username, @RequestParam String password, HttpServletResponse response) {
+    public Object login(@PathVariable String username, @RequestParam String password, HttpServletResponse response)
+            throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = userService.findUserByUsername(username);
         if (null != user) {
             logger.debug(user + "--------------------------------" + password);
-            if (password.trim().equals(user.getPassword())) {
+            if (Encryption.encrypt(password.trim()).equals(user.getPassword())) {
                 return renderSuccess(response);
             } else {
                 return renderError("用户名或密码错误", response);

@@ -6,4 +6,6 @@ public interface UserQuestionMapper {
     int insert(UserQuestion record);
 
     int insertSelective(UserQuestion record);
+
+    int insertUserQuestion(UserQuestion question);
 }

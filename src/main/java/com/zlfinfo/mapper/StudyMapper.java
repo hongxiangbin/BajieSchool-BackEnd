@@ -1,6 +1,7 @@
 package com.zlfinfo.mapper;
 
 import com.zlfinfo.model.Study;
+import com.zlfinfo.model.StudyReply;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 

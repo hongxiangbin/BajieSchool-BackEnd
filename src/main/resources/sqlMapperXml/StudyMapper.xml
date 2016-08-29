@@ -57,7 +57,7 @@
       insert into study (std_id, type_id, std_title,
         std_content, std_like, std_comment,
         std_time)
-      values (#{stdId,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, #{stdTitle,jdbcType=VARCHAR},
+      values (#{stdId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{stdTitle,jdbcType=VARCHAR},
         #{stdContent,jdbcType=VARCHAR}, #{stdLike,jdbcType=INTEGER}, #{stdComment,jdbcType=INTEGER},
         #{stdTime,jdbcType=TIMESTAMP})
     </insert>

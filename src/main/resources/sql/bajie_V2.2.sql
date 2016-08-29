@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-29 14:28:21
+Date: 2016-08-29 17:31:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -294,7 +294,7 @@ CREATE TABLE `question` (
 -- ----------------------------
 INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '565', '56', '2016-08-09 19:13:15');
 INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '565', '4654', '2016-08-04 19:14:09');
-INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', null, 'rt', '', null, null, '2016-08-29 13:06:47');
+INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', null, 'rt', '', '0', '0', '2016-08-29 13:06:47');
 
 -- ----------------------------
 -- Table structure for reminder
@@ -342,7 +342,7 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT '0',
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50016 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50018 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
@@ -361,23 +361,28 @@ INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '95', '65', 
 INSERT INTO `study` VALUES ('50011', '9', '经济学', '微观经济学', '79', '26', '2016-08-05 10:20:23');
 INSERT INTO `study` VALUES ('50014', '2', '大学英语', '大学英语大学英语大学英语', '0', '0', '2016-08-29 14:14:44');
 INSERT INTO `study` VALUES ('50015', '3', '高等数学', '高等数学', '0', '0', '2016-08-29 14:15:57');
+INSERT INTO `study` VALUES ('50016', '9', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:35');
+INSERT INTO `study` VALUES ('50017', '0', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:52');
 
 -- ----------------------------
 -- Table structure for study_reply
 -- ----------------------------
 DROP TABLE IF EXISTS `study_reply`;
 CREATE TABLE `study_reply` (
+  `std_re_id` int(12) NOT NULL AUTO_INCREMENT,
   `std_id` int(12) NOT NULL COMMENT '学习ID',
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `std_re_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
-  `std_re_like` int(5) DEFAULT NULL COMMENT '赞同数',
-  PRIMARY KEY (`std_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
+  PRIMARY KEY (`std_re_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=60003 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
 -- ----------------------------
+INSERT INTO `study_reply` VALUES ('60001', '50000', 'LucasX', '少玩游戏多读书。。', '2016-08-23 14:45:48', '4560');
+INSERT INTO `study_reply` VALUES ('60002', '50000', 'admin', '火钳刘明', '2016-08-09 16:53:39', '165');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -557,10 +562,7 @@ INSERT INTO `user_studytype` VALUES ('admin', '8');
 INSERT INTO `user_studytype` VALUES ('admin', '9');
 INSERT INTO `user_studytype` VALUES ('admin', '5');
 INSERT INTO `user_studytype` VALUES ('LucasX', '0');
-INSERT INTO `user_studytype` VALUES ('LucasX', '1');
-INSERT INTO `user_studytype` VALUES ('LucasX', '2');
 INSERT INTO `user_studytype` VALUES ('LucasX', '3');
-INSERT INTO `user_studytype` VALUES ('LucasX', '4');
 
 -- ----------------------------
 -- Table structure for visitor

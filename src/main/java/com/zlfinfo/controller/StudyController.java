@@ -2,7 +2,6 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.Study;
-import com.zlfinfo.model.UserStudy;
 import com.zlfinfo.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,21 +27,20 @@ public class StudyController extends BaseController {
         return null != studyList ? renderSuccess(studyList, httpServletResponse) : renderError("学习列表查询失败",
                 httpServletResponse);
     }
-    @RequestMapping(value = "/addstuqu", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/study/addstuqu", method = RequestMethod.POST)
     @ResponseBody
-    public Object addstuqu(@RequestParam(required = false) Integer stdId, @RequestParam(required = false) String stdTitle,
-                           @RequestParam Integer typeId, @RequestParam(required = false) String stdContent, @RequestParam String username, HttpServletResponse response) {
-        Study study = new Study(stdId, typeId, stdTitle, stdContent,new Date());
-        Integer stuid = studyService.insert(study);
-        if (stuid == 0) {
-            return renderError("保存失败", response);
-        } else {
-            UserStudy userStudy = new UserStudy();
-            userStudy.setStdId(stuid);
-            userStudy.setUsername(username);
-            userStudy.setFlag(0);
-            studyService.insertUserStudy(userStudy);
-            return renderSuccess("保存成功", response);
-        }
+    public Object addNewStudy(@RequestParam Integer typeId, @RequestParam String
+            stdTitle, @RequestParam String stdContent, HttpServletResponse httpServletResponse) {
+        Study study = new Study();
+        study.setTypeId(typeId);
+        study.setStdTitle(stdTitle);
+        study.setStdContent(stdContent);
+        study.setStdLike(0);
+        study.setStdComment(0);
+        study.setStdTime(new Date());
+        return 0 != studyService.insert(study) ? renderSuccess("学习问题发表成功!", httpServletResponse) : renderError
+                ("学习问题发表失败!", httpServletResponse);
     }
+
 }
