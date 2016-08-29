@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserStudyTypeMapper {
 
     List<UserStudyType> selectAllUserStudyType(String username);
-
+    int insertBatch(List<UserStudyType> ustlist);
+    int deletebyUsername(String username);
 
 }

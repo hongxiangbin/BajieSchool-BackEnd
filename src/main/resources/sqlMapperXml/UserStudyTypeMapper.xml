@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zlfinfo.mapper.UserStudyTypeMapper">
     <resultMap id="userStudyTypeMap" type="com.zlfinfo.model.UserStudyType">
-        <id column="username" property="username"/>
-        <id column="stu_type" property="studyType"/>
+        <id column="username" property="username" jdbcType="VARCHAR" />
+        <id column="stu_type"  property="studyType"  jdbcType="INTEGER" />
     </resultMap>
 
     <select id="selectAllUserStudyType" resultMap="userStudyTypeMap">
@@ -12,4 +12,16 @@
         where username = #{username,jdbcType=VARCHAR}
     </select>
 
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into user_studytype (username,stu_type)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.username},#{item.studyType})
+        </foreach>
+    </insert>
+
+    <delete id="deletebyUsername" parameterType="java.lang.String">
+        delete from user_studytype
+        where username = #{username,jdbcType=VARCHAR}
+    </delete>
 </mapper>

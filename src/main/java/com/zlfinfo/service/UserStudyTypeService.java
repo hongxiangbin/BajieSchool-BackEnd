@@ -10,5 +10,5 @@ import java.util.List;
 public interface UserStudyTypeService {
 
     List<UserStudyType> selectAllUserStudyType(String username);
-
+    int insertBatch(List<UserStudyType> ustlist,String username);
 }

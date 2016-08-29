@@ -22,4 +22,10 @@ public class UserStudyTypeServiceImpl implements UserStudyTypeService {
     public List<UserStudyType> selectAllUserStudyType(String username) {
         return userStudyTypeMapper.selectAllUserStudyType(username);
     }
+    @Override
+    public int insertBatch(List<UserStudyType> ustlist,String username) {
+        userStudyTypeMapper.deletebyUsername(username);
+        userStudyTypeMapper.insertBatch(ustlist);
+        return 0;
+    }
 }

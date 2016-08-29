@@ -2,16 +2,19 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.Activity;
+import com.zlfinfo.model.ActivityType;
+import com.zlfinfo.model.Banner;
 import com.zlfinfo.model.UserActivity;
 import com.zlfinfo.service.ActivityService;
+import com.zlfinfo.service.ActivityTypeService;
+import com.zlfinfo.service.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/8/22.
@@ -21,7 +24,10 @@ public class ActivityController extends BaseController {
 
     @Autowired
     private ActivityService actService;
-
+    @Autowired
+    private ActivityTypeService activityTypeService;
+    @Autowired
+    private BannerService bannerService;
     /**
      * 发布活动
      *
@@ -74,7 +80,22 @@ public class ActivityController extends BaseController {
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
                 httpServletResponse);
     }
-
+    @RequestMapping(value = "/activityALL", method = RequestMethod.POST)
+    @ResponseBody
+    public Object showActivityALL(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
+            httpServletResponse) {
+        List<List<Object>> actALLlist = new ArrayList<>();
+        Map resultMap=new HashMap();
+        /*Map<Object,List<Object>> resultMap= new HashMap<Object, List<Object>>();*/
+        List<Activity> activityList = actService.selectActivityByUserNType(username, type);
+        List<ActivityType> activityTypeList = activityTypeService.selectAllActType();
+        List<Banner> bannerList = bannerService.selectAllBanner();
+        resultMap.put("Activity",activityList);
+        resultMap.put("ActivityType",activityTypeList);
+        resultMap.put("Banner",bannerList);
+        return null != activityList ? renderSuccess(resultMap, httpServletResponse) : renderError("活动查询失败",
+                httpServletResponse);
+    }
 
     @RequestMapping(value = "/activity/launchedact", method = RequestMethod.GET)
     @ResponseBody

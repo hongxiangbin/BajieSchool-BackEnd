@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,19 @@ public class UserStudyTypeController extends BaseController {
         } else {
             return renderError("学习类型获取失败", httpServletResponse);
         }
-
     }
-
+    @RequestMapping(value = "/updateStu", method = RequestMethod.POST)
+    public Object updateStu(String username,Integer[] typeId ,HttpServletResponse httpServletResponse) {
+    List<UserStudyType> ustlist = new ArrayList<>();
+        if(typeId!=null) {
+            for (int i = 0; i < typeId.length; i++) {
+                UserStudyType userst = new UserStudyType();
+                userst.setUsername(username);
+                userst.setStudyType(typeId[i]);
+                ustlist.add(userst);
+            }
+            userStudyTypeService.insertBatch(ustlist,username);
+        }
+        return renderSuccess("保存成功", httpServletResponse);
+    }
 }
