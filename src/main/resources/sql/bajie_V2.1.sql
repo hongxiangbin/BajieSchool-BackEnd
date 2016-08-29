@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-26 19:52:16
+Date: 2016-08-29 14:28:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,14 +43,14 @@ CREATE TABLE `activity` (
   `act_type` int(2) DEFAULT NULL,
   `act_title` varchar(100) NOT NULL,
   `act_content` varchar(255) DEFAULT NULL,
-  `act_img` varchar(100) DEFAULT NULL COMMENT '../img/img-default-activity.jpg',
+  `act_img` varchar(100) DEFAULT '../img/img-default-activity.jpg',
   `act_time` datetime DEFAULT NULL,
-  `act_like` int(5) DEFAULT NULL,
-  `act_comment` int(5) DEFAULT NULL,
-  `act_follow` int(5) DEFAULT NULL,
-  `act_join` int(5) DEFAULT NULL,
-  `act_signup` int(5) DEFAULT NULL,
-  `act_place` varchar(255) DEFAULT NULL,
+  `act_like` int(5) DEFAULT '0',
+  `act_comment` int(5) DEFAULT '0',
+  `act_follow` int(5) DEFAULT '0',
+  `act_join` int(5) DEFAULT '0',
+  `act_signup` int(5) DEFAULT '0',
+  `act_place` varchar(255) DEFAULT '暂无',
   `reserve1` varchar(255) DEFAULT NULL,
   `reserve2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`act_id`)
@@ -140,26 +140,26 @@ CREATE TABLE `agenda` (
   `ag_remind` datetime DEFAULT NULL COMMENT '提醒时间',
   `ag_show` int(1) DEFAULT '0',
   PRIMARY KEY (`ag_id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=90006 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=90026 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of agenda
 -- ----------------------------
-INSERT INTO `agenda` VALUES ('90000', 'LucasX', '跑步', '每天早上起来跑步', '2016-08-15 08:56:47', '2016-08-22 08:56:51', '0');
+INSERT INTO `agenda` VALUES ('90000', 'LucasX', '跑步', '每天早上起来跑步', '2016-08-15 08:56:47', '2016-08-22 08:56:51', '1');
 INSERT INTO `agenda` VALUES ('90001', 'admin', '背单词', '每天早上起来背单词', '2016-08-15 08:56:45', '2016-08-22 08:56:53', '1');
-INSERT INTO `agenda` VALUES ('90005', 'admin', '去看电影', '周末', '2016-08-26 18:51:00', '2016-08-26 18:51:00', '0');
+INSERT INTO `agenda` VALUES ('90025', 'LucasX', '和婷婷看电影', '晚上去吧', '2016-08-01 10:10:00', '2016-08-01 10:00:00', '0');
 
 -- ----------------------------
 -- Table structure for answer
 -- ----------------------------
 DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer` (
-  `ans_id` int(12) NOT NULL COMMENT '答案ID',
+  `ans_id` int(12) NOT NULL AUTO_INCREMENT COMMENT '答案ID',
   `que_id` int(12) NOT NULL COMMENT '问题ID',
-  `ans_content` varchar(255) DEFAULT NULL COMMENT '答案内容',
+  `ans_content` varchar(255) NOT NULL COMMENT '答案内容',
   `username` varchar(16) NOT NULL COMMENT '答主用户名',
-  `ans_like` int(5) DEFAULT NULL COMMENT '赞同',
-  `ans_comment` int(5) DEFAULT NULL COMMENT '评论',
+  `ans_like` int(5) DEFAULT '0' COMMENT '赞同',
+  `ans_comment` int(5) DEFAULT '0' COMMENT '评论',
   `ans_time` datetime DEFAULT NULL COMMENT '回答时间',
   PRIMARY KEY (`ans_id`,`que_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -236,8 +236,8 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '0', '2016-08-26 11:12:07');
-INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-08-26 11:11:59');
+INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-27 10:35:20');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-29 10:27:18');
 
 -- ----------------------------
 -- Table structure for notification
@@ -282,18 +282,19 @@ CREATE TABLE `question` (
   `que_title` varchar(100) NOT NULL COMMENT '问题标题',
   `que_tags` varchar(50) DEFAULT NULL COMMENT '问题标签',
   `que_content` varchar(255) DEFAULT NULL COMMENT '问题内容',
-  `que_img` varchar(100) DEFAULT NULL COMMENT '图片',
+  `que_img` varchar(100) DEFAULT 'img/img-default-quora.jpg' COMMENT '图片',
   `que_like` int(5) DEFAULT '0' COMMENT '赞同数',
   `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
   PRIMARY KEY (`que_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30008 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question
 -- ----------------------------
 INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '565', '56', '2016-08-09 19:13:15');
 INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '565', '4654', '2016-08-04 19:14:09');
+INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', null, 'rt', '', null, null, '2016-08-29 13:06:47');
 
 -- ----------------------------
 -- Table structure for reminder
@@ -337,11 +338,11 @@ CREATE TABLE `study` (
   `type_id` int(2) DEFAULT NULL,
   `std_title` varchar(100) DEFAULT NULL,
   `std_content` varchar(255) DEFAULT NULL,
-  `std_like` int(5) DEFAULT NULL,
-  `std_comment` int(5) DEFAULT NULL,
+  `std_like` int(5) DEFAULT '0',
+  `std_comment` int(5) DEFAULT '0',
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50012 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50016 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
@@ -358,6 +359,8 @@ INSERT INTO `study` VALUES ('50008', '6', '生物', 'DNA。。。', '465', '98',
 INSERT INTO `study` VALUES ('50009', '7', '机械', '机械购期末考。。。', '79', '6', '2016-08-02 10:19:15');
 INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '95', '65', '2016-08-26 10:20:02');
 INSERT INTO `study` VALUES ('50011', '9', '经济学', '微观经济学', '79', '26', '2016-08-05 10:20:23');
+INSERT INTO `study` VALUES ('50014', '2', '大学英语', '大学英语大学英语大学英语', '0', '0', '2016-08-29 14:14:44');
+INSERT INTO `study` VALUES ('50015', '3', '高等数学', '高等数学', '0', '0', '2016-08-29 14:15:57');
 
 -- ----------------------------
 -- Table structure for study_reply
@@ -441,7 +444,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `no_id` varchar(12) DEFAULT NULL COMMENT '通知ID',
-  `password` varchar(20) NOT NULL COMMENT '密码',
+  `password` varchar(255) NOT NULL COMMENT '密码',
   `sex` char(4) DEFAULT NULL COMMENT '性别',
   `cellphone` char(11) NOT NULL COMMENT '手机号',
   `avatar` varchar(100) DEFAULT NULL COMMENT '头像',
@@ -462,8 +465,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('admin', '1110831116', 'admin', '1', '13207145966', null, '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
-INSERT INTO `user` VALUES ('LucasX', '1234567894', '123456', '1', '13207145966', null, '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
+INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', null, '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
+INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', null, '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -517,6 +520,7 @@ CREATE TABLE `user_question` (
 -- ----------------------------
 INSERT INTO `user_question` VALUES ('LucasX', '30000', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30001', '1');
+INSERT INTO `user_question` VALUES ('LucasX', '30007', '0');
 
 -- ----------------------------
 -- Table structure for user_study
