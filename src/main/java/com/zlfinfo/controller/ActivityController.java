@@ -84,9 +84,7 @@ public class ActivityController extends BaseController {
     @ResponseBody
     public Object showActivityALL(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
-        List<List<Object>> actALLlist = new ArrayList<>();
         Map resultMap=new HashMap();
-        /*Map<Object,List<Object>> resultMap= new HashMap<Object, List<Object>>();*/
         List<Activity> activityList = actService.selectActivityByUserNType(username, type);
         List<ActivityType> activityTypeList = activityTypeService.selectAllActType();
         List<Banner> bannerList = bannerService.selectAllBanner();
