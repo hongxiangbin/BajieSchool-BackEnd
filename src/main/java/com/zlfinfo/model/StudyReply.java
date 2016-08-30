@@ -10,6 +10,8 @@ public class StudyReply implements Serializable {
 
     private String username;
 
+    private String avatar;
+
     private String stdReContent;
 
     private Date stdReTime;
@@ -48,6 +50,14 @@ public class StudyReply implements Serializable {
 
     public void setStdReContent(String stdReContent) {
         this.stdReContent = stdReContent == null ? null : stdReContent.trim();
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Date getStdReTime() {

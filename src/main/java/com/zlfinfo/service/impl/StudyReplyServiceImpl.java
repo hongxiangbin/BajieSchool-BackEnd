@@ -23,7 +23,7 @@ public class StudyReplyServiceImpl implements StudyReplyService {
     }
 
     @Override
-    public List<StudyReply> selectStudyReplyByStudy(Integer stdId) {
-        return studyReplyMapper.selectStudyReplyByStudy(stdId);
+    public List<StudyReply> selectStudyReplyByStudy(Integer stdId, String username) {
+        return studyReplyMapper.selectStudyReplyByStudy(stdId, username);
     }
 }

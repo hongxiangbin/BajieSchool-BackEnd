@@ -20,7 +20,7 @@ public interface StudyReplyMapper {
 
     List<StudyReply> selectAllStudyReply();
 
-    List<StudyReply> selectStudyReplyByStudy(Integer stdId);
+    List<StudyReply> selectStudyReplyByStudy(@Param("stdId") Integer stdId, @Param("username") String username);
 
 
 }

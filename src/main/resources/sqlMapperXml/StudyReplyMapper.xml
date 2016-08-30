@@ -6,6 +6,7 @@
         <result column="std_id" jdbcType="INTEGER" property="stdId"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="std_re_content" jdbcType="VARCHAR" property="stdReContent"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
         <result column="std_re_time" jdbcType="TIMESTAMP" property="stdReTime"/>
         <result column="std_re_like" jdbcType="INTEGER" property="stdReLike"/>
     </resultMap>
@@ -25,8 +26,19 @@
         and username = #{username,jdbcType=VARCHAR}
     </select>
 
-    <select id="selectStudyReplyByStudy" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        SELECT * FROM study_reply WHERE std_id = #{stdId}
+    <select id="selectStudyReplyByStudy" resultMap="BaseResultMap">
+        SELECT DISTINCT
+            study_reply.*, `user`.avatar
+        FROM
+            study_reply
+        NATURAL JOIN USER,
+            login_status
+        WHERE
+            login_status.username = #{username}
+        AND login_status. STATUS = 0
+        AND study_reply.std_id = #{stdId}
+        ORDER BY
+	        study_reply.std_re_time DESC
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="map">

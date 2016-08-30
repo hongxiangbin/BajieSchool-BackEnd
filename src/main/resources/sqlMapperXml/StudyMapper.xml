@@ -12,6 +12,8 @@
     </resultMap>
 
     <resultMap id="studyIndexMap" type="com.zlfinfo.model.Study">
+        <result column="std_id" property="stdId" jdbcType="INTEGER"/>
+        <result column="type_id" property="typeId" jdbcType="INTEGER"/>
         <result column="std_title" property="stdTitle" jdbcType="VARCHAR"/>
         <result column="std_content" property="stdContent" jdbcType="VARCHAR"/>
         <result column="std_like" property="stdLike" jdbcType="INTEGER"/>
@@ -25,6 +27,8 @@
 
     <select id="selectStudyByTypeNUser" resultMap="studyIndexMap">
         SELECT
+        study.std_id,
+        study.type_id,
         study.std_title,
         study.std_content,
         study.std_like,
