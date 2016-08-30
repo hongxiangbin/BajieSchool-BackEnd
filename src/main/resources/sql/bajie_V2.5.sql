@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-30 15:55:48
+Date: 2016-08-30 17:59:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -342,7 +342,7 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT '0',
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50018 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50019 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
@@ -363,6 +363,7 @@ INSERT INTO `study` VALUES ('50014', '2', '大学英语', '大学英语大学英
 INSERT INTO `study` VALUES ('50015', '3', '高等数学', '高等数学', '0', '0', '2016-08-29 14:15:57');
 INSERT INTO `study` VALUES ('50016', '9', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:35');
 INSERT INTO `study` VALUES ('50017', '0', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:52');
+INSERT INTO `study` VALUES ('50018', '3', '如何学好高等数学', '啊啊啊啊啊啊啊啊啊啊', '0', '0', '2016-08-30 16:05:17');
 
 -- ----------------------------
 -- Table structure for study_reply
@@ -441,16 +442,140 @@ INSERT INTO `test_user` VALUES ('1', 'ewqe', 'ewq');
 -- ----------------------------
 DROP TABLE IF EXISTS `university`;
 CREATE TABLE `university` (
-  `univ_id` int(5) NOT NULL COMMENT '学校ID',
+  `univ_id` int(5) NOT NULL AUTO_INCREMENT COMMENT '学校ID',
   `univ_name` varchar(50) NOT NULL COMMENT '学校名称',
+  `univ_place` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`univ_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10626 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of university
 -- ----------------------------
-INSERT INTO `university` VALUES ('10486', '武汉大学');
-INSERT INTO `university` VALUES ('10500', '湖北工业大学');
+INSERT INTO `university` VALUES ('1', '武汉大学', '湖北');
+INSERT INTO `university` VALUES ('2', '华中科技大学', '湖北');
+INSERT INTO `university` VALUES ('3', '武汉科技大学', '湖北');
+INSERT INTO `university` VALUES ('4', '长江大学', '湖北');
+INSERT INTO `university` VALUES ('5', '武汉工程大学', '湖北');
+INSERT INTO `university` VALUES ('6', '中国地质大学(武汉)', '湖北');
+INSERT INTO `university` VALUES ('7', '武汉纺织大学', '湖北');
+INSERT INTO `university` VALUES ('8', '武汉轻工大学', '湖北');
+INSERT INTO `university` VALUES ('9', '武汉理工大学', '湖北');
+INSERT INTO `university` VALUES ('10', '湖北工业大学', '湖北');
+INSERT INTO `university` VALUES ('11', '华中农业大学', '湖北');
+INSERT INTO `university` VALUES ('12', '湖北中医药大学', '湖北');
+INSERT INTO `university` VALUES ('13', '华中师范大学', '湖北');
+INSERT INTO `university` VALUES ('14', '湖北大学', '湖北');
+INSERT INTO `university` VALUES ('15', '湖北师范学院', '湖北');
+INSERT INTO `university` VALUES ('16', '黄冈师范学院', '湖北');
+INSERT INTO `university` VALUES ('17', '湖北民族学院', '湖北');
+INSERT INTO `university` VALUES ('18', '郧阳师范高等专科学校', '湖北');
+INSERT INTO `university` VALUES ('19', '湖北文理学院', '湖北');
+INSERT INTO `university` VALUES ('20', '中南财经政法大学', '湖北');
+INSERT INTO `university` VALUES ('21', '武汉体育学院', '湖北');
+INSERT INTO `university` VALUES ('22', '湖北美术学院', '湖北');
+INSERT INTO `university` VALUES ('23', '中南民族大学', '湖北');
+INSERT INTO `university` VALUES ('24', '湖北汽车工业学院', '湖北');
+INSERT INTO `university` VALUES ('25', '湖北工程学院', '湖北');
+INSERT INTO `university` VALUES ('26', '武汉职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('27', '湖北理工学院', '湖北');
+INSERT INTO `university` VALUES ('28', '湖北科技学院', '湖北');
+INSERT INTO `university` VALUES ('29', '湖北医药学院', '湖北');
+INSERT INTO `university` VALUES ('30', '黄冈职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('31', '长江职业学院', '湖北');
+INSERT INTO `university` VALUES ('32', '江汉大学', '湖北');
+INSERT INTO `university` VALUES ('33', '荆州理工职业学院', '湖北');
+INSERT INTO `university` VALUES ('34', '三峡大学', '湖北');
+INSERT INTO `university` VALUES ('35', '湖北警官学院', '湖北');
+INSERT INTO `university` VALUES ('36', '湖北工业职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('37', '鄂州职业大学', '湖北');
+INSERT INTO `university` VALUES ('38', '荆楚理工学院', '湖北');
+INSERT INTO `university` VALUES ('39', '武汉音乐学院', '湖北');
+INSERT INTO `university` VALUES ('40', '湖北经济学院', '湖北');
+INSERT INTO `university` VALUES ('41', '武汉商学院', '湖北');
+INSERT INTO `university` VALUES ('42', '武汉城市职业学院', '湖北');
+INSERT INTO `university` VALUES ('43', '武汉东湖学院', '湖北');
+INSERT INTO `university` VALUES ('44', '汉口学院', '湖北');
+INSERT INTO `university` VALUES ('45', '湖北中医药高等专科学校', '湖北');
+INSERT INTO `university` VALUES ('46', '湖北职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('47', '武汉船舶职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('48', '武昌首义学院', '湖北');
+INSERT INTO `university` VALUES ('49', '武昌理工学院', '湖北');
+INSERT INTO `university` VALUES ('50', '恩施职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('51', '襄阳职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('52', '武汉生物工程学院', '湖北');
+INSERT INTO `university` VALUES ('53', '武汉工贸职业学院', '湖北');
+INSERT INTO `university` VALUES ('54', '荆州职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('55', '武汉工程职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('56', '仙桃职业学院', '湖北');
+INSERT INTO `university` VALUES ('57', '湖北轻工职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('58', '湖北交通职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('59', '武汉航海职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('60', '武汉铁路职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('61', '武汉软件工程职业学院', '湖北');
+INSERT INTO `university` VALUES ('62', '湖北三峡职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('63', '随州职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('64', '武汉电力职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('65', '湖北水利水电职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('66', '湖北城市建设职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('67', '武汉警官职业学院', '湖北');
+INSERT INTO `university` VALUES ('68', '湖北生物科技职业学院', '湖北');
+INSERT INTO `university` VALUES ('69', '湖北开放职业学院', '湖北');
+INSERT INTO `university` VALUES ('70', '武汉科技职业学院', '湖北');
+INSERT INTO `university` VALUES ('71', '武汉外语外事职业学院', '湖北');
+INSERT INTO `university` VALUES ('72', '武汉信息传播职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('73', '武昌职业学院', '湖北');
+INSERT INTO `university` VALUES ('74', '武汉商贸职业学院', '湖北');
+INSERT INTO `university` VALUES ('75', '武汉大学珞珈学院', '湖北');
+INSERT INTO `university` VALUES ('76', '湖北大学知行学院', '湖北');
+INSERT INTO `university` VALUES ('77', '武汉科技大学城市学院', '湖北');
+INSERT INTO `university` VALUES ('78', '三峡大学科技学院', '湖北');
+INSERT INTO `university` VALUES ('79', '江汉大学文理学院', '湖北');
+INSERT INTO `university` VALUES ('80', '湖北工业大学工程技术学院', '湖北');
+INSERT INTO `university` VALUES ('81', '武汉工程大学邮电与信息工程学院', '湖北');
+INSERT INTO `university` VALUES ('82', '武汉纺织大学外经贸学院', '湖北');
+INSERT INTO `university` VALUES ('83', '武昌工学院', '湖北');
+INSERT INTO `university` VALUES ('84', '武汉工商学院', '湖北');
+INSERT INTO `university` VALUES ('85', '长江大学工程技术学院', '湖北');
+INSERT INTO `university` VALUES ('86', '长江大学文理学院', '湖北');
+INSERT INTO `university` VALUES ('87', '湖北商贸学院', '湖北');
+INSERT INTO `university` VALUES ('88', '湖北汽车工业学院科技学院', '湖北');
+INSERT INTO `university` VALUES ('89', '湖北医药学院药护学院', '湖北');
+INSERT INTO `university` VALUES ('90', '湖北民族学院科技学院', '湖北');
+INSERT INTO `university` VALUES ('91', '湖北经济学院法商学院', '湖北');
+INSERT INTO `university` VALUES ('92', '武汉体育学院体育科技学院', '湖北');
+INSERT INTO `university` VALUES ('93', '湖北师范学院文理学院', '湖北');
+INSERT INTO `university` VALUES ('94', '湖北文理学院理工学院', '湖北');
+INSERT INTO `university` VALUES ('95', '湖北工程学院新技术学院', '湖北');
+INSERT INTO `university` VALUES ('96', '文华学院', '湖北');
+INSERT INTO `university` VALUES ('97', '湖北艺术职业学院', '湖北');
+INSERT INTO `university` VALUES ('98', '武汉交通职业学院', '湖北');
+INSERT INTO `university` VALUES ('99', '咸宁职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('100', '长江工程职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('101', '武汉学院', '湖北');
+INSERT INTO `university` VALUES ('102', '武汉工程科技学院', '湖北');
+INSERT INTO `university` VALUES ('103', '武汉华夏理工学院', '湖北');
+INSERT INTO `university` VALUES ('104', '华中师范大学武汉传媒学院', '湖北');
+INSERT INTO `university` VALUES ('105', '江汉艺术职业学院', '湖北');
+INSERT INTO `university` VALUES ('106', '武汉工业职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('107', '武汉民政职业学院', '湖北');
+INSERT INTO `university` VALUES ('108', '鄂东职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('109', '湖北财税职业学院', '湖北');
+INSERT INTO `university` VALUES ('110', '黄冈科技职业学院', '湖北');
+INSERT INTO `university` VALUES ('111', '湖北国土资源职业学院', '湖北');
+INSERT INTO `university` VALUES ('112', '湖北生态工程职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('113', '武汉设计工程学院', '湖北');
+INSERT INTO `university` VALUES ('114', '三峡电力职业学院', '湖北');
+INSERT INTO `university` VALUES ('115', '湖北第二师范学院', '湖北');
+INSERT INTO `university` VALUES ('116', '湖北科技职业学院', '湖北');
+INSERT INTO `university` VALUES ('117', '湖北青年职业学院', '湖北');
+INSERT INTO `university` VALUES ('118', '湖北工程职业学院', '湖北');
+INSERT INTO `university` VALUES ('119', '三峡旅游职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('120', '天门职业学院', '湖北');
+INSERT INTO `university` VALUES ('121', '湖北体育职业学院', '湖北');
+INSERT INTO `university` VALUES ('122', '襄阳汽车职业技术学院', '湖北');
+INSERT INTO `university` VALUES ('123', '湖北幼儿师范高等专科学校', '湖北');
+INSERT INTO `university` VALUES ('124', '武汉铁路桥梁职业学院', '湖北');
+INSERT INTO `university` VALUES ('125', '荆州教育学院', '湖北');
 
 -- ----------------------------
 -- Table structure for user
@@ -490,7 +615,7 @@ DROP TABLE IF EXISTS `user_activity`;
 CREATE TABLE `user_activity` (
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `act_id` int(12) NOT NULL COMMENT '活动ID',
-  `flag` int(1) DEFAULT NULL COMMENT '0——发布的活动；1——参加的活动；2——关注的活动；3——报名的活动',
+  `flag` int(1) DEFAULT NULL COMMENT '0——发布的活动；1——参加的活动；2——关注的活动；3——报名的活动；4——点赞的活动',
   PRIMARY KEY (`username`,`act_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

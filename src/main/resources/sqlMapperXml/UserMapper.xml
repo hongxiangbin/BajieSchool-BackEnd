@@ -31,6 +31,7 @@
         username, no_id, password, sex, cellphone, avatar, motto, university, institution, enroll_year,
         level, qq, wechat, weibo, reserve1, reserve2, reserve3
     </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
