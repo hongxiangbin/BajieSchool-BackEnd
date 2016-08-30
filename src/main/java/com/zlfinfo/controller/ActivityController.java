@@ -103,5 +103,13 @@ public class ActivityController extends BaseController {
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("发起活动列表查询失败",
                 httpServletResponse);
     }
+    @RequestMapping(value = "/activity/mine", method = RequestMethod.GET)
+    @ResponseBody
+    public Object selectMyActivity(@RequestParam String username, @RequestParam Integer type,  HttpServletResponse
+            httpServletResponse) {
+        List<Activity> publishedList = actService.selectMineActivity(username, type);
+        return null != publishedList ? renderSuccess(publishedList, httpServletResponse) : renderError("发起活动列表查询失败",
+                httpServletResponse);
+    }
 
 }
