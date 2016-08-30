@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-30 10:33:19
+Date: 2016-08-30 15:55:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,7 +43,7 @@ CREATE TABLE `activity` (
   `act_type` int(2) DEFAULT NULL,
   `act_title` varchar(100) NOT NULL,
   `act_content` varchar(255) DEFAULT NULL,
-  `act_img` varchar(100) DEFAULT '../img/img-default-activity.jpg',
+  `act_img` varchar(100) DEFAULT '../img/img-default-activity.png',
   `act_time` datetime DEFAULT NULL,
   `act_like` int(5) DEFAULT '0',
   `act_comment` int(5) DEFAULT '0',
@@ -282,7 +282,7 @@ CREATE TABLE `question` (
   `que_title` varchar(100) NOT NULL COMMENT '问题标题',
   `que_tags` varchar(50) DEFAULT NULL COMMENT '问题标签',
   `que_content` varchar(255) DEFAULT NULL COMMENT '问题内容',
-  `que_img` varchar(100) DEFAULT 'img/img-default-quora.jpg' COMMENT '图片',
+  `que_img` varchar(100) DEFAULT 'img/img-default-quora.png' COMMENT '图片',
   `que_like` int(5) DEFAULT '0' COMMENT '赞同数',
   `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
@@ -376,13 +376,23 @@ CREATE TABLE `study_reply` (
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
   `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
   PRIMARY KEY (`std_re_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60003 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60013 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
 -- ----------------------------
 INSERT INTO `study_reply` VALUES ('60001', '50000', 'LucasX', '少玩游戏多读书。。', '2016-08-23 14:45:48', '4560');
 INSERT INTO `study_reply` VALUES ('60002', '50000', 'admin', '火钳刘明', '2016-08-09 16:53:39', '165');
+INSERT INTO `study_reply` VALUES ('60003', '50003', 'LucasX', 'ssssssssssss', '2016-08-30 15:39:56', '0');
+INSERT INTO `study_reply` VALUES ('60004', '50003', 'LucasX', 'dasda', '2016-08-30 15:40:56', '0');
+INSERT INTO `study_reply` VALUES ('60005', '50003', 'LucasX', 'dasda', '2016-08-30 15:41:04', '0');
+INSERT INTO `study_reply` VALUES ('60006', '50003', 'LucasX', 'dddddd', '2016-08-30 15:41:09', '0');
+INSERT INTO `study_reply` VALUES ('60007', '50002', 'LucasX', '推荐系统', '2016-08-30 15:41:33', '0');
+INSERT INTO `study_reply` VALUES ('60008', '50003', 'LucasX', '啊啊啊啊啊啊', '2016-08-30 15:50:56', '0');
+INSERT INTO `study_reply` VALUES ('60009', '50003', 'LucasX', '啊啊啊啊啊啊', '2016-08-30 15:51:12', '0');
+INSERT INTO `study_reply` VALUES ('60010', '50003', 'LucasX', '呵呵呵呵呵', '2016-08-30 15:52:43', '0');
+INSERT INTO `study_reply` VALUES ('60011', '50003', 'LucasX', '非斯蒂芬斯蒂芬', '2016-08-30 15:53:55', '0');
+INSERT INTO `study_reply` VALUES ('60012', '50003', 'LucasX', '大大萨斯的', '2016-08-30 15:54:52', '0');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -453,6 +463,7 @@ CREATE TABLE `user` (
   `sex` char(4) DEFAULT NULL COMMENT '性别',
   `cellphone` char(11) NOT NULL COMMENT '手机号',
   `avatar` varchar(100) DEFAULT 'img/avatar-default-boy.png' COMMENT '头像',
+  `motto` varchar(255) DEFAULT NULL,
   `university` int(5) NOT NULL COMMENT '大学',
   `institution` varchar(50) DEFAULT NULL COMMENT '学院',
   `enroll_year` char(4) NOT NULL COMMENT '入学年份',
@@ -463,15 +474,14 @@ CREATE TABLE `user` (
   `reserve1` varchar(255) DEFAULT NULL COMMENT '预留字段',
   `reserve2` varchar(255) DEFAULT NULL,
   `reserve3` varchar(255) DEFAULT NULL,
-  `reserve4` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
-INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
+INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '没什么好说的', '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
+INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -534,14 +544,28 @@ DROP TABLE IF EXISTS `user_study`;
 CREATE TABLE `user_study` (
   `username` varchar(16) NOT NULL,
   `std_id` int(12) NOT NULL,
-  `flag` int(1) DEFAULT NULL COMMENT '0——发帖；1——点赞；2——评论',
-  PRIMARY KEY (`username`,`std_id`)
+  `flag` int(1) DEFAULT NULL COMMENT '0——发帖；1——点赞；2——评论'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_study
 -- ----------------------------
+INSERT INTO `user_study` VALUES ('admin', '50006', '0');
+INSERT INTO `user_study` VALUES ('admin', '50007', '0');
+INSERT INTO `user_study` VALUES ('admin', '50008', '0');
+INSERT INTO `user_study` VALUES ('admin', '50009', '0');
+INSERT INTO `user_study` VALUES ('admin', '50010', '0');
+INSERT INTO `user_study` VALUES ('admin', '50011', '0');
+INSERT INTO `user_study` VALUES ('admin', '50014', '0');
+INSERT INTO `user_study` VALUES ('admin', '50015', '0');
+INSERT INTO `user_study` VALUES ('admin', '50016', '0');
+INSERT INTO `user_study` VALUES ('admin', '50017', '0');
 INSERT INTO `user_study` VALUES ('LucasX', '50000', '0');
+INSERT INTO `user_study` VALUES ('LucasX', '50001', '0');
+INSERT INTO `user_study` VALUES ('LucasX', '50003', '0');
+INSERT INTO `user_study` VALUES ('LucasX', '50004', '0');
+INSERT INTO `user_study` VALUES ('LucasX', '50005', '0');
+INSERT INTO `user_study` VALUES ('LucasX', '50003', '1');
 
 -- ----------------------------
 -- Table structure for user_studytype
@@ -585,6 +609,12 @@ INSERT INTO `visitor` VALUES ('LucasX', '9', '2016-08-21 11:26:09');
 INSERT INTO `visitor` VALUES ('LucasX', '11', '2016-08-22 10:26:09');
 INSERT INTO `visitor` VALUES ('LucasX', '6', '2016-08-23 10:15:09');
 INSERT INTO `visitor` VALUES ('LucasX', '2', '2016-08-24 10:15:09');
+INSERT INTO `visitor` VALUES ('LucasX', '12', '2016-08-25 14:07:03');
+INSERT INTO `visitor` VALUES ('LucasX', '15', '2016-08-26 14:07:14');
+INSERT INTO `visitor` VALUES ('LucasX', '16', '2016-08-27 14:07:25');
+INSERT INTO `visitor` VALUES ('LucasX', '21', '2016-08-28 14:07:34');
+INSERT INTO `visitor` VALUES ('LucasX', '15', '2016-08-29 14:07:46');
+INSERT INTO `visitor` VALUES ('LucasX', '34', '2016-08-30 14:07:58');
 
 -- ----------------------------
 -- View structure for activity_view
