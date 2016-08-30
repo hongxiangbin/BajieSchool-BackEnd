@@ -20,4 +20,8 @@ public interface ActivityService {
 
     List<Activity> selectMineActivity(String username, Integer type);
 
+    int updateByPrimaryKeySelective(Activity act);
+
+    Activity selectByPrimaryKey(Integer actId);
+
 }

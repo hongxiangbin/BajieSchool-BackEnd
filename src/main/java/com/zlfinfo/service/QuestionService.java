@@ -17,4 +17,8 @@ public interface QuestionService {
     int addQuestion(Question question);
 
     int addUserque(UserQuestion userQuestion);
+
+    Question selectByPrimaryKey(Integer queId);
+
+    int updateByPrimaryKeySelective(Question record);
 }

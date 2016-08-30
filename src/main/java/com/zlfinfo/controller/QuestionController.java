@@ -61,5 +61,22 @@ public class QuestionController extends BaseController {
         }
         return render(msg,status, httpServletResponse);
     }
-
+    @RequestMapping(value = "/quora/updlike", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updlike(@RequestParam Integer id, HttpServletResponse
+            httpServletResponse) {
+        System.out.println(id);
+        Question question = new Question();
+        if(id!=null){
+            question = questionService.selectByPrimaryKey(id);
+        }
+        if(null!=question){
+            question.setQueId(id);
+            question.setQueLike(question.getQueLike()+1);
+            questionService.updateByPrimaryKeySelective(question);
+            return renderSuccess("更新成功", httpServletResponse);
+        }else{
+            return renderError("更新失败", httpServletResponse);
+        }
+    }
 }

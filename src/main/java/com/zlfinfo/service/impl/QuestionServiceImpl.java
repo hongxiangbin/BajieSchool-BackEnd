@@ -45,4 +45,12 @@ public class QuestionServiceImpl implements QuestionService {
         userQuestionMapper.insert(userQuestion);
         return 0;
     }
+    @Override
+    public int updateByPrimaryKeySelective(Question que) {
+        return questionMapper.updateByPrimaryKeySelective(que);
+    }
+    @Override
+    public Question selectByPrimaryKey(Integer queId) {
+        return questionMapper.selectByPrimaryKey(queId);
+    }
 }

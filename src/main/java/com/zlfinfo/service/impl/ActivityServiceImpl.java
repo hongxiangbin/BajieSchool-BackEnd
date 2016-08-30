@@ -53,4 +53,14 @@ public class ActivityServiceImpl implements ActivityService {
     public List<Activity> selectMineActivity(String username, Integer flag) {
         return actMapper.selectMineActivity(username, flag);
     }
+
+    @Override
+    public int updateByPrimaryKeySelective(Activity act) {
+        return actMapper.updateByPrimaryKeySelective(act);
+    }
+
+    @Override
+    public Activity selectByPrimaryKey(Integer actId) {
+        return actMapper.selectByPrimaryKey(actId);
+    }
 }
