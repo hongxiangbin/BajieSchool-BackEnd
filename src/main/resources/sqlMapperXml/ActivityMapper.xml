@@ -114,19 +114,7 @@
         #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR},
         #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
     </insert>
-  <!--  <insert id="insert"  useGeneratedKeys="true" keyProperty="actId" parameterType="com.zlfinfo.model.Activity">
-    insert into activity (act_id, act_type, act_title, 
-      act_content, act_img, act_time, 
-      act_like, act_comment, act_follow, 
-      act_join, act_signup, act_place, 
-      reserve1, reserve2)
-    values (#{actId,jdbcType=INTEGER}, #{actType,jdbcType=INTEGER}, #{actTitle,jdbcType=VARCHAR},
-      #{actContent,jdbcType=VARCHAR}, #{actImg,jdbcType=VARCHAR}, #{actTime,jdbcType=TIMESTAMP}, 
-      #{actLike,jdbcType=INTEGER}, #{actComment,jdbcType=INTEGER}, #{actFollow,jdbcType=INTEGER}, 
-      #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR}, 
-      #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
-  </insert>-->
-    <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
+     <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
         insert into activity
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="actId != null">

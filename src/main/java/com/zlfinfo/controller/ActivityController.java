@@ -111,5 +111,20 @@ public class ActivityController extends BaseController {
         return null != publishedList ? renderSuccess(publishedList, httpServletResponse) : renderError("发起活动列表查询失败",
                 httpServletResponse);
     }
-
+    @RequestMapping(value = "/activity/updlike", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updlike(@RequestParam Integer id, HttpServletResponse
+            httpServletResponse) {
+        System.out.println(id);
+       Activity act = new Activity();
+        act = actService.selectByPrimaryKey(id);
+        if(null!=act){
+            act.setActId(id);
+            act.setActLike(act.getActLike()+1);
+            actService.updateByPrimaryKeySelective(act);
+            return renderSuccess("更新成功", httpServletResponse);
+        }else{
+            return renderError("更新失败", httpServletResponse);
+        }
+    }
 }

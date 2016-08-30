@@ -13,4 +13,6 @@ public interface StudyService {
     List<Study> selectStudyByTypeNUser(Integer type, String username);
     int insert(Study study);
     int insertUserStudy(UserStudy userStudy);
+    int updateByPrimaryKeySelective(Study record);
+    Study selectByPrimaryKey(Integer stdId);
 }

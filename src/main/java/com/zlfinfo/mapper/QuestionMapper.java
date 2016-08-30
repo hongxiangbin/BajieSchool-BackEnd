@@ -12,7 +12,7 @@ public interface QuestionMapper {
 
     int insert(Question question);
 
-    Question selectByPrimaryKey(String queId);
+    Question selectByPrimaryKey(Integer queId);
 
     int updateByPrimaryKeySelective(Question record);
 

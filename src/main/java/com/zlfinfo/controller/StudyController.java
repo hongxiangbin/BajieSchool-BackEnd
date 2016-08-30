@@ -42,5 +42,21 @@ public class StudyController extends BaseController {
         return 0 != studyService.insert(study) ? renderSuccess("学习问题发表成功!", httpServletResponse) : renderError
                 ("学习问题发表失败!", httpServletResponse);
     }
-
+    @RequestMapping(value = "/study/updlike", method = RequestMethod.POST)
+    @ResponseBody
+    public Object updlike(@RequestParam Integer id, HttpServletResponse
+            httpServletResponse) {
+        Study study = new Study();
+        if(id!=null){
+            study = studyService.selectByPrimaryKey(id);
+        }
+        if(null!=study){
+            study.setStdId(id);
+            study.setStdLike(study.getStdLike()+1);
+            studyService.updateByPrimaryKeySelective(study);
+            return renderSuccess("更新成功", httpServletResponse);
+        }else{
+            return renderError("更新失败", httpServletResponse);
+        }
+    }
 }
