@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-29 17:31:11
+Date: 2016-08-30 10:33:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -237,7 +237,7 @@ CREATE TABLE `login_status` (
 -- Records of login_status
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-27 10:35:20');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-29 10:27:18');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-30 09:39:49');
 
 -- ----------------------------
 -- Table structure for notification
@@ -452,7 +452,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL COMMENT '密码',
   `sex` char(4) DEFAULT NULL COMMENT '性别',
   `cellphone` char(11) NOT NULL COMMENT '手机号',
-  `avatar` varchar(100) DEFAULT NULL COMMENT '头像',
+  `avatar` varchar(100) DEFAULT 'img/avatar-default-boy.png' COMMENT '头像',
   `university` int(5) NOT NULL COMMENT '大学',
   `institution` varchar(50) DEFAULT NULL COMMENT '学院',
   `enroll_year` char(4) NOT NULL COMMENT '入学年份',
@@ -470,8 +470,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', null, '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
-INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', null, '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
+INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
+INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -534,7 +534,7 @@ DROP TABLE IF EXISTS `user_study`;
 CREATE TABLE `user_study` (
   `username` varchar(16) NOT NULL,
   `std_id` int(12) NOT NULL,
-  `flag` int(1) DEFAULT NULL,
+  `flag` int(1) DEFAULT NULL COMMENT '0——发帖；1——点赞；2——评论',
   PRIMARY KEY (`username`,`std_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
