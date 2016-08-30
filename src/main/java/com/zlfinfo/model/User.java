@@ -15,6 +15,8 @@ public class User implements Serializable {
 
     private String avatar;
 
+    private String motto;
+
     private String university;
 
     private String institution;
@@ -35,7 +37,14 @@ public class User implements Serializable {
 
     private String reserve3;
 
-    private String reserve4;
+    public User() {
+    }
+
+    public User(String username, String avatar, String motto) {
+        this.username = username;
+        this.avatar = avatar;
+        this.motto = motto;
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -167,12 +176,12 @@ public class User implements Serializable {
         this.reserve3 = reserve3 == null ? null : reserve3.trim();
     }
 
-    public String getReserve4() {
-        return reserve4;
+    public String getMotto() {
+        return motto;
     }
 
-    public void setReserve4(String reserve4) {
-        this.reserve4 = reserve4 == null ? null : reserve4.trim();
+    public void setMotto(String motto) {
+        this.motto = motto;
     }
 
     @Override
@@ -184,6 +193,7 @@ public class User implements Serializable {
                 ", sex='" + sex + '\'' +
                 ", cellphone='" + cellphone + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", motto='" + motto + '\'' +
                 ", university='" + university + '\'' +
                 ", institution='" + institution + '\'' +
                 ", enrollYear='" + enrollYear + '\'' +
@@ -194,7 +204,6 @@ public class User implements Serializable {
                 ", reserve1='" + reserve1 + '\'' +
                 ", reserve2='" + reserve2 + '\'' +
                 ", reserve3='" + reserve3 + '\'' +
-                ", reserve4='" + reserve4 + '\'' +
                 '}';
     }
 }

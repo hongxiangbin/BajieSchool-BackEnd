@@ -19,11 +19,11 @@
     </select>
 
     <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from study-reply
-        where std_id = #{stdId,jdbcType=VARCHAR}
-        and username = #{username,jdbcType=VARCHAR}
+        FROM study-reply
+        WHERE std_id = #{stdId,jdbcType=VARCHAR}
+        AND username = #{username,jdbcType=VARCHAR}
     </select>
 
     <select id="selectStudyReplyByStudy" resultMap="BaseResultMap">
@@ -42,18 +42,20 @@
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="map">
-    delete from study-reply
-    where std_id = #{stdId,jdbcType=VARCHAR}
-      and username = #{username,jdbcType=VARCHAR}
-  </delete>
+        DELETE FROM study_reply
+        WHERE std_id = #{stdId,jdbcType=VARCHAR}
+        AND username = #{username,jdbcType=VARCHAR}
+    </delete>
+
     <insert id="insert" parameterType="com.zlfinfo.model.StudyReply">
-    insert into study-reply (std_id, std_re_id, username, std_re_content,
-      std_re_time, std_re_like)
-    values (#{stdId,jdbcType=INTEGER}, #{stdReId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{stdReContent,jdbcType=VARCHAR},
-      #{stdReTime,jdbcType=TIMESTAMP}, #{stdReLike,jdbcType=INTEGER})
-  </insert>
+        INSERT INTO study_reply (std_id, username, std_re_content,
+          std_re_time, std_re_like)
+        VALUES (#{stdId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{stdReContent,jdbcType=VARCHAR},
+          #{stdReTime,jdbcType=TIMESTAMP}, #{stdReLike,jdbcType=INTEGER})
+    </insert>
+
     <insert id="insertSelective" parameterType="com.zlfinfo.model.StudyReply">
-        insert into study-reply
+        INSERT INTO study-reply
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="stdId != null">
                 std_id,

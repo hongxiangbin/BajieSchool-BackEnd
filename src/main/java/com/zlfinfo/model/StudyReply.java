@@ -18,6 +18,18 @@ public class StudyReply implements Serializable {
 
     private Integer stdReLike;
 
+    public StudyReply() {
+    }
+
+    public StudyReply(Integer stdId, String username, String stdReContent, Date stdReTime, Integer
+            stdReLike) {
+        this.stdId = stdId;
+        this.username = username;
+        this.stdReContent = stdReContent;
+        this.stdReTime = stdReTime;
+        this.stdReLike = stdReLike;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getStdId() {

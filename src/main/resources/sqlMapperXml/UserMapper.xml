@@ -8,6 +8,7 @@
         <result column="sex" property="sex" jdbcType="CHAR"/>
         <result column="cellphone" property="cellphone" jdbcType="CHAR"/>
         <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="motto" property="motto" jdbcType="VARCHAR"/>
         <result column="university" property="university" jdbcType="CHAR"/>
         <result column="institution" property="institution" jdbcType="VARCHAR"/>
         <result column="enroll_year" property="enrollYear" jdbcType="CHAR"/>
@@ -18,12 +19,18 @@
         <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
         <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
         <result column="reserve3" property="reserve3" jdbcType="VARCHAR"/>
-        <result column="reserve4" property="reserve4" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <resultMap id="studyUserResultMap" type="com.zlfinfo.model.User">
+        <id column="username" property="username" jdbcType="VARCHAR"></id>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"></result>
+        <result column="motto" property="motto" jdbcType="VARCHAR"></result>
+    </resultMap>
+
     <sql id="Base_Column_List">
-    username, no_id, password, sex, cellphone, avatar, university, institution, enroll_year, 
-    level, qq, wechat, weibo, reserve1, reserve2, reserve3, reserve4
-  </sql>
+        username, no_id, password, sex, cellphone, avatar, motto, university, institution, enroll_year,
+        level, qq, wechat, weibo, reserve1, reserve2, reserve3
+    </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
@@ -32,27 +39,39 @@
     </select>
 
     <select id="findAllUsers" resultType="com.zlfinfo.model.User">
-      SELECT * FROM user ORDER BY username DESC
+        SELECT * FROM user ORDER BY username DESC
+    </select>
+
+    <select id="selectStudyUser" parameterType="java.lang.Integer" resultMap="studyUserResultMap">
+        SELECT
+            `user`.username,
+            `user`.avatar,
+            `user`.motto
+        FROM
+            USER
+        NATURAL JOIN user_study
+        WHERE
+            user_study.std_id = #{stdId}
+        AND user_study.flag = 0
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-      delete from user
-      where username = #{username,jdbcType=VARCHAR}
+        delete from user
+        where username = #{username,jdbcType=VARCHAR}
     </delete>
     <insert id="insert" parameterType="com.zlfinfo.model.User">
-    insert into user (username, no_id, password, 
-      sex, cellphone, avatar, university, 
-      institution, enroll_year, level, 
-      qq, wechat, weibo, 
-      reserve1, reserve2, reserve3, 
-      reserve4)
-    values (#{username,jdbcType=VARCHAR}, #{noId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=CHAR}, #{cellphone,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, #{university,jdbcType=CHAR}, 
-      #{institution,jdbcType=VARCHAR}, #{enrollYear,jdbcType=CHAR}, #{level,jdbcType=CHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR}, 
-      #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, 
-      #{reserve4,jdbcType=VARCHAR})
-  </insert>
+        insert into user (username, no_id, password,
+          sex, cellphone, avatar, university,
+          institution, enroll_year, level,
+          qq, wechat, weibo,
+          reserve1, reserve2, reserve3,
+          reserve4)
+        values (#{username,jdbcType=VARCHAR}, #{noId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+          #{sex,jdbcType=CHAR}, #{cellphone,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR}, #{university,jdbcType=CHAR},
+          #{institution,jdbcType=VARCHAR}, #{enrollYear,jdbcType=CHAR}, #{level,jdbcType=CHAR},
+          #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR},
+          #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.zlfinfo.model.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -73,6 +92,9 @@
             </if>
             <if test="avatar != null">
                 avatar,
+            </if>
+            <if test="motto != null">
+                motto,
             </if>
             <if test="university != null">
                 university,
@@ -103,9 +125,6 @@
             </if>
             <if test="reserve3 != null">
                 reserve3,
-            </if>
-            <if test="reserve4 != null">
-                reserve4,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">

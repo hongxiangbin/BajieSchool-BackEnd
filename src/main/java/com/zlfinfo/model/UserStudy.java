@@ -34,4 +34,13 @@ public class UserStudy implements Serializable {
     public void setFlag(Integer flag) {
         this.flag = flag;
     }
+
+    @Override
+    public String toString() {
+        return "UserStudy{" +
+                "stdId=" + stdId +
+                ", username='" + username + '\'' +
+                ", flag=" + flag +
+                '}';
+    }
 }

@@ -35,7 +35,7 @@ public class UserController extends BaseController {
         if (null != user) {
             logger.debug(user + "--------------------------------" + password);
             if (Encryption.encrypt(password.trim()).equals(user.getPassword())) {
-                return renderSuccess(response);
+                return renderSuccess("密码验证成功!", response);
             } else {
                 return renderError("用户名或密码错误", response);
             }
@@ -43,6 +43,21 @@ public class UserController extends BaseController {
         } else {
             return renderError("用户名或密码错误", response);
         }
+    }
+
+    /**
+     * 显示学习发帖人的用户信息
+     *
+     * @param stdId
+     * @param httpServletResponse
+     * @return
+     */
+    @RequestMapping(value = "/userstudy/{stdId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object showUser(@PathVariable Integer stdId, HttpServletResponse httpServletResponse) {
+        User user = userService.selectStudyUser(stdId);
+
+        return renderSuccess(user, httpServletResponse);
     }
 
 
@@ -79,6 +94,13 @@ public class UserController extends BaseController {
         User user = userService.findUserByUsername(username);
         return null == user ? renderSuccess("YES", httpServletResponse) :
                 renderError("NO", httpServletResponse);
+    }
+
+    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object findUserByUsername(@PathVariable String username, HttpServletResponse httpServletResponse) {
+        User user = userService.findUserByUsername(username);
+        return null != user ? renderSuccess(user, httpServletResponse) : renderError("用户查询失败!", httpServletResponse);
     }
 
 }

@@ -15,4 +15,6 @@ public interface UserService {
 
     int updatePassword(String username, String password);
 
+    User selectStudyUser(Integer stdId);
+
 }

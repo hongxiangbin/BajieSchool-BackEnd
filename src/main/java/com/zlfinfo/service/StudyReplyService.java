@@ -12,4 +12,6 @@ public interface StudyReplyService {
     List<StudyReply> selectAllStudyReply();
 
     List<StudyReply> selectStudyReplyByStudy(Integer stdId, String username);
+
+    int insertStudyReply(StudyReply studyReply);
 }

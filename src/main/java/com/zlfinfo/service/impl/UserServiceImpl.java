@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
     public int updatePassword(String username, String password) {
         return userMapper.updatePassword(username, password);
     }
+
+    @Override
+    public User selectStudyUser(Integer stdId) {
+        return userMapper.selectStudyUser(stdId);
+    }
 }

@@ -26,4 +26,9 @@ public class StudyReplyServiceImpl implements StudyReplyService {
     public List<StudyReply> selectStudyReplyByStudy(Integer stdId, String username) {
         return studyReplyMapper.selectStudyReplyByStudy(stdId, username);
     }
+
+    @Override
+    public int insertStudyReply(StudyReply studyReply) {
+        return studyReplyMapper.insert(studyReply);
+    }
 }
