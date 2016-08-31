@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2016/8/22.
  */
 @Service
-public class LoginStatusImpl implements LoginStatusService {
+public class LoginStatusServiceImpl implements LoginStatusService {
     @Autowired
     private LoginStatusMapper loginStatusMapper;
 
@@ -28,4 +28,5 @@ public class LoginStatusImpl implements LoginStatusService {
     public int selectStatusByUsername(String username) {
         return loginStatusMapper.selectStatus(username);
     }
+
 }

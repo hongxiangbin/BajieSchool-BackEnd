@@ -1,7 +1,9 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
+import com.zlfinfo.model.LoginStatus;
 import com.zlfinfo.model.User;
+import com.zlfinfo.service.LoginStatusService;
 import com.zlfinfo.service.UserService;
 import com.zlfinfo.util.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2016/8/22.
@@ -20,6 +23,9 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LoginStatusService loginStatusService;
 
     /**
      * 根据username查用户
@@ -32,6 +38,7 @@ public class UserController extends BaseController {
     public Object login(@PathVariable String username, @RequestParam String password, HttpServletResponse response)
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = userService.findUserByUsername(username);
+        loginStatusService.insertStatus(new LoginStatus(username, 1, new Date()));
         if (null != user) {
             logger.debug(user + "--------------------------------" + password);
             if (Encryption.encrypt(password.trim()).equals(user.getPassword())) {
@@ -60,6 +67,26 @@ public class UserController extends BaseController {
         return renderSuccess(user, httpServletResponse);
     }
 
+    /**
+     * 用户注册
+     */
+    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
+    @ResponseBody
+    public Object adduser(@RequestParam(required = false) String username, @RequestParam(required = false) String
+            password,
+                          @RequestParam(required = false) String sex, @RequestParam(required = false) String cellphone,
+                          @RequestParam(required = false) String enrollYear, @RequestParam(required = false) Integer
+                                  university,
+                          @RequestParam(required = false) String institution,
+                          @RequestParam(required = false) String level, HttpServletResponse response) throws
+            UnsupportedEncodingException, NoSuchAlgorithmException {
+        User user = new User(username, null, Encryption.encrypt(password), sex, cellphone, null, null, university,
+                institution, enrollYear, level, null, null, null, null, null);
+
+        System.out.println(user.toString());
+        userService.insert(user);
+        return renderSuccess("注册成功", response);
+    }
 
     /**
      * 修改密码

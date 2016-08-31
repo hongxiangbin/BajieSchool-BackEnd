@@ -17,4 +17,8 @@ public interface UserService {
 
     User selectStudyUser(Integer stdId);
 
+    int insert(User use);
+
+    int insertSelective(User use);
+
 }

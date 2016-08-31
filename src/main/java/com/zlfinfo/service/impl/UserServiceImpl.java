@@ -40,4 +40,14 @@ public class UserServiceImpl implements UserService {
     public User selectStudyUser(Integer stdId) {
         return userMapper.selectStudyUser(stdId);
     }
+
+    @Override
+    public int insert(User user) {
+        return userMapper.insert(user);
+    }
+
+    @Override
+    public int insertSelective(User user) {
+        return userMapper.insertSelective(user);
+    }
 }

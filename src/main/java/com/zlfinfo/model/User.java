@@ -17,7 +17,7 @@ public class User implements Serializable {
 
     private String motto;
 
-    private String university;
+    private Integer university;
 
     private String institution;
 
@@ -44,6 +44,39 @@ public class User implements Serializable {
         this.username = username;
         this.avatar = avatar;
         this.motto = motto;
+    }
+/*
+    public User(String username, String password, String sex, String cellphone, Integer university, String
+            institution, String enrollYear, String level) {
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.cellphone = cellphone;
+        this.university = university;
+        this.institution = institution;
+        this.enrollYear = enrollYear;
+        this.level = level;
+    }*/
+
+    public User(String username, String noId, String password, String sex, String cellphone, String avatar, String
+            motto, Integer university, String institution, String enrollYear, String level, String qq, String wechat,
+                String weibo, String reserve1, String reserve2) {
+        this.username = username;
+        this.noId = noId;
+        this.password = password;
+        this.sex = sex;
+        this.cellphone = cellphone;
+        this.avatar = avatar;
+        this.motto = motto;
+        this.university = university;
+        this.institution = institution;
+        this.enrollYear = enrollYear;
+        this.level = level;
+        this.qq = qq;
+        this.wechat = wechat;
+        this.weibo = weibo;
+        this.reserve1 = reserve1;
+        this.reserve2 = reserve2;
     }
 
     private static final long serialVersionUID = 1L;
@@ -96,12 +129,13 @@ public class User implements Serializable {
         this.avatar = avatar == null ? null : avatar.trim();
     }
 
-    public String getUniversity() {
+
+    public Integer getUniversity() {
         return university;
     }
 
-    public void setUniversity(String university) {
-        this.university = university == null ? null : university.trim();
+    public void setUniversity(Integer university) {
+        this.university = university;
     }
 
     public String getInstitution() {

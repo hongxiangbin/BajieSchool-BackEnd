@@ -20,6 +20,19 @@ public class ActivityComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public ActivityComment() {
+    }
+
+    public ActivityComment(Integer actId, String username, String avatar, String actComContent, Date actComTime,
+                           Integer actComLike) {
+        this.actId = actId;
+        this.username = username;
+        this.avatar = avatar;
+        this.actComContent = actComContent;
+        this.actComTime = actComTime;
+        this.actComLike = actComLike;
+    }
+
     public Integer getActComId() {
         return actComId;
     }

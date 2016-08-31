@@ -12,4 +12,5 @@ public interface LoginStatusService {
     int insertStatus(LoginStatus loginStatus);
 
     int selectStatusByUsername(String username);
+
 }

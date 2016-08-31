@@ -9,7 +9,7 @@
         <result column="cellphone" property="cellphone" jdbcType="CHAR"/>
         <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
         <result column="motto" property="motto" jdbcType="VARCHAR"/>
-        <result column="university" property="university" jdbcType="CHAR"/>
+        <result column="university" property="university" jdbcType="INTEGER"/>
         <result column="institution" property="institution" jdbcType="VARCHAR"/>
         <result column="enroll_year" property="enrollYear" jdbcType="CHAR"/>
         <result column="level" property="level" jdbcType="CHAR"/>
@@ -60,15 +60,14 @@
         delete from user
         where username = #{username,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="com.zlfinfo.model.User">
+    <insert id="insert">
         insert into user (username, no_id, password,
-          sex, cellphone, avatar, university,
+          sex, cellphone, avatar, motto, university,
           institution, enroll_year, level,
           qq, wechat, weibo,
-          reserve1, reserve2, reserve3,
-          reserve4)
+          reserve1, reserve2, reserve3)
         values (#{username,jdbcType=VARCHAR}, #{noId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-          #{sex,jdbcType=CHAR}, #{cellphone,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR}, #{university,jdbcType=CHAR},
+          #{sex,jdbcType=CHAR}, #{cellphone,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR}, #{university,jdbcType=INTEGER},
           #{institution,jdbcType=VARCHAR}, #{enrollYear,jdbcType=CHAR}, #{level,jdbcType=CHAR},
           #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR},
           #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR})
@@ -148,7 +147,7 @@
                 #{avatar,jdbcType=VARCHAR},
             </if>
             <if test="university != null">
-                #{university,jdbcType=CHAR},
+                #{university,jdbcType=INTEGER},
             </if>
             <if test="institution != null">
                 #{institution,jdbcType=VARCHAR},
@@ -177,9 +176,6 @@
             <if test="reserve3 != null">
                 #{reserve3,jdbcType=VARCHAR},
             </if>
-            <if test="reserve4 != null">
-                #{reserve4,jdbcType=VARCHAR},
-            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.User">
@@ -201,7 +197,7 @@
                 avatar = #{avatar,jdbcType=VARCHAR},
             </if>
             <if test="university != null">
-                university = #{university,jdbcType=CHAR},
+                university = #{university,jdbcType=INTEGER},
             </if>
             <if test="institution != null">
                 institution = #{institution,jdbcType=VARCHAR},
@@ -230,9 +226,6 @@
             <if test="reserve3 != null">
                 reserve3 = #{reserve3,jdbcType=VARCHAR},
             </if>
-            <if test="reserve4 != null">
-                reserve4 = #{reserve4,jdbcType=VARCHAR},
-            </if>
         </set>
         where username = #{username,jdbcType=VARCHAR}
     </update>
@@ -243,7 +236,7 @@
       sex = #{sex,jdbcType=CHAR},
       cellphone = #{cellphone,jdbcType=CHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
-      university = #{university,jdbcType=CHAR},
+      university = #{university,jdbcType=INTEGER},
       institution = #{institution,jdbcType=VARCHAR},
       enroll_year = #{enrollYear,jdbcType=CHAR},
       level = #{level,jdbcType=CHAR},
@@ -252,8 +245,7 @@
       weibo = #{weibo,jdbcType=VARCHAR},
       reserve1 = #{reserve1,jdbcType=VARCHAR},
       reserve2 = #{reserve2,jdbcType=VARCHAR},
-      reserve3 = #{reserve3,jdbcType=VARCHAR},
-      reserve4 = #{reserve4,jdbcType=VARCHAR}
+      reserve3 = #{reserve3,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
   </update>
 </mapper>
