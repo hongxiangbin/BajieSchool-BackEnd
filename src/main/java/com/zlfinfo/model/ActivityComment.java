@@ -6,7 +6,11 @@ import java.util.Date;
 public class ActivityComment implements Serializable {
     private Integer actComId;
 
+    private Integer actId;
+
     private String username;
+
+    private String avatar;
 
     private String actComContent;
 
@@ -24,12 +28,28 @@ public class ActivityComment implements Serializable {
         this.actComId = actComId;
     }
 
+    public Integer getActId() {
+        return actId;
+    }
+
+    public void setActId(Integer actId) {
+        this.actId = actId;
+    }
+
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getActComContent() {
