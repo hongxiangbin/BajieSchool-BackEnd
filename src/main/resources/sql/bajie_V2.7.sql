@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-31 14:24:14
+Date: 2016-08-31 17:55:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -240,6 +240,7 @@ CREATE TABLE `login_status` (
 -- Records of login_status
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-27 10:35:20');
+INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
 INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-30 09:39:49');
 
 -- ----------------------------
@@ -598,7 +599,7 @@ CREATE TABLE `user` (
   `university` int(5) NOT NULL COMMENT '大学',
   `institution` varchar(50) DEFAULT NULL COMMENT '学院',
   `enroll_year` char(4) NOT NULL COMMENT '入学年份',
-  `level` char(1) DEFAULT NULL COMMENT '学位级别',
+  `level` char(1) DEFAULT '' COMMENT '学位级别(0,专科；1，本科；2，研究生)',
   `qq` varchar(10) DEFAULT NULL,
   `wechat` varchar(20) DEFAULT NULL,
   `weibo` varchar(50) DEFAULT NULL,
@@ -612,6 +613,8 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '没什么好说的', '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
+INSERT INTO `user` VALUES ('Jack', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '2', '计算机学院', '2016', '1', null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('Kevin', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '10', '经济管理学院', '2016', '1', null, null, null, null, null, null);
 INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
 
 -- ----------------------------
