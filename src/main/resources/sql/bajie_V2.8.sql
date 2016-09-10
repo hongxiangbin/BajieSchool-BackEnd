@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-08-31 17:55:59
+Date: 2016-09-10 17:10:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,10 +165,30 @@ CREATE TABLE `answer` (
   `ans_comment` int(5) DEFAULT '0' COMMENT '评论',
   `ans_time` datetime DEFAULT NULL COMMENT '回答时间',
   PRIMARY KEY (`ans_id`,`que_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of answer
+-- ----------------------------
+INSERT INTO `answer` VALUES ('1', '30000', '读完《统计学习方法》、了解BP算法、linear regression', 'LucasX', '165', '232', '2016-09-10 16:23:15');
+INSERT INTO `answer` VALUES ('2', '30000', '刷kaggle吧。。。', 'admin', '35', '3', '2016-09-21 16:24:15');
+
+-- ----------------------------
+-- Table structure for answer_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `answer_comment`;
+CREATE TABLE `answer_comment` (
+  `ans_comm_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ans_id` varchar(16) NOT NULL,
+  `ans_comm_username` varchar(16) DEFAULT NULL,
+  `ans_comm_content` varchar(255) DEFAULT NULL,
+  `ans_comm_time` datetime DEFAULT NULL,
+  `ans_comm_like` int(5) DEFAULT NULL,
+  PRIMARY KEY (`ans_comm_id`,`ans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of answer_comment
 -- ----------------------------
 
 -- ----------------------------
@@ -224,6 +244,7 @@ INSERT INTO `feedback` VALUES ('admin', '亲，APP太卡了呀~ T_T', '2016-08-2
 INSERT INTO `feedback` VALUES ('admin', '亲，APP太卡了呀~ T_T', '2016-08-23 17:18:46', '249048056', 'xulu0620', '', '', '');
 INSERT INTO `feedback` VALUES ('admin', '不好看', '2016-08-23 17:20:35', '10086', '1231', '1231@qq.com', '', '');
 INSERT INTO `feedback` VALUES ('admin', '卡卡卡卡啊卡卡', '2016-08-23 17:29:55', '', '10001', null, '', '');
+INSERT INTO `feedback` VALUES ('LucasX', '卡死啦  垃圾APP！！！', '2016-09-10 15:30:09', null, null, null, '', '');
 
 -- ----------------------------
 -- Table structure for login_status
@@ -241,7 +262,7 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-27 10:35:20');
 INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-08-30 09:39:49');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-09-10 14:30:10');
 
 -- ----------------------------
 -- Table structure for notification
@@ -332,6 +353,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
+INSERT INTO `setting` VALUES ('LucasX', '0', '0', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for study
@@ -381,7 +403,7 @@ CREATE TABLE `study_reply` (
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
   `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
   PRIMARY KEY (`std_re_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60016 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60017 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
@@ -401,6 +423,7 @@ INSERT INTO `study_reply` VALUES ('60012', '50003', 'LucasX', '大大萨斯的',
 INSERT INTO `study_reply` VALUES ('60013', '50017', 'LucasX', '啊啊啊', '2016-08-31 09:52:33', '0');
 INSERT INTO `study_reply` VALUES ('60014', '50002', 'LucasX', '考试啊  考试', '2016-08-31 09:52:45', '0');
 INSERT INTO `study_reply` VALUES ('60015', '50018', 'LucasX', '哈哈哈', '2016-08-31 09:53:23', '0');
+INSERT INTO `study_reply` VALUES ('60016', '50018', 'LucasX', '666', '2016-09-10 16:19:40', '0');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -702,6 +725,7 @@ INSERT INTO `user_study` VALUES ('LucasX', '50005', '0');
 INSERT INTO `user_study` VALUES ('LucasX', '50003', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50002', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
 
 -- ----------------------------
