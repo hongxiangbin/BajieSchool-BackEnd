@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zlfinfo.mapper.AnswerMapper" >
-  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Answer" >
-    <id column="ans_id" property="ansId" jdbcType="INTEGER" />
-    <id column="que_id" property="queId" jdbcType="INTEGER" />
-    <id column="username" property="username" jdbcType="VARCHAR" />
-    <result column="ans_content" property="ansContent" jdbcType="VARCHAR" />
-    <result column="ans_like" property="ansLike" jdbcType="INTEGER" />
-    <result column="ans_comment" property="ansComment" jdbcType="INTEGER" />
-    <result column="ans_time" property="ansTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ans_id, que_id, username, ans_content, ans_like, ans_comment, ans_time
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
-    select 
-    <include refid="Base_Column_List" />
-    from answer
-    where ans_id = #{ansId,jdbcType=VARCHAR}
-      and que_id = #{queId,jdbcType=VARCHAR}
-      and username = #{username,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="map" >
-    delete from answer
-    where ans_id = #{ansId,jdbcType=VARCHAR}
-      and que_id = #{queId,jdbcType=VARCHAR}
-      and username = #{username,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="com.zlfinfo.model.Answer" >
+<mapper namespace="com.zlfinfo.mapper.AnswerMapper">
+    <resultMap id="BaseResultMap" type="com.zlfinfo.model.Answer">
+        <id column="ans_id" property="ansId" jdbcType="INTEGER"/>
+        <id column="que_id" property="queId" jdbcType="INTEGER"/>
+        <id column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="ans_content" property="ansContent" jdbcType="VARCHAR"/>
+        <result column="ans_like" property="ansLike" jdbcType="INTEGER"/>
+        <result column="ans_comment" property="ansComment" jdbcType="INTEGER"/>
+        <result column="ans_time" property="ansTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      ans_id, que_id, username, ans_content, ans_like, ans_comment, ans_time
+    </sql>
+
+    <select id="selectAnswer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM answer
+        WHERE que_id = #{queId,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="com.zlfinfo.model.Answer">
     insert into answer (ans_id, que_id, username, 
       ans_content, ans_like, ans_comment, 
       ans_time)
@@ -35,76 +29,77 @@
       #{ansContent,jdbcType=VARCHAR}, #{ansLike,jdbcType=INTEGER}, #{ansComment,jdbcType=INTEGER}, 
       #{ansTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.zlfinfo.model.Answer" >
-    insert into answer
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="ansId != null" >
-        ans_id,
-      </if>
-      <if test="queId != null" >
-        que_id,
-      </if>
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="ansContent != null" >
-        ans_content,
-      </if>
-      <if test="ansLike != null" >
-        ans_like,
-      </if>
-      <if test="ansComment != null" >
-        ans_comment,
-      </if>
-      <if test="ansTime != null" >
-        ans_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="ansId != null" >
-        #{ansId,jdbcType=VARCHAR},
-      </if>
-      <if test="queId != null" >
-        #{queId,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="ansContent != null" >
-        #{ansContent,jdbcType=VARCHAR},
-      </if>
-      <if test="ansLike != null" >
-        #{ansLike,jdbcType=INTEGER},
-      </if>
-      <if test="ansComment != null" >
-        #{ansComment,jdbcType=INTEGER},
-      </if>
-      <if test="ansTime != null" >
-        #{ansTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Answer" >
-    update answer
-    <set >
-      <if test="ansContent != null" >
-        ans_content = #{ansContent,jdbcType=VARCHAR},
-      </if>
-      <if test="ansLike != null" >
-        ans_like = #{ansLike,jdbcType=INTEGER},
-      </if>
-      <if test="ansComment != null" >
-        ans_comment = #{ansComment,jdbcType=INTEGER},
-      </if>
-      <if test="ansTime != null" >
-        ans_time = #{ansTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where ans_id = #{ansId,jdbcType=VARCHAR}
-      and que_id = #{queId,jdbcType=VARCHAR}
-      and username = #{username,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Answer" >
+
+    <insert id="insertSelective" parameterType="com.zlfinfo.model.Answer">
+        insert into answer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ansId != null">
+                ans_id,
+            </if>
+            <if test="queId != null">
+                que_id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="ansContent != null">
+                ans_content,
+            </if>
+            <if test="ansLike != null">
+                ans_like,
+            </if>
+            <if test="ansComment != null">
+                ans_comment,
+            </if>
+            <if test="ansTime != null">
+                ans_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ansId != null">
+                #{ansId,jdbcType=VARCHAR},
+            </if>
+            <if test="queId != null">
+                #{queId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="ansContent != null">
+                #{ansContent,jdbcType=VARCHAR},
+            </if>
+            <if test="ansLike != null">
+                #{ansLike,jdbcType=INTEGER},
+            </if>
+            <if test="ansComment != null">
+                #{ansComment,jdbcType=INTEGER},
+            </if>
+            <if test="ansTime != null">
+                #{ansTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Answer">
+        update answer
+        <set>
+            <if test="ansContent != null">
+                ans_content = #{ansContent,jdbcType=VARCHAR},
+            </if>
+            <if test="ansLike != null">
+                ans_like = #{ansLike,jdbcType=INTEGER},
+            </if>
+            <if test="ansComment != null">
+                ans_comment = #{ansComment,jdbcType=INTEGER},
+            </if>
+            <if test="ansTime != null">
+                ans_time = #{ansTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ans_id = #{ansId,jdbcType=VARCHAR}
+        and que_id = #{queId,jdbcType=VARCHAR}
+        and username = #{username,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Answer">
     update answer
     set ans_content = #{ansContent,jdbcType=VARCHAR},
       ans_like = #{ansLike,jdbcType=INTEGER},

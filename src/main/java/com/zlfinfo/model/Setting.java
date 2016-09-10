@@ -19,6 +19,20 @@ public class Setting implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Setting() {
+    }
+
+    public Setting(String username, String isUpdate, String isShareloc, String isShowimg, String reserve1, String
+            reserve2, String reserve3) {
+        this.username = username;
+        this.isUpdate = isUpdate;
+        this.isShareloc = isShareloc;
+        this.isShowimg = isShowimg;
+        this.reserve1 = reserve1;
+        this.reserve2 = reserve2;
+        this.reserve3 = reserve3;
+    }
+
     public String getUsername() {
         return username;
     }

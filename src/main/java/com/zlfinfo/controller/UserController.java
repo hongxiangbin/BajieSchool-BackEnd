@@ -38,7 +38,7 @@ public class UserController extends BaseController {
     public Object login(@PathVariable String username, @RequestParam String password, HttpServletResponse response)
             throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = userService.findUserByUsername(username);
-        loginStatusService.insertStatus(new LoginStatus(username, 1, new Date()));
+        loginStatusService.updateStatus(new LoginStatus(username, 1, new Date()));
         if (null != user) {
             logger.debug(user + "--------------------------------" + password);
             if (Encryption.encrypt(password.trim()).equals(user.getPassword())) {
