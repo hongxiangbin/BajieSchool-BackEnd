@@ -1,13 +1,9 @@
 package com.zlfinfo.controller;
 
+import com.alibaba.druid.sql.visitor.functions.If;
 import com.zlfinfo.commons.base.BaseController;
-import com.zlfinfo.model.Activity;
-import com.zlfinfo.model.ActivityType;
-import com.zlfinfo.model.Banner;
-import com.zlfinfo.model.UserActivity;
-import com.zlfinfo.service.ActivityService;
-import com.zlfinfo.service.ActivityTypeService;
-import com.zlfinfo.service.BannerService;
+import com.zlfinfo.model.*;
+import com.zlfinfo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +24,9 @@ public class ActivityController extends BaseController {
     private ActivityTypeService activityTypeService;
     @Autowired
     private BannerService bannerService;
+    @Autowired
+    private LoginStatusService loginStatusService;
+
     /**
      * 发布活动
      *
@@ -76,7 +75,7 @@ public class ActivityController extends BaseController {
     @ResponseBody
     public Object showActivity(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
-        List<Activity> activityList = actService.selectActivityByUserNType(username, type);
+        List<Activity> activityList = actService.selectActivityByUserNType(type);
         return null != activityList ? renderSuccess(activityList, httpServletResponse) : renderError("活动查询失败",
                 httpServletResponse);
     }
@@ -85,14 +84,19 @@ public class ActivityController extends BaseController {
     public Object showActivityALL(@RequestParam String username, @RequestParam Integer type, HttpServletResponse
             httpServletResponse) {
         Map resultMap=new HashMap();
-        List<Activity> activityList = actService.selectActivityByUserNType(username, type);
-        List<ActivityType> activityTypeList = activityTypeService.selectAllActType();
-        List<Banner> bannerList = bannerService.selectAllBanner();
-        resultMap.put("Activity",activityList);
-        resultMap.put("ActivityType",activityTypeList);
-        resultMap.put("Banner",bannerList);
-        return null != activityList ? renderSuccess(resultMap, httpServletResponse) : renderError("活动查询失败",
-                httpServletResponse);
+        int ls  = loginStatusService.selectStatusByUsername(username);
+            if(ls==0){
+                List<Activity> activityList = actService.selectActivityByUserNType(type);
+                List<ActivityType> activityTypeList = activityTypeService.selectAllActType();
+                List<Banner> bannerList = bannerService.selectAllBanner();
+                resultMap.put("Activity",activityList);
+                resultMap.put("ActivityType",activityTypeList);
+                resultMap.put("Banner",bannerList);
+                return null != activityList ? renderSuccess(resultMap, httpServletResponse) : renderError("活动查询失败",
+                        httpServletResponse);
+            }else{
+                return  renderError("用户状态为登出", httpServletResponse);
+            }
     }
 
     @RequestMapping(value = "/activity/launchedact", method = RequestMethod.GET)
@@ -121,6 +125,8 @@ public class ActivityController extends BaseController {
         if(null!=act){
             act.setActId(id);
             act.setActLike(act.getActLike()+1);
+            //已关注
+            act.setReserve1("1");
             actService.updateByPrimaryKeySelective(act);
             return renderSuccess("更新成功", httpServletResponse);
         }else{

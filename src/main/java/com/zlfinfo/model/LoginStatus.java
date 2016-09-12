@@ -6,6 +6,9 @@ import java.util.Date;
  * Created by Administrator on 2016/8/22.
  */
 public class LoginStatus {
+    public LoginStatus() {
+        super();
+    }
 
     private String username;
     private int status;

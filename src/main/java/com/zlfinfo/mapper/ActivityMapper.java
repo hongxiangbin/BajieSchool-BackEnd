@@ -20,7 +20,7 @@ public interface ActivityMapper {
 
     int updateByPrimaryKey(Activity record);
 
-    List<Activity> selectActivityByUserNType(@Param("username") String username, @Param("type") Integer type);
+    List<Activity> selectActivityByUserNType(@Param("type") Integer type);
 
     List<Activity> selectMineActivity(@Param("username") String username, @Param("flag") Integer flag);
 

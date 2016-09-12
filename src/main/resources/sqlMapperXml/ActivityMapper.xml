@@ -27,6 +27,7 @@
         <result column="act_time" property="actTime" jdbcType="TIMESTAMP"/>
         <result column="act_like" property="actLike" jdbcType="INTEGER"/>
         <result column="act_comment" property="actComment" jdbcType="INTEGER"/>
+        <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
     </resultMap>
 
     <resultMap id="actDetailMap" type="com.zlfinfo.model.Activity">
@@ -51,25 +52,15 @@
     </select>
 
 
-    <select id="selectActivityByUserNType" resultMap="indexResultMap">
-        SELECT
-            act_v.act_id,
-            act_v.act_type,
-            act_v.act_title,
-            act_v.act_content,
-            act_v.act_img,
-            act_v.act_time,
-            act_v.act_like,
-            act_v.act_comment
-        FROM
-            activity_view act_v
-        NATURAL JOIN USER
-        NATURAL JOIN login_status
-        WHERE
-            login_status.`status` = 0
-        AND act_v.act_type = #{type}
-        AND `user`.username = #{username}
-        ORDER BY act_v.act_time DESC
+    <select id="selectActivityByUserNType" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from activity
+        WHERE 1=1
+         <if test="type != null">
+        and act_type = #{type,jdbcType=VARCHAR}
+         </if>
+        ORDER BY act_time DESC
     </select>
 
 
@@ -82,7 +73,8 @@
             act_v.act_img,
             act_v.act_time,
             act_v.act_like,
-            act_v.act_comment
+            act_v.act_comment,
+            act_v.reserve1
         FROM
             activity_view act_v
         NATURAL JOIN user_activity
