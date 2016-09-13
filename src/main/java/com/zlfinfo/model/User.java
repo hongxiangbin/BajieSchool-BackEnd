@@ -37,6 +37,7 @@ public class User implements Serializable {
 
     private String reserve3;
 
+    private String schoolname;
     public User() {
     }
 
@@ -218,6 +219,14 @@ public class User implements Serializable {
         this.motto = motto;
     }
 
+    public String getSchoolname() {
+        return schoolname;
+    }
+
+    public void setSchoolname(String schoolname) {
+        this.schoolname = schoolname;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -228,7 +237,7 @@ public class User implements Serializable {
                 ", cellphone='" + cellphone + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", motto='" + motto + '\'' +
-                ", university='" + university + '\'' +
+                ", university=" + university +
                 ", institution='" + institution + '\'' +
                 ", enrollYear='" + enrollYear + '\'' +
                 ", level='" + level + '\'' +
@@ -238,6 +247,7 @@ public class User implements Serializable {
                 ", reserve1='" + reserve1 + '\'' +
                 ", reserve2='" + reserve2 + '\'' +
                 ", reserve3='" + reserve3 + '\'' +
+                ", schoolname='" + schoolname + '\'' +
                 '}';
     }
 }

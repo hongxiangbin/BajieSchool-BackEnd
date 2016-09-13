@@ -11,6 +11,5 @@ public interface UniversityService {
 
     List<University> selectAllUniversity();
 
-    University selectUniversity();
-
+    University selectUniversity(Integer uid);
 }

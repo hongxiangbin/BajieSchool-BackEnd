@@ -9,7 +9,10 @@
     <select id="selectUniversity" resultType="com.zlfinfo.model.University">
         select univ_id, univ_name
         from university
-        where univ_id = #{univId,jdbcType=VARCHAR}
+        where 1=1
+        <if test="uid != null">
+           and univ_id = #{uid,jdbcType=INTEGER}
+        </if>
     </select>
 
     <select id="selectAllUniversity" resultMap="universityMap">

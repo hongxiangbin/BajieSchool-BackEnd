@@ -2,8 +2,10 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.LoginStatus;
+import com.zlfinfo.model.University;
 import com.zlfinfo.model.User;
 import com.zlfinfo.service.LoginStatusService;
+import com.zlfinfo.service.UniversityService;
 import com.zlfinfo.service.UserService;
 import com.zlfinfo.util.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class UserController extends BaseController {
     @Autowired
     private LoginStatusService loginStatusService;
 
+    @Autowired
+    private UniversityService universityService;
     /**
      * 根据username查用户
      *
@@ -127,6 +131,19 @@ public class UserController extends BaseController {
     @ResponseBody
     public Object findUserByUsername(@PathVariable String username, HttpServletResponse httpServletResponse) {
         User user = userService.findUserByUsername(username);
+        if(null != user){
+            if(user.getUniversity()!=null){
+                University u = new University();
+                 u = universityService.selectUniversity(user.getUniversity());
+                if(null != u){
+                    System.out.println(u.toString()+"===1");
+                    user.setSchoolname(u.getUnivName());
+                    System.out.println(u.getUnivName()+"===getUnivName");
+
+                }
+            }
+        }
+        System.out.println(user.getSchoolname()+"===getSchoolname");
         return null != user ? renderSuccess(user, httpServletResponse) : renderError("用户查询失败!", httpServletResponse);
     }
 

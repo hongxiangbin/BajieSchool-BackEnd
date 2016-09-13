@@ -22,8 +22,9 @@ public class UniversityServiceImpl implements UniversityService {
         return universityMapper.selectAllUniversity();
     }
 
+
     @Override
-    public University selectUniversity() {
-        return universityMapper.selectUniversity();
+    public University selectUniversity(Integer uid) {
+        return universityMapper.selectUniversity(uid);
     }
 }
