@@ -10,6 +10,8 @@ public class Answer implements Serializable {
 
     private String username;
 
+    private String avatar;
+
     private String ansContent;
 
     private Integer ansLike;
@@ -19,6 +21,32 @@ public class Answer implements Serializable {
     private Date ansTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Answer() {
+    }
+
+    public Answer(Integer ansId, Integer queId, String username, String avatar, String ansContent, Integer ansLike,
+                  Integer ansComment, Date ansTime) {
+        this.ansId = ansId;
+        this.queId = queId;
+        this.username = username;
+        this.avatar = avatar;
+        this.ansContent = ansContent;
+        this.ansLike = ansLike;
+        this.ansComment = ansComment;
+        this.ansTime = ansTime;
+    }
+
+    public Answer(Integer ansId, Integer queId, String username, String ansContent, Integer ansLike, Integer
+            ansComment, Date ansTime) {
+        this.ansId = ansId;
+        this.queId = queId;
+        this.username = username;
+        this.ansContent = ansContent;
+        this.ansLike = ansLike;
+        this.ansComment = ansComment;
+        this.ansTime = ansTime;
+    }
 
     public Integer getAnsId() {
         return ansId;
@@ -42,6 +70,14 @@ public class Answer implements Serializable {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getAnsContent() {

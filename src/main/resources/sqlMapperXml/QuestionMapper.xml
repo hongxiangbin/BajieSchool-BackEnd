@@ -22,8 +22,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    que_id, que_title, que_content, que_img, que_like, que_comment, que_time
-  </sql>
+      que_id, que_title, que_content, que_img, que_like, que_comment, que_time
+    </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -51,6 +52,7 @@
 
     <select id="selectUserAllQuora" parameterType="java.lang.String" resultMap="quoraIndexResultMap">
          SELECT
+            qv.que_id,
             qv.que_img,
             qv.que_title,
             qv.que_time,
@@ -68,29 +70,30 @@
     </select>
 
     <delete id="deleteByPrimaryKey">
-      delete from question
-      where que_id = #{queId,jdbcType=VARCHAR}
+      DELETE FROM question
+      WHERE que_id = #{queId,jdbcType=VARCHAR}
     </delete>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="queId">
-        insert into question (que_id,que_title, que_content,
+        INSERT INTO question (que_id,que_title, que_content,
         que_img, que_like, que_comment,
         que_time)
-        values (#{queId,jdbcType=INTEGER},#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
+        VALUES (#{queId,jdbcType=INTEGER},#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
         #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER},
         #{queTime,jdbcType=TIMESTAMP})
     </insert>
+
     <insert id="insertQuestion">
-    insert into question (que_title, que_content,
+    INSERT INTO question (que_title, que_content,
           que_img, que_like, que_comment,
           que_time)
-        values (#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
+        VALUES (#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
           #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER},
           #{queTime,jdbcType=TIMESTAMP})
     </insert>
 
     <insert id="insertSelective" parameterType="com.zlfinfo.model.Question">
-        insert into question
+        INSERT INTO question
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="queId != null">
                 que_id,
@@ -138,8 +141,9 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Question">
-        update question
+        UPDATE question
         <set>
             <if test="queTitle != null">
                 que_title = #{queTitle,jdbcType=VARCHAR},
@@ -160,16 +164,17 @@
                 que_time = #{queTime,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where que_id = #{queId,jdbcType=VARCHAR}
+        WHERE que_id = #{queId,jdbcType=VARCHAR}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Question">
-    update question
-    set que_title = #{queTitle,jdbcType=VARCHAR},
-      que_content = #{queContent,jdbcType=VARCHAR},
-      que_img = #{queImg,jdbcType=VARCHAR},
-      que_like = #{queLike,jdbcType=INTEGER},
-      que_comment = #{queComment,jdbcType=INTEGER},
-      que_time = #{queTime,jdbcType=TIMESTAMP}
-    where que_id = #{queId,jdbcType=VARCHAR}
+        UPDATE question
+        SET que_title = #{queTitle,jdbcType=VARCHAR},
+          que_content = #{queContent,jdbcType=VARCHAR},
+          que_img = #{queImg,jdbcType=VARCHAR},
+          que_like = #{queLike,jdbcType=INTEGER},
+          que_comment = #{queComment,jdbcType=INTEGER},
+          que_time = #{queTime,jdbcType=TIMESTAMP}
+        WHERE que_id = #{queId,jdbcType=VARCHAR}
   </update>
 </mapper>

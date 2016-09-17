@@ -42,40 +42,42 @@ public class QuestionController extends BaseController {
 
     @RequestMapping(value = "/quora/ask", method = RequestMethod.POST)
     @ResponseBody
-    public Object ask(@RequestParam(required = false)  Integer queId,@RequestParam(required = false)  String queTitle, @RequestParam(required = false)  String queTags, @RequestParam(required = false)  String queContent,
-                      @RequestParam(required = false)  String queImg, @RequestParam String username, HttpServletResponse
+    public Object ask(@RequestParam(required = false) Integer queId, @RequestParam(required = false) String queTitle,
+                      @RequestParam(required = false) String queTags, @RequestParam(required = false) String queContent,
+                      @RequestParam(required = false) String queImg, @RequestParam String username, HttpServletResponse
                               httpServletResponse) {
-        Question question = new Question(queId,queTitle,queTags, queContent, queImg, new Date());
-        Integer qid=questionService.addQuestion(question);
-        String msg="提问成功！";
-        Integer status =0;
-        if(qid==0){
-            msg="提问失败！";
+        Question question = new Question(queId, queTitle, queTags, queContent, queImg, new Date());
+        Integer qid = questionService.addQuestion(question);
+        String msg = "提问成功！";
+        Integer status = 0;
+        if (qid == 0) {
+            msg = "提问失败！";
             status = 1;
-        }else{
+        } else {
             UserQuestion userQuestion = new UserQuestion();
             userQuestion.setUsername(username);
             userQuestion.setQueId(qid);
             userQuestion.setFlag(0);
             questionService.addUserque(userQuestion);
         }
-        return render(msg,status, httpServletResponse);
+        return render(msg, status, httpServletResponse);
     }
+
     @RequestMapping(value = "/quora/updlike", method = RequestMethod.POST)
     @ResponseBody
     public Object updlike(@RequestParam Integer id, HttpServletResponse
             httpServletResponse) {
         System.out.println(id);
         Question question = new Question();
-        if(id!=null){
+        if (id != null) {
             question = questionService.selectByPrimaryKey(id);
         }
-        if(null!=question){
+        if (null != question) {
             question.setQueId(id);
-            question.setQueLike(question.getQueLike()+1);
+            question.setQueLike(question.getQueLike() + 1);
             questionService.updateByPrimaryKeySelective(question);
             return renderSuccess("更新成功", httpServletResponse);
-        }else{
+        } else {
             return renderError("更新失败", httpServletResponse);
         }
     }
