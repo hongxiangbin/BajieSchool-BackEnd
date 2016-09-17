@@ -45,10 +45,10 @@
         act_follow, act_join, act_signup, act_place, reserve1, reserve2
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-        select
+        SELECT
         <include refid="Base_Column_List"/>
-        from activity
-        where act_id = #{actId,jdbcType=INTEGER}
+        FROM activity
+        WHERE act_id = #{actId,jdbcType=INTEGER}
     </select>
 
 
@@ -57,9 +57,9 @@
         <include refid="Base_Column_List"/>
         from activity
         WHERE 1=1
-         <if test="type != null">
-        and act_type = #{type,jdbcType=VARCHAR}
-         </if>
+        <if test="type != null">
+            and act_type = #{type,jdbcType=VARCHAR}
+        </if>
         ORDER BY act_time DESC
     </select>
 
@@ -87,14 +87,15 @@
     </select>
 
     <select id="selectAllActivity" resultMap="BaseResultMap">
-      SELECT * FROM  activity
+        SELECT * FROM activity
     </select>
 
     <delete id="deleteByPrimaryKey">
-    delete from activity
-    where act_id = #{actId,jdbcType=VARCHAR}
-  </delete>
-    <insert id="insert"  useGeneratedKeys="true" keyProperty="actId">
+        DELETE FROM activity
+        WHERE act_id = #{actId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="actId">
         insert into activity (act_id, act_type, act_title,
         act_content, act_img, act_time,
         act_like, act_comment, act_follow,
@@ -106,7 +107,7 @@
         #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR},
         #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
     </insert>
-     <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
+    <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
         insert into activity
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="actId != null">
@@ -243,20 +244,20 @@
         where act_id = #{actId,jdbcType=VARCHAR}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Activity">
-    update activity
-    set act_type = #{actType,jdbcType=INTEGER},
-      act_title = #{actTitle,jdbcType=VARCHAR},
-      act_content = #{actContent,jdbcType=VARCHAR},
-      act_img = #{actImg,jdbcType=VARCHAR},
-      act_time = #{actTime,jdbcType=TIMESTAMP},
-      act_like = #{actLike,jdbcType=INTEGER},
-      act_comment = #{actComment,jdbcType=INTEGER},
-      act_follow = #{actFollow,jdbcType=INTEGER},
-      act_join = #{actJoin,jdbcType=INTEGER},
-      act_signup = #{actSignup,jdbcType=INTEGER},
-      act_place = #{actPlace,jdbcType=VARCHAR},
-      reserve1 = #{reserve1,jdbcType=VARCHAR},
-      reserve2 = #{reserve2,jdbcType=VARCHAR}
-    where act_id = #{actId,jdbcType=VARCHAR}
-  </update>
+        update activity
+        set act_type = #{actType,jdbcType=INTEGER},
+        act_title = #{actTitle,jdbcType=VARCHAR},
+        act_content = #{actContent,jdbcType=VARCHAR},
+        act_img = #{actImg,jdbcType=VARCHAR},
+        act_time = #{actTime,jdbcType=TIMESTAMP},
+        act_like = #{actLike,jdbcType=INTEGER},
+        act_comment = #{actComment,jdbcType=INTEGER},
+        act_follow = #{actFollow,jdbcType=INTEGER},
+        act_join = #{actJoin,jdbcType=INTEGER},
+        act_signup = #{actSignup,jdbcType=INTEGER},
+        act_place = #{actPlace,jdbcType=VARCHAR},
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+        reserve2 = #{reserve2,jdbcType=VARCHAR}
+        where act_id = #{actId,jdbcType=VARCHAR}
+    </update>
 </mapper>
