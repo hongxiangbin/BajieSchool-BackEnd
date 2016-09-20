@@ -53,6 +53,7 @@
         from study
         where std_id = #{stdId,jdbcType=VARCHAR}
     </select>
+
     <delete id="deleteByPrimaryKey">
       delete from study
       where std_id = #{stdId,jdbcType=VARCHAR}

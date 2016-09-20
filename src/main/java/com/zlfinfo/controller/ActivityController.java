@@ -46,7 +46,7 @@ public class ActivityController extends BaseController {
             UserActivity userActivity = new UserActivity();
             userActivity.setActId(actid);
             userActivity.setUsername(username);
-            userActivity.setFlag(0);
+            userActivity.setLaunFlag(0);
             actService.insertuserActivity(userActivity);
             return renderSuccess("保存成功", response);
         }

@@ -49,95 +49,14 @@
          <generatedKey column="id" sqlStatement="MySql" identity="true"/>
          </table>-->
 
-        <table schema="bajieschool" tableName="user" domainObjectName="User"
+        <table schema="bajie" tableName="user_activity" domainObjectName="UserActivity"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableUpdateByExample="false"
                selectByExampleQueryId="false"
                enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         </table>
-        <table schema="bajieschool" tableName="activity" domainObjectName="Activity"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="activity-comment" domainObjectName="ActivityComment"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="activity-comment-comment" domainObjectName="ActivityCommentComment"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="agenda" domainObjectName="Agenda"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="answer" domainObjectName="Answer"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="notification" domainObjectName="Notification"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="question" domainObjectName="Question"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="setting" domainObjectName="Setting"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="study" domainObjectName="Study"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table schema="bajieschool" tableName="study-reply" domainObjectName="StudyReply"
-               enableCountByExample="false"
-               enableDeleteByExample="false"
-               enableUpdateByExample="false"
-               selectByExampleQueryId="false"
-               enableSelectByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-
 
     </context>
 </generatorConfiguration>

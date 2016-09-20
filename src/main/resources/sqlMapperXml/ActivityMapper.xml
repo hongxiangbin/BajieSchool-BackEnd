@@ -82,7 +82,7 @@
         NATURAL JOIN login_status
         WHERE
             login_status.`status` = 0
-        AND user_activity.flag = #{flag}
+        AND user_activity.laun_flag = #{launFlag}
         AND `user`.username = #{username}
     </select>
 
