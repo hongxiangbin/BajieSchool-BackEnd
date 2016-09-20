@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-09-17 17:36:26
+Date: 2016-09-20 17:57:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -266,9 +266,9 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '1', '2016-08-27 10:35:20');
+INSERT INTO `login_status` VALUES ('admin', '0', '2016-09-20 15:17:25');
 INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-09-17 11:18:55');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-09-20 14:56:01');
 
 -- ----------------------------
 -- Table structure for notification
@@ -653,17 +653,21 @@ DROP TABLE IF EXISTS `user_activity`;
 CREATE TABLE `user_activity` (
   `username` varchar(16) NOT NULL COMMENT '用户名',
   `act_id` int(12) NOT NULL COMMENT '活动ID',
-  `flag` int(1) DEFAULT NULL COMMENT '0——发布的活动；1——参加的活动；2——关注的活动；3——报名的活动；4——点赞的活动',
+  `like_flag` int(1) DEFAULT '0',
+  `laun_flag` int(1) DEFAULT '0',
+  `comm_flag` int(1) DEFAULT '0',
+  `join_flag` int(1) DEFAULT '0',
+  `fav_flag` int(1) DEFAULT '0',
   PRIMARY KEY (`username`,`act_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_activity
 -- ----------------------------
-INSERT INTO `user_activity` VALUES ('admin', '10000', '0');
-INSERT INTO `user_activity` VALUES ('admin', '10001', '1');
-INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0');
-INSERT INTO `user_activity` VALUES ('LucasX', '10003', '1');
+INSERT INTO `user_activity` VALUES ('admin', '10000', '0', null, null, null, null);
+INSERT INTO `user_activity` VALUES ('admin', '10001', '0', null, null, null, null);
+INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10003', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for user_acttype
