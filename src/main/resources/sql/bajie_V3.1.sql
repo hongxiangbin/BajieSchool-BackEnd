@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-09-24 18:17:17
+Date: 2016-09-24 18:56:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -367,22 +367,21 @@ CREATE TABLE `study` (
 -- ----------------------------
 -- Records of study
 -- ----------------------------
-INSERT INTO `study` VALUES ('50000', '1', '考研数学', '问一下小伙伴们，考研数学如何拿145分？', '165', '45', '2016-08-15 14:28:19');
-INSERT INTO `study` VALUES ('50001', '11', '四六级。。。', '出分数了，大家情况怎么样啊', '4654', '465', '2016-08-09 14:29:08');
-INSERT INTO `study` VALUES ('50002', '0', '计算机二级推荐', '推荐信息', '1321', '132', '2016-08-23 15:24:11');
-INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子商务中的应用', '132', '132', '2016-08-09 15:23:58');
-INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '132', '132', '2016-08-17 15:24:34');
-INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '498', '1265', '2016-08-23 15:25:00');
-INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '46', '465', '2016-08-03 15:25:23');
-INSERT INTO `study` VALUES ('50007', '5', '财务管理', 'CFO。。。', '495', '288', '2016-08-01 15:25:44');
-INSERT INTO `study` VALUES ('50008', '6', '生物', 'DNA。。。', '465', '98', '2016-08-09 10:18:48');
-INSERT INTO `study` VALUES ('50009', '7', '机械', '机械购期末考。。。', '79', '6', '2016-08-02 10:19:15');
-INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '95', '65', '2016-08-26 10:20:02');
-INSERT INTO `study` VALUES ('50011', '9', '经济学', '微观经济学', '79', '26', '2016-08-05 10:20:23');
+INSERT INTO `study` VALUES ('50000', '1', '考研数学', '问一下小伙伴们，考研数学如何拿145分？', '0', '0', '2016-08-15 14:28:19');
+INSERT INTO `study` VALUES ('50001', '11', '四六级。。。', '出分数了，大家情况怎么样啊', '0', '0', '2016-08-09 14:29:08');
+INSERT INTO `study` VALUES ('50002', '0', '计算机二级推荐', '推荐信息', '0', '0', '2016-08-23 15:24:11');
+INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子商务中的应用', '0', '0', '2016-08-09 15:23:58');
+INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '0', '0', '2016-08-17 15:24:34');
+INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '0', '0', '2016-08-23 15:25:00');
+INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '0', '0', '2016-08-03 15:25:23');
+INSERT INTO `study` VALUES ('50007', '5', '财务管理', 'CFO。。。', '0', '0', '2016-08-01 15:25:44');
+INSERT INTO `study` VALUES ('50008', '6', '生物', 'DNA。。。', '0', '0', '2016-08-09 10:18:48');
+INSERT INTO `study` VALUES ('50009', '7', '机械', '机械购期末考。。。', '0', '0', '2016-08-02 10:19:15');
+INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '0', '0', '2016-08-26 10:20:02');
+INSERT INTO `study` VALUES ('50011', '9', '经济学', '微观经济学', '0', '0', '2016-08-05 10:20:23');
 INSERT INTO `study` VALUES ('50014', '2', '大学英语', '大学英语大学英语大学英语', '0', '0', '2016-08-29 14:14:44');
 INSERT INTO `study` VALUES ('50015', '3', '高等数学', '高等数学', '0', '0', '2016-08-29 14:15:57');
-INSERT INTO `study` VALUES ('50016', '9', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:35');
-INSERT INTO `study` VALUES ('50017', '0', '2222', '少时诵诗书', '0', '0', '2016-08-29 14:35:52');
+INSERT INTO `study` VALUES ('50017', '0', '2222', '少时诵诗书', '0', '2', '2016-08-29 14:35:52');
 INSERT INTO `study` VALUES ('50018', '3', '如何学好高等数学', '啊啊啊啊啊啊啊啊啊啊', '0', '0', '2016-08-30 16:05:17');
 
 -- ----------------------------
@@ -397,28 +396,13 @@ CREATE TABLE `study_reply` (
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
   `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
   PRIMARY KEY (`std_re_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60018 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60021 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
 -- ----------------------------
-INSERT INTO `study_reply` VALUES ('60001', '50000', 'LucasX', '少玩游戏多读书。。', '2016-08-23 14:45:48', '4560');
-INSERT INTO `study_reply` VALUES ('60002', '50000', 'admin', '火钳刘明', '2016-08-09 16:53:39', '165');
-INSERT INTO `study_reply` VALUES ('60003', '50003', 'LucasX', 'ssssssssssss', '2016-08-30 15:39:56', '0');
-INSERT INTO `study_reply` VALUES ('60004', '50003', 'LucasX', 'dasda', '2016-08-30 15:40:56', '0');
-INSERT INTO `study_reply` VALUES ('60005', '50003', 'LucasX', 'dasda', '2016-08-30 15:41:04', '0');
-INSERT INTO `study_reply` VALUES ('60006', '50003', 'LucasX', 'dddddd', '2016-08-30 15:41:09', '0');
-INSERT INTO `study_reply` VALUES ('60007', '50002', 'LucasX', '推荐系统', '2016-08-30 15:41:33', '0');
-INSERT INTO `study_reply` VALUES ('60008', '50003', 'LucasX', '啊啊啊啊啊啊', '2016-08-30 15:50:56', '0');
-INSERT INTO `study_reply` VALUES ('60009', '50003', 'LucasX', '啊啊啊啊啊啊', '2016-08-30 15:51:12', '0');
-INSERT INTO `study_reply` VALUES ('60010', '50003', 'LucasX', '呵呵呵呵呵', '2016-08-30 15:52:43', '0');
-INSERT INTO `study_reply` VALUES ('60011', '50003', 'LucasX', '非斯蒂芬斯蒂芬', '2016-08-30 15:53:55', '0');
-INSERT INTO `study_reply` VALUES ('60012', '50003', 'LucasX', '大大萨斯的', '2016-08-30 15:54:52', '0');
-INSERT INTO `study_reply` VALUES ('60013', '50017', 'LucasX', '啊啊啊', '2016-08-31 09:52:33', '0');
-INSERT INTO `study_reply` VALUES ('60014', '50002', 'LucasX', '考试啊  考试', '2016-08-31 09:52:45', '0');
-INSERT INTO `study_reply` VALUES ('60015', '50018', 'LucasX', '哈哈哈', '2016-08-31 09:53:23', '0');
-INSERT INTO `study_reply` VALUES ('60016', '50018', 'LucasX', '666', '2016-09-10 16:19:40', '0');
-INSERT INTO `study_reply` VALUES ('60017', '50017', 'LucasX', '啊啊啊啊啊', '2016-09-24 12:37:39', '0');
+INSERT INTO `study_reply` VALUES ('60019', '50017', 'LucasX', '哈哈哈', '2016-09-24 18:40:49', '0');
+INSERT INTO `study_reply` VALUES ('60020', '50017', 'LucasX', '反反复复吩咐', '2016-09-24 18:41:41', '0');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -725,6 +709,9 @@ INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50002', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 
 -- ----------------------------
