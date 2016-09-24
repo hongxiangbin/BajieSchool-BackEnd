@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-09-20 17:57:24
+Date: 2016-09-24 18:17:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,54 +59,42 @@ CREATE TABLE `activity` (
 -- ----------------------------
 -- Records of activity
 -- ----------------------------
-INSERT INTO `activity` VALUES ('10000', '0', '周杰伦演唱会', '8月17日，周杰伦将在武汉光谷广场举办演唱会', 'img/activity/act/周杰伦.jpg', '2016-08-16 14:49:44', '524', '2', '249', '125', '154', '湖北武汉', '1', null);
-INSERT INTO `activity` VALUES ('10001', '0', '科技展览', 'VR，无人机，无人驾驶，机器人等在武汉大学开办展会', 'img/activity/act/科技展览.jpeg', '2016-08-15 14:49:44', '54', '0', '199', '125', '174', '湖北武汉', '1', null);
-INSERT INTO `activity` VALUES ('10002', '0', '数学建模大赛', '阿里巴巴天池大数据竞赛', 'img/activity/act/阿里巴巴.jpg', '2016-08-14 14:49:44', '54', '0', '1699', '125', '174', '浙江杭州', '1', null);
-INSERT INTO `activity` VALUES ('10003', '1', '黄河落日', '大漠孤烟直，长河落日圆', 'img/activity/tabs/旅游/1.jpg', '2016-08-09 17:51:26', '26', '0', '44', '48', '156', '甘肃', null, null);
-INSERT INTO `activity` VALUES ('10004', '1', '丽江水', '丽江大学生组团游，有兴趣的小伙伴一起约在华科聊一聊', 'img/activity/tabs/旅游/2.jpg', '2016-08-08 17:52:30', '154', '0', '165', '565', '56', '桂林', null, null);
-INSERT INTO `activity` VALUES ('10005', '2', '武汉大学校庆', '珞珈山的小伙伴们，躁起来~~~', 'img/whu.png', '2016-08-16 17:54:33', '1554', '0', '56564', '4654', '565', '湖北武汉', null, null);
-INSERT INTO `activity` VALUES ('10006', '3', '周杰伦演唱会', '有一起的小伙伴么？', 'img/activity/tabs/明星/1.jpg', '2016-08-16 17:55:56', '46546', '0', '54654', '9846', '4654', '北京', null, null);
-INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记，大家都看了吗？', 'img/activity/tabs/电影/1.jpg', '2016-08-08 17:56:36', '1655', '0', '126', '98', '5656', '北京', null, null);
-INSERT INTO `activity` VALUES ('10008', '5', '周杰伦的床边故事', '新专辑哦~', 'img/activity/act/周杰伦.jpg', '2016-08-02 14:16:32', '68743', '0', '66871', '26545', '269462', '北京', '1', null);
-INSERT INTO `activity` VALUES ('10009', '6', '军训', '天气转凉快了。。', null, '2016-08-02 14:17:15', '32156', '0', '1564', '3465', '65474', '武汉', null, null);
-INSERT INTO `activity` VALUES ('10010', '7', '恋爱。。。', '你们当时都是怎么认识对方的？', null, '2016-08-22 14:17:54', '156465', '0', '6546789', '4987', '498', null, null, null);
+INSERT INTO `activity` VALUES ('10000', '0', '周杰伦演唱会', '8月17日，周杰伦将在武汉光谷广场举办演唱会', 'img/activity/act/周杰伦.jpg', '2016-08-16 14:49:44', '6', '7', '0', '2', '0', '湖北武汉', '', null);
+INSERT INTO `activity` VALUES ('10001', '0', '科技展览', 'VR，无人机，无人驾驶，机器人等在武汉大学开办展会', 'img/activity/act/科技展览.jpeg', '2016-08-15 14:49:44', '1', '0', '0', '1', '0', '湖北武汉', '', null);
+INSERT INTO `activity` VALUES ('10002', '0', '数学建模大赛', '阿里巴巴天池大数据竞赛', 'img/activity/act/阿里巴巴.jpg', '2016-08-14 14:49:44', '1', '0', '0', '0', '0', '浙江杭州', '', null);
+INSERT INTO `activity` VALUES ('10003', '1', '黄河落日', '大漠孤烟直，长河落日圆', 'img/activity/tabs/旅游/1.jpg', '2016-08-09 17:51:26', '0', '0', '0', '0', '0', '甘肃', null, null);
+INSERT INTO `activity` VALUES ('10004', '1', '丽江水', '丽江大学生组团游，有兴趣的小伙伴一起约在华科聊一聊', 'img/activity/tabs/旅游/2.jpg', '2016-08-08 17:52:30', '0', '0', '0', '0', '0', '桂林', null, null);
+INSERT INTO `activity` VALUES ('10005', '2', '武汉大学校庆', '珞珈山的小伙伴们，躁起来~~~', 'img/whu.png', '2016-08-16 17:54:33', '0', '0', '0', '0', '0', '湖北武汉', '', null);
+INSERT INTO `activity` VALUES ('10006', '3', '周杰伦演唱会', '有一起的小伙伴么？', 'img/activity/tabs/明星/1.jpg', '2016-08-16 17:55:56', '0', '0', '0', '0', '0', '北京', null, null);
+INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记，大家都看了吗？', 'img/activity/tabs/电影/1.jpg', '2016-08-08 17:56:36', '0', '0', '0', '0', '0', '北京', null, null);
+INSERT INTO `activity` VALUES ('10008', '5', '周杰伦的床边故事', '新专辑哦~', 'img/activity/act/周杰伦.jpg', '2016-08-02 14:16:32', '0', '0', '0', '0', '0', '北京', '', null);
+INSERT INTO `activity` VALUES ('10009', '6', '军训', '天气转凉快了。。', null, '2016-08-02 14:17:15', '0', '0', '0', '0', '0', '武汉', null, null);
+INSERT INTO `activity` VALUES ('10010', '7', '恋爱。。。', '你们当时都是怎么认识对方的？', null, '2016-08-22 14:17:54', '0', '0', '0', '0', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for activity_comment
 -- ----------------------------
 DROP TABLE IF EXISTS `activity_comment`;
 CREATE TABLE `activity_comment` (
-  `act_com_id` int(12) NOT NULL AUTO_INCREMENT,
+  `act_com_id` int(6) NOT NULL AUTO_INCREMENT,
   `act_id` int(12) NOT NULL,
   `username` varchar(16) NOT NULL,
   `act_com_content` varchar(255) DEFAULT NULL,
   `act_com_time` datetime DEFAULT NULL,
   `act_com_like` int(5) DEFAULT NULL,
   PRIMARY KEY (`act_com_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20002 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20015 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of activity_comment
 -- ----------------------------
-INSERT INTO `activity_comment` VALUES ('20000', '10000', 'LucasX', '小公举。。', '2016-08-24 10:12:29', '465');
-INSERT INTO `activity_comment` VALUES ('20001', '10000', 'admin', '周杰伦', '2016-08-23 10:25:13', '354');
-
--- ----------------------------
--- Table structure for activity_comment_comment
--- ----------------------------
-DROP TABLE IF EXISTS `activity_comment_comment`;
-CREATE TABLE `activity_comment_comment` (
-  `a_c_c_id` int(12) NOT NULL COMMENT '评论ID',
-  `act_com_id` int(12) NOT NULL COMMENT '原评论ID',
-  `username` varchar(16) NOT NULL COMMENT '评论用户',
-  `a_c_c_content` varchar(255) DEFAULT NULL COMMENT '评论内容',
-  `a_c_c_time` datetime DEFAULT NULL COMMENT '评论时间',
-  PRIMARY KEY (`a_c_c_id`,`act_com_id`,`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of activity_comment_comment
--- ----------------------------
+INSERT INTO `activity_comment` VALUES ('20008', '10000', 'LucasX', '周杰伦', '2016-09-24 16:38:17', '0');
+INSERT INTO `activity_comment` VALUES ('20009', '10000', 'LucasX', '小公举', '2016-09-24 16:51:09', '0');
+INSERT INTO `activity_comment` VALUES ('20010', '10000', 'LucasX', '赞赞赞', '2016-09-24 16:51:37', '0');
+INSERT INTO `activity_comment` VALUES ('20011', '10000', 'LucasX', '啊啊啊啊啊啊', '2016-09-24 16:53:26', '0');
+INSERT INTO `activity_comment` VALUES ('20012', '10000', 'LucasX', 'vvvvvvvvvvvvvvvvvv', '2016-09-24 16:53:59', '0');
+INSERT INTO `activity_comment` VALUES ('20013', '10000', 'LucasX', '1111111111111', '2016-09-24 16:54:15', '0');
+INSERT INTO `activity_comment` VALUES ('20014', '10000', 'admin', '回复@LucasX:6666666', '2016-09-24 17:38:12', '0');
 
 -- ----------------------------
 -- Table structure for activity_type
@@ -266,7 +254,7 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '0', '2016-09-20 15:17:25');
+INSERT INTO `login_status` VALUES ('admin', '0', '2016-09-24 17:32:57');
 INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
 INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-09-20 14:56:01');
 
@@ -323,7 +311,7 @@ CREATE TABLE `question` (
 -- ----------------------------
 -- Records of question
 -- ----------------------------
-INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '566', '0', '2016-08-09 19:13:15');
+INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '567', '0', '2016-08-09 19:13:15');
 INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '565', '0', '2016-08-04 19:14:09');
 INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', '深度学习；人工智能', 'rt', '', '0', '0', '2016-08-29 13:06:47');
 
@@ -409,7 +397,7 @@ CREATE TABLE `study_reply` (
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
   `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
   PRIMARY KEY (`std_re_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60017 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60018 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
@@ -430,6 +418,7 @@ INSERT INTO `study_reply` VALUES ('60013', '50017', 'LucasX', '啊啊啊', '2016
 INSERT INTO `study_reply` VALUES ('60014', '50002', 'LucasX', '考试啊  考试', '2016-08-31 09:52:45', '0');
 INSERT INTO `study_reply` VALUES ('60015', '50018', 'LucasX', '哈哈哈', '2016-08-31 09:53:23', '0');
 INSERT INTO `study_reply` VALUES ('60016', '50018', 'LucasX', '666', '2016-09-10 16:19:40', '0');
+INSERT INTO `study_reply` VALUES ('60017', '50017', 'LucasX', '啊啊啊啊啊', '2016-09-24 12:37:39', '0');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -641,10 +630,10 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '没什么好说的', '10486', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
+INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801fc3', '1', '13207145966', 'img/avatar-default-boy.png', '没什么好说的', '1', '信息管理学院', '2011', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
 INSERT INTO `user` VALUES ('Jack', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '2', '计算机学院', '2016', '1', null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('Kevin', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '10', '经济管理学院', '2016', '1', null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '10486', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
+INSERT INTO `user` VALUES ('Kevin', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '3', '经济管理学院', '2016', '1', null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '1', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -664,10 +653,9 @@ CREATE TABLE `user_activity` (
 -- ----------------------------
 -- Records of user_activity
 -- ----------------------------
-INSERT INTO `user_activity` VALUES ('admin', '10000', '0', null, null, null, null);
-INSERT INTO `user_activity` VALUES ('admin', '10001', '0', null, null, null, null);
-INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0', '0', '0', '0', '0');
-INSERT INTO `user_activity` VALUES ('LucasX', '10003', '1', '1', '1', '1', '1');
+INSERT INTO `user_activity` VALUES ('LucasX', '10000', '1', '0', '0', '1', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10001', '0', '0', '0', '1', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10002', '1', '1', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for user_acttype
@@ -737,6 +725,7 @@ INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50002', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50018', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 
 -- ----------------------------
 -- Table structure for user_studytype
