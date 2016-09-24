@@ -5,10 +5,7 @@ import com.zlfinfo.model.UserActivity;
 import com.zlfinfo.service.UserActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +28,18 @@ public class UserActivityController extends BaseController {
         } else {
             return renderError("useractivity查询失败!", httpServletResponse);
         }
+    }
+
+    @RequestMapping(value = "/useract/like", method = RequestMethod.POST)
+    @ResponseBody
+    public Object like(@RequestParam Integer actId, @RequestParam String username, HttpServletResponse
+            httpServletResponse) {
+        UserActivity userActivity = new UserActivity();
+        userActivity.setUsername(username);
+        userActivity.setActId(actId);
+        userActivity.setLikeFlag(1);
+        int i = userActivityService.updateByPrimaryKeySelective(userActivity);
+        return i > 0 ? renderSuccess("点赞成功！", httpServletResponse) : renderError("点赞失败！", httpServletResponse);
     }
 
 }

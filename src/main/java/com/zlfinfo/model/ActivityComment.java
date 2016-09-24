@@ -33,6 +33,14 @@ public class ActivityComment implements Serializable {
         this.actComLike = actComLike;
     }
 
+    public ActivityComment(Integer actId, String username, String actComContent, Date actComTime, Integer actComLike) {
+        this.actId = actId;
+        this.username = username;
+        this.actComContent = actComContent;
+        this.actComTime = actComTime;
+        this.actComLike = actComLike;
+    }
+
     public Integer getActComId() {
         return actComId;
     }

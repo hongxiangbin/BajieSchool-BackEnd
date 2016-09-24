@@ -6,6 +6,7 @@
         <id column="que_id" property="queId" jdbcType="INTEGER"/>
         <id column="username" property="username" jdbcType="VARCHAR"/>
         <id column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="univ_name" property="university" jdbcType="VARCHAR"/>
         <result column="ans_content" property="ansContent" jdbcType="VARCHAR"/>
         <result column="ans_like" property="ansLike" jdbcType="INTEGER"/>
         <result column="ans_comment" property="ansComment" jdbcType="INTEGER"/>
@@ -17,9 +18,22 @@
 
     <select id="selectAnswer" resultMap="BaseResultMap">
         SELECT
-        answer.ans_id, answer.que_id, answer.username, user.avatar, answer.ans_content, answer.ans_like, answer.ans_comment, answer.ans_time
-        FROM answer NATURAL JOIN user
-        WHERE que_id = #{queId,jdbcType=VARCHAR}
+            answer.ans_id,
+            answer.que_id,
+            answer.username,
+            university.univ_name,
+            USER .avatar,
+            answer.ans_content,
+            answer.ans_like,
+            answer.ans_comment,
+            answer.ans_time
+        FROM
+            answer
+        NATURAL JOIN USER,
+         university
+        WHERE
+            que_id = #{queId,jdbcType=VARCHAR}
+        AND `user`.university = university.univ_id
     </select>
 
     <insert id="insert" parameterType="com.zlfinfo.model.Answer">

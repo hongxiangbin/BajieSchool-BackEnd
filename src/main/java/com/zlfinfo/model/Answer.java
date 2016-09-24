@@ -10,6 +10,8 @@ public class Answer implements Serializable {
 
     private String username;
 
+    private String university;
+
     private String avatar;
 
     private String ansContent;
@@ -25,11 +27,13 @@ public class Answer implements Serializable {
     public Answer() {
     }
 
-    public Answer(Integer ansId, Integer queId, String username, String avatar, String ansContent, Integer ansLike,
+    public Answer(Integer ansId, Integer queId, String username, String university, String avatar, String ansContent,
+                  Integer ansLike,
                   Integer ansComment, Date ansTime) {
         this.ansId = ansId;
         this.queId = queId;
         this.username = username;
+        this.university = university;
         this.avatar = avatar;
         this.ansContent = ansContent;
         this.ansLike = ansLike;
@@ -70,6 +74,14 @@ public class Answer implements Serializable {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public String getAvatar() {

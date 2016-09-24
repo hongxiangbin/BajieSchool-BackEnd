@@ -18,10 +18,16 @@ public interface ActivityService {
 
     List<Activity> selectActivityByUserNType(Integer type);
 
-    List<Activity> selectMineActivity(String username, Integer type);
+    List<Activity> selectMineActivity(String username, Integer launFlag);
+
+    List<Activity> selectJoinActivity(String username);
 
     int updateByPrimaryKeySelective(Activity act);
 
     Activity selectByPrimaryKey(Integer actId);
+
+    int addCommentNum(Integer actId);
+
+    int addJoinNum(Integer actId);
 
 }

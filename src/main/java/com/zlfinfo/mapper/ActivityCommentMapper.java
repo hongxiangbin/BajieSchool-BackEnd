@@ -11,6 +11,8 @@ public interface ActivityCommentMapper {
 
     int insertSelective(ActivityComment record);
 
+    int updateLike();
+
     List<ActivityComment> selectActivityCommentByActId(@Param("actId") Integer actId, @Param("username") String
             username);
 }

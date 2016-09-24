@@ -15,7 +15,7 @@
         act_id, username, like_flag, laun_flag, comm_flag, join_flag, fav_flag
     </sql>
 
-    <select id="selectUserActivity" resultType="com.zlfinfo.model.UserActivity">
+    <select id="selectUserActivity" resultMap="BaseResultMap">
         SELECT act_id, username, like_flag, laun_flag, comm_flag, join_flag, fav_flag
         FROM user_activity
         WHERE act_id = #{actId,jdbcType=INTEGER}
@@ -94,6 +94,11 @@
         </set>
         WHERE act_id = #{actId,jdbcType=INTEGER}
         AND username = #{username,jdbcType=VARCHAR}
+        AND 0 = (
+        SELECT status
+        FROM login_status
+        WHERE username = #{username}
+        )
     </update>
 
 </mapper>

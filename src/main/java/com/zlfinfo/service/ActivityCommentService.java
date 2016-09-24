@@ -10,4 +10,8 @@ import java.util.List;
 public interface ActivityCommentService {
 
     List<ActivityComment> selectActComByActId(Integer actId, String username);
+
+    int insertSelective(ActivityComment activityComment);
+
+    int updateLike();
 }

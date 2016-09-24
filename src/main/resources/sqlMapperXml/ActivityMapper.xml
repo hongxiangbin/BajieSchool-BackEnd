@@ -44,6 +44,7 @@
         act_id, act_type, act_title, act_content, act_img, act_time, act_like, act_comment,
         act_follow, act_join, act_signup, act_place, reserve1, reserve2
     </sql>
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
@@ -73,8 +74,7 @@
             act_v.act_img,
             act_v.act_time,
             act_v.act_like,
-            act_v.act_comment,
-            act_v.reserve1
+            act_v.act_comment
         FROM
             activity_view act_v
         NATURAL JOIN user_activity
@@ -88,6 +88,27 @@
 
     <select id="selectAllActivity" resultMap="BaseResultMap">
         SELECT * FROM activity
+    </select>
+
+    <select id="selectJoinActivity" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT DISTINCT
+            act_v.act_id,
+            act_v.act_type,
+            act_v.act_title,
+            act_v.act_content,
+            act_v.act_img,
+            act_v.act_time,
+            act_v.act_like,
+            act_v.act_comment
+        FROM
+            activity_view act_v
+        NATURAL JOIN user_activity
+        NATURAL JOIN USER
+        NATURAL JOIN login_status
+        WHERE
+            login_status.`status` = 0
+        AND user_activity.join_flag = 1
+        AND `user`.username = #{username}
     </select>
 
     <delete id="deleteByPrimaryKey">
@@ -107,6 +128,7 @@
         #{actJoin,jdbcType=INTEGER}, #{actSignup,jdbcType=INTEGER}, #{actPlace,jdbcType=VARCHAR},
         #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR})
     </insert>
+
     <insert id="insertSelective" parameterType="com.zlfinfo.model.Activity">
         insert into activity
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -198,6 +220,15 @@
             </if>
         </trim>
     </insert>
+
+    <update id="addCommentNum" parameterType="java.lang.Integer">
+        UPDATE activity SET act_comment = act_comment + 1 WHERE act_id = #{actId}
+    </update>
+
+    <update id="addJoinNum" parameterType="java.lang.Integer">
+        UPDATE activity SET act_join = act_join + 1 WHERE act_id = #{actId}
+    </update>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Activity">
         update activity
         <set>
@@ -243,6 +274,7 @@
         </set>
         where act_id = #{actId,jdbcType=VARCHAR}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Activity">
         update activity
         set act_type = #{actType,jdbcType=INTEGER},

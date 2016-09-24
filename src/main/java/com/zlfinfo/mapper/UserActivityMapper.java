@@ -8,5 +8,5 @@ public interface UserActivityMapper {
 
     UserActivity selectUserActivity(@Param("actId") Integer actId, @Param("username") String username);
 
-    int updateByPrimaryKeySelective(UserActivity record);
+    int updateByPrimaryKeySelective(UserActivity userActivity);
 }

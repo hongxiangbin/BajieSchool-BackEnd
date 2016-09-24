@@ -8,4 +8,8 @@ import com.zlfinfo.model.UserActivity;
 public interface UserActivityService {
 
     UserActivity selectUserActivity(Integer actId, String username);
+
+    int updateByPrimaryKeySelective(UserActivity userActivity);
+
+    int insertSelective(UserActivity userActivity);
 }

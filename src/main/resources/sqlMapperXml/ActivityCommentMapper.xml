@@ -67,4 +67,8 @@
         </trim>
     </insert>
 
+    <update id="updateLike">
+        UPDATE activity_comment SET act_com_like = act_com_like + 1
+    </update>
+
 </mapper>

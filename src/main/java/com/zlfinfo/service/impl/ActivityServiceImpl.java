@@ -25,20 +25,23 @@ public class ActivityServiceImpl implements ActivityService {
     public ActivityMapper actMapper;
     @Autowired
     public UserActivityMapper userActivityMapper;
+
     @Override
     public int insert(Activity act) {
         Integer num = actMapper.insert(act);
-        if(num==1){
+        if (num == 1) {
             return act.getActId();
-        }else{
+        } else {
             return 0;
         }
     }
+
     @Override
     public int insertuserActivity(UserActivity userActivity) {
-        userActivityMapper.insert(userActivity);
+        userActivityMapper.insertSelective(userActivity);
         return 0;
     }
+
     @Override
     public List<Activity> selectAllActivity() {
         return actMapper.selectAllActivity();
@@ -55,6 +58,11 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public List<Activity> selectJoinActivity(String username) {
+        return actMapper.selectJoinActivity(username);
+    }
+
+    @Override
     public int updateByPrimaryKeySelective(Activity act) {
         return actMapper.updateByPrimaryKeySelective(act);
     }
@@ -62,5 +70,15 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public Activity selectByPrimaryKey(Integer actId) {
         return actMapper.selectByPrimaryKey(actId);
+    }
+
+    @Override
+    public int addCommentNum(Integer actId) {
+        return actMapper.addCommentNum(actId);
+    }
+
+    @Override
+    public int addJoinNum(Integer actId) {
+        return actMapper.addJoinNum(actId);
     }
 }

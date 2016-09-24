@@ -21,4 +21,15 @@ public class ActivityCommentServiceImpl implements ActivityCommentService {
     public List<ActivityComment> selectActComByActId(Integer actId, String username) {
         return activityCommentMapper.selectActivityCommentByActId(actId, username);
     }
+
+    @Override
+    public int insertSelective(ActivityComment activityComment) {
+        return activityCommentMapper.insertSelective(activityComment);
+    }
+
+    @Override
+    public int updateLike() {
+        return activityCommentMapper.updateLike();
+    }
+
 }
