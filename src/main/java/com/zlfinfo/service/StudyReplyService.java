@@ -14,4 +14,6 @@ public interface StudyReplyService {
     List<StudyReply> selectStudyReplyByStudy(Integer stdId, String username);
 
     int insertStudyReply(StudyReply studyReply);
+
+    int addLikeNum(Integer stdReId);
 }

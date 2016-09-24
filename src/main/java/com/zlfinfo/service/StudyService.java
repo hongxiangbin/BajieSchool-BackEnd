@@ -15,4 +15,6 @@ public interface StudyService {
     int insertUserStudy(UserStudy userStudy);
     int updateByPrimaryKeySelective(Study record);
     Study selectByPrimaryKey(Integer stdId);
+
+    int addCommentNum(Integer stdId);
 }

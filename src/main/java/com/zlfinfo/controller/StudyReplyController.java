@@ -3,9 +3,13 @@ package com.zlfinfo.controller;
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.StudyReply;
 import com.zlfinfo.service.StudyReplyService;
+import com.zlfinfo.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -19,6 +23,8 @@ public class StudyReplyController extends BaseController {
 
     @Autowired
     private StudyReplyService studyReplyService;
+    @Autowired
+    private StudyService studyService;
 
     @RequestMapping(value = "/study/replys", method = RequestMethod.GET)
     @ResponseBody
@@ -52,6 +58,9 @@ public class StudyReplyController extends BaseController {
         System.out.println(studyReply);
         int i = studyReplyService.insertStudyReply(studyReply);
 
-        return i == 0 ? renderSuccess("新增回复成功!", httpServletResponse) : renderError("新增回复失败!", httpServletResponse);
+        int j = studyService.addCommentNum(studyReply.getStdId());
+
+        return i > 0 && j > 0 ? renderSuccess("新增回复成功!", httpServletResponse) : renderError("新增回复失败!",
+                httpServletResponse);
     }
 }

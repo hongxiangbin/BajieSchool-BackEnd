@@ -40,12 +40,19 @@ public class StudyServiceImpl implements StudyService {
     public List<Study> selectStudyByTypeNUser(Integer type, String username) {
         return studyMapper.selectStudyByTypeNUser(type, username);
     }
+
     @Override
     public int updateByPrimaryKeySelective(Study stu) {
         return studyMapper.updateByPrimaryKeySelective(stu);
     }
+
     @Override
     public Study selectByPrimaryKey(Integer stdId) {
         return studyMapper.selectByPrimaryKey(stdId);
+    }
+
+    @Override
+    public int addCommentNum(Integer stdId) {
+        return studyMapper.addCommentNum(stdId);
     }
 }

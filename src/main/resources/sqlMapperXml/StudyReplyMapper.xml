@@ -91,4 +91,8 @@
             </if>
         </trim>
     </insert>
+
+    <update id="addLikeNum" parameterType="java.lang.Integer">
+        UPDATE study_reply SET std_re_like = std_re_like + 1 WHERE std_re_id = #{stdReId}
+    </update>
 </mapper>

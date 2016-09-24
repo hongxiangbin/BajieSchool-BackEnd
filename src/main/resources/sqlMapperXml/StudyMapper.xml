@@ -66,6 +66,7 @@
         #{stdContent,jdbcType=VARCHAR}, #{stdLike,jdbcType=INTEGER}, #{stdComment,jdbcType=INTEGER},
         #{stdTime,jdbcType=TIMESTAMP})
     </insert>
+
     <insert id="insertSelective" parameterType="com.zlfinfo.model.Study">
         insert into study
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -150,5 +151,9 @@
       std_time = #{stdTime,jdbcType=TIMESTAMP}
     where std_id = #{stdId,jdbcType=VARCHAR}
   </update>
+
+    <update id="addCommentNum" parameterType="java.lang.Integer">
+        UPDATE study SET std_comment = std_comment + 1 WHERE std_id = #{stdId}
+    </update>
 
 </mapper>

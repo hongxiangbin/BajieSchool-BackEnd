@@ -22,5 +22,6 @@ public interface StudyReplyMapper {
 
     List<StudyReply> selectStudyReplyByStudy(@Param("stdId") Integer stdId, @Param("username") String username);
 
+    int addLikeNum(@Param("stdReId") Integer stdReId);
 
 }

@@ -22,4 +22,6 @@ public interface StudyMapper {
 
     List<Study> selectStudyByTypeNUser(@Param("type") Integer type, @Param("username") String username);
 
+    int addCommentNum(@Param("stdId") Integer stdId);
+
 }

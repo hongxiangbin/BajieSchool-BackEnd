@@ -31,4 +31,9 @@ public class StudyReplyServiceImpl implements StudyReplyService {
     public int insertStudyReply(StudyReply studyReply) {
         return studyReplyMapper.insert(studyReply);
     }
+
+    @Override
+    public int addLikeNum(Integer stdReId) {
+        return studyReplyMapper.addLikeNum(stdReId);
+    }
 }
