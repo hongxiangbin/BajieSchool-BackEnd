@@ -16,6 +16,7 @@
         <result column="act_place" property="actPlace" jdbcType="VARCHAR"/>
         <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
         <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
+
     </resultMap>
 
     <resultMap id="indexResultMap" type="com.zlfinfo.model.Activity">

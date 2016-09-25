@@ -22,7 +22,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-      que_id, que_title, que_content, que_img, que_like, que_comment, que_time
+      que_id, que_title, que_tags, que_content, que_img, que_like, que_comment, que_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
@@ -75,19 +75,19 @@
     </delete>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="queId">
-        INSERT INTO question (que_id,que_title, que_content,
+        INSERT INTO question (que_id,que_title, que_content, que_tags,
         que_img, que_like, que_comment,
         que_time)
-        VALUES (#{queId,jdbcType=INTEGER},#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
+        VALUES (#{queId,jdbcType=INTEGER},#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR}, #{queTags,jdbcType=VARCHAR},
         #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER},
         #{queTime,jdbcType=TIMESTAMP})
     </insert>
 
     <insert id="insertQuestion">
-    INSERT INTO question (que_title, que_content,
+    INSERT INTO question (que_title, que_content, que_tags,
           que_img, que_like, que_comment,
           que_time)
-        VALUES (#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR},
+        VALUES (#{queTitle,jdbcType=VARCHAR}, #{queContent,jdbcType=VARCHAR}, #{queTags,jdbcType=VARCHAR},
           #{queImg,jdbcType=VARCHAR}, #{queLike,jdbcType=INTEGER}, #{queComment,jdbcType=INTEGER},
           #{queTime,jdbcType=TIMESTAMP})
     </insert>

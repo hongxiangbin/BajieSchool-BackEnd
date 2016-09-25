@@ -38,6 +38,16 @@ public class Activity implements Serializable {
 
     private String reserve2;
 
+    private Integer likeFlag;
+
+    private Integer launFlag;
+
+    private Integer commFlag;
+
+    private Integer joinFlag;
+
+    private Integer favFlag;
+
     public Activity(Integer actId, Integer actType, String actTitle, String actContent, String actImg, Date actTime, String actPlace) {
         this.actId = actId;
         this.actType = actType;
@@ -46,6 +56,31 @@ public class Activity implements Serializable {
         this.actImg = actImg;
         this.actTime = actTime;
         this.actPlace = actPlace;
+    }
+
+    public Activity(Integer actId, Integer actType, String actTitle, String actContent, String actImg, Date actTime,
+                    Integer actLike, Integer actComment, Integer actFollow, Integer actJoin, Integer actSignup,
+                    String actPlace, String reserve1, String reserve2, Integer likeFlag, Integer launFlag, Integer
+                            commFlag, Integer joinFlag, Integer favFlag) {
+        this.actId = actId;
+        this.actType = actType;
+        this.actTitle = actTitle;
+        this.actContent = actContent;
+        this.actImg = actImg;
+        this.actTime = actTime;
+        this.actLike = actLike;
+        this.actComment = actComment;
+        this.actFollow = actFollow;
+        this.actJoin = actJoin;
+        this.actSignup = actSignup;
+        this.actPlace = actPlace;
+        this.reserve1 = reserve1;
+        this.reserve2 = reserve2;
+        this.likeFlag = likeFlag;
+        this.launFlag = launFlag;
+        this.commFlag = commFlag;
+        this.joinFlag = joinFlag;
+        this.favFlag = favFlag;
     }
 
     public Integer getActId() {

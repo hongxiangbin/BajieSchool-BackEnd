@@ -46,7 +46,7 @@ public class QuestionController extends BaseController {
                       @RequestParam(required = false) String queTags, @RequestParam(required = false) String queContent,
                       @RequestParam(required = false) String queImg, @RequestParam String username, HttpServletResponse
                               httpServletResponse) {
-        Question question = new Question(queId, queTitle, queTags, queContent, queImg, new Date());
+        Question question = new Question(queId, queTitle.trim(), queTags, queContent.trim(), queImg, 0, 0, new Date());
         Integer qid = questionService.addQuestion(question);
         String msg = "提问成功！";
         Integer status = 0;

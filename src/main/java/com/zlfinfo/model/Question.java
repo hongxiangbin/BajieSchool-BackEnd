@@ -34,6 +34,18 @@ public class Question implements Serializable {
         this.queTime = queTime;
     }
 
+    public Question(Integer queId, String queTitle, String queTags, String queContent, String queImg, Integer
+            queLike, Integer queComment, Date queTime) {
+        this.queId = queId;
+        this.queTitle = queTitle;
+        this.queTags = queTags;
+        this.queContent = queContent;
+        this.queImg = queImg;
+        this.queLike = queLike;
+        this.queComment = queComment;
+        this.queTime = queTime;
+    }
+
     public Integer getQueId() {
         return queId;
     }

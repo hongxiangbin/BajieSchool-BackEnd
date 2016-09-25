@@ -63,4 +63,12 @@ public class StudyReplyController extends BaseController {
         return i > 0 && j > 0 ? renderSuccess("新增回复成功!", httpServletResponse) : renderError("新增回复失败!",
                 httpServletResponse);
     }
+
+    @RequestMapping(value = "/stdreply/like", method = RequestMethod.GET)
+    @ResponseBody
+    public Object likeStdReply(@RequestParam Integer stdReId, HttpServletResponse httpServletResponse) {
+        int i = studyReplyService.addLikeNum(stdReId);
+
+        return i > 0 ? renderSuccess("点赞成功!", httpServletResponse) : renderError("点赞失败!", httpServletResponse);
+    }
 }
