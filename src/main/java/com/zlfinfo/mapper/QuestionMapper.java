@@ -21,4 +21,6 @@ public interface QuestionMapper {
     List<Question> selectUserAllQuora(String username);
 
     List<Question> selectQuestionByUser(@Param("username") String username, @Param("flag") Integer flag);
+
+    int addCommNum(Integer queId);
 }

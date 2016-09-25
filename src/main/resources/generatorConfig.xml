@@ -49,7 +49,7 @@
          <generatedKey column="id" sqlStatement="MySql" identity="true"/>
          </table>-->
 
-        <table schema="bajie" tableName="user_activity" domainObjectName="UserActivity"
+        <table schema="bajie" tableName="answer_comment" domainObjectName="AnswerComment"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableUpdateByExample="false"

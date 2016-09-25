@@ -10,4 +10,8 @@ import java.util.List;
 public interface AnswerService {
 
     List<Answer> selectAnswer(Integer queId);
+
+    int insertAnswer(Answer answer);
+
+    int addAnsCommNum(Integer ansId);
 }

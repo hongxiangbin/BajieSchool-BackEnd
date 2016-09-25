@@ -2,6 +2,7 @@ package com.zlfinfo.service;
 
 import com.zlfinfo.model.Question;
 import com.zlfinfo.model.UserQuestion;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface QuestionService {
     Question selectByPrimaryKey(Integer queId);
 
     int updateByPrimaryKeySelective(Question record);
+
+    int addCommNum(@Param("queId") Integer queId);
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-09-24 18:56:43
+Date: 2016-09-25 14:10:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -153,13 +153,15 @@ CREATE TABLE `answer` (
   `ans_comment` int(5) DEFAULT '0' COMMENT '评论',
   `ans_time` datetime DEFAULT NULL COMMENT '回答时间',
   PRIMARY KEY (`ans_id`,`que_id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of answer
 -- ----------------------------
-INSERT INTO `answer` VALUES ('1', '30000', '读完《统计学习方法》、了解BP算法、linear regression', 'LucasX', '165', '232', '2016-09-10 16:23:15');
-INSERT INTO `answer` VALUES ('2', '30000', '刷kaggle吧。。。', 'admin', '35', '3', '2016-09-21 16:24:15');
+INSERT INTO `answer` VALUES ('4', '30000', '啊buzidao78559i68yolhji;.j', 'LucasX', '0', '0', '2016-09-25 14:05:45');
+INSERT INTO `answer` VALUES ('5', '30000', '', 'LucasX', '0', '0', '2016-09-25 14:06:14');
+INSERT INTO `answer` VALUES ('6', '30000', '啊啊啊啊啊不自动', 'LucasX', '0', '0', '2016-09-25 14:07:30');
+INSERT INTO `answer` VALUES ('7', '30000', '不要', 'LucasX', '0', '0', '2016-09-25 14:08:12');
 
 -- ----------------------------
 -- Table structure for answer_comment
@@ -167,17 +169,18 @@ INSERT INTO `answer` VALUES ('2', '30000', '刷kaggle吧。。。', 'admin', '35
 DROP TABLE IF EXISTS `answer_comment`;
 CREATE TABLE `answer_comment` (
   `ans_comm_id` int(11) NOT NULL AUTO_INCREMENT,
-  `ans_id` varchar(16) NOT NULL,
+  `ans_id` int(16) NOT NULL,
   `ans_comm_username` varchar(16) DEFAULT NULL,
   `ans_comm_content` varchar(255) DEFAULT NULL,
   `ans_comm_time` datetime DEFAULT NULL,
   `ans_comm_like` int(5) DEFAULT NULL,
   PRIMARY KEY (`ans_comm_id`,`ans_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of answer_comment
 -- ----------------------------
+INSERT INTO `answer_comment` VALUES ('1', '1', 'admin', '测试评论', '2016-09-25 13:16:23', '2');
 
 -- ----------------------------
 -- Table structure for banner
@@ -306,13 +309,13 @@ CREATE TABLE `question` (
   `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
   PRIMARY KEY (`que_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30008 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30019 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question
 -- ----------------------------
-INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '567', '0', '2016-08-09 19:13:15');
-INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '565', '0', '2016-08-04 19:14:09');
+INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '1', '4', '2016-08-09 19:13:15');
+INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '0', '0', '2016-08-04 19:14:09');
 INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', '深度学习；人工智能', 'rt', '', '0', '0', '2016-08-29 13:06:47');
 
 -- ----------------------------
@@ -362,15 +365,14 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT '0',
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50019 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50023 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
 -- ----------------------------
 INSERT INTO `study` VALUES ('50000', '1', '考研数学', '问一下小伙伴们，考研数学如何拿145分？', '0', '0', '2016-08-15 14:28:19');
 INSERT INTO `study` VALUES ('50001', '11', '四六级。。。', '出分数了，大家情况怎么样啊', '0', '0', '2016-08-09 14:29:08');
-INSERT INTO `study` VALUES ('50002', '0', '计算机二级推荐', '推荐信息', '0', '0', '2016-08-23 15:24:11');
-INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子商务中的应用', '0', '0', '2016-08-09 15:23:58');
+INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子商务中的应用', '0', '1', '2016-08-09 15:23:58');
 INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '0', '0', '2016-08-17 15:24:34');
 INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '0', '0', '2016-08-23 15:25:00');
 INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '0', '0', '2016-08-03 15:25:23');
@@ -396,13 +398,14 @@ CREATE TABLE `study_reply` (
   `std_re_time` datetime DEFAULT NULL COMMENT '回复时间',
   `std_re_like` int(5) DEFAULT '0' COMMENT '赞同数',
   PRIMARY KEY (`std_re_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60021 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60022 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study_reply
 -- ----------------------------
-INSERT INTO `study_reply` VALUES ('60019', '50017', 'LucasX', '哈哈哈', '2016-09-24 18:40:49', '0');
-INSERT INTO `study_reply` VALUES ('60020', '50017', 'LucasX', '反反复复吩咐', '2016-09-24 18:41:41', '0');
+INSERT INTO `study_reply` VALUES ('60019', '50017', 'LucasX', '哈哈哈', '2016-09-24 18:40:49', '1');
+INSERT INTO `study_reply` VALUES ('60020', '50017', 'LucasX', '反反复复吩咐', '2016-09-24 18:41:41', '2');
+INSERT INTO `study_reply` VALUES ('60021', '50003', 'LucasX', 'aaa', '2016-09-25 12:17:00', '1');
 
 -- ----------------------------
 -- Table structure for study_type
@@ -675,6 +678,17 @@ CREATE TABLE `user_question` (
 INSERT INTO `user_question` VALUES ('LucasX', '30000', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30001', '1');
 INSERT INTO `user_question` VALUES ('LucasX', '30007', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30008', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30009', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30010', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30011', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30012', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30013', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30014', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30015', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30016', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30017', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30018', '0');
 
 -- ----------------------------
 -- Table structure for user_study
@@ -713,6 +727,7 @@ INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
 INSERT INTO `user_study` VALUES ('LucasX', '50017', '1');
+INSERT INTO `user_study` VALUES ('LucasX', '50003', '1');
 
 -- ----------------------------
 -- Table structure for user_studytype

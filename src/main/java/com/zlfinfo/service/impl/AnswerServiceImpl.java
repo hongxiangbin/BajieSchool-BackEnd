@@ -21,4 +21,14 @@ public class AnswerServiceImpl implements AnswerService {
     public List<Answer> selectAnswer(Integer queId) {
         return answerMapper.selectAnswer(queId);
     }
+
+    @Override
+    public int insertAnswer(Answer answer) {
+        return answerMapper.insert(answer);
+    }
+
+    @Override
+    public int addAnsCommNum(Integer ansId) {
+        return answerMapper.addCommentNum(ansId);
+    }
 }

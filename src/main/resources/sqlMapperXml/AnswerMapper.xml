@@ -125,4 +125,8 @@
           AND que_id = #{queId,jdbcType=VARCHAR}
           AND username = #{username,jdbcType=VARCHAR}
   </update>
+
+    <update id="addCommentNum" parameterType="java.lang.Integer">
+        UPDATE answer SET ans_comment SET ans_comment + 1 WHERE ans_id = #{ansId}
+    </update>
 </mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.AnswerCommentMapper">
+    <resultMap id="BaseResultMap" type="com.zlfinfo.model.AnswerComment">
+        <id column="ans_comm_id" property="ansCommId" jdbcType="INTEGER"/>
+        <id column="ans_id" property="ansId" jdbcType="INTEGER"/>
+        <result column="ans_comm_username" property="ansCommUsername" jdbcType="VARCHAR"/>
+        <result column="ans_comm_content" property="ansCommContent" jdbcType="VARCHAR"/>
+        <result column="ans_comm_time" property="ansCommTime" jdbcType="TIMESTAMP"/>
+        <result column="ans_comm_like" property="ansCommLike" jdbcType="INTEGER"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ans_comm_id, ans_id, ans_comm_username, ans_comm_content, ans_comm_time, ans_comm_like, avatar
+  </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM answer_comment, user
+        WHERE ans_id = #{ansId,jdbcType=INTEGER}
+        AND user.username = ans_comm_username
+    </select>
+
+
+    <insert id="insert" parameterType="com.zlfinfo.model.AnswerComment">
+    insert into answer_comment (ans_comm_id, ans_id, ans_comm_username, 
+      ans_comm_content, ans_comm_time, ans_comm_like
+      )
+    values (#{ansCommId,jdbcType=INTEGER}, #{ansId,jdbcType=INTEGER}, #{ansCommUsername,jdbcType=VARCHAR}, 
+      #{ansCommContent,jdbcType=VARCHAR}, #{ansCommTime,jdbcType=TIMESTAMP}, #{ansCommLike,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.zlfinfo.model.AnswerComment">
+        insert into answer_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ansCommId != null">
+                ans_comm_id,
+            </if>
+            <if test="ansId != null">
+                ans_id,
+            </if>
+            <if test="ansCommUsername != null">
+                ans_comm_username,
+            </if>
+            <if test="ansCommContent != null">
+                ans_comm_content,
+            </if>
+            <if test="ansCommTime != null">
+                ans_comm_time,
+            </if>
+            <if test="ansCommLike != null">
+                ans_comm_like,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ansCommId != null">
+                #{ansCommId,jdbcType=INTEGER},
+            </if>
+            <if test="ansId != null">
+                #{ansId,jdbcType=INTEGER},
+            </if>
+            <if test="ansCommUsername != null">
+                #{ansCommUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="ansCommContent != null">
+                #{ansCommContent,jdbcType=VARCHAR},
+            </if>
+            <if test="ansCommTime != null">
+                #{ansCommTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ansCommLike != null">
+                #{ansCommLike,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.AnswerComment">
+        update answer_comment
+        <set>
+            <if test="ansCommUsername != null">
+                ans_comm_username = #{ansCommUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="ansCommContent != null">
+                ans_comm_content = #{ansCommContent,jdbcType=VARCHAR},
+            </if>
+            <if test="ansCommTime != null">
+                ans_comm_time = #{ansCommTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ansCommLike != null">
+                ans_comm_like = #{ansCommLike,jdbcType=INTEGER},
+            </if>
+        </set>
+        where ans_comm_id = #{ansCommId,jdbcType=INTEGER}
+        and ans_id = #{ansId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.AnswerComment">
+    update answer_comment
+    set ans_comm_username = #{ansCommUsername,jdbcType=VARCHAR},
+      ans_comm_content = #{ansCommContent,jdbcType=VARCHAR},
+      ans_comm_time = #{ansCommTime,jdbcType=TIMESTAMP},
+      ans_comm_like = #{ansCommLike,jdbcType=INTEGER}
+    where ans_comm_id = #{ansCommId,jdbcType=INTEGER}
+      and ans_id = #{ansId,jdbcType=INTEGER}
+  </update>
+
+    <update id="addLikeNum" parameterType="java.lang.Integer">
+        UPDATE answer_comment SET ans_comm_like = ans_comm_like + 1 WHERE ans_comm_id = #{ansCommId}
+    </update>
+</mapper>

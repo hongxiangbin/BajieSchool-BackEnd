@@ -5,10 +5,16 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/9/10.
- */
 public interface AnswerCommentMapper {
+    int insert(AnswerComment record);
 
-    List<AnswerComment> selectAnswerComment();
+    int insertSelective(AnswerComment record);
+
+    List<AnswerComment> selectByPrimaryKey(@Param("ansId") Integer ansId);
+
+    int updateByPrimaryKeySelective(AnswerComment record);
+
+    int updateByPrimaryKey(AnswerComment record);
+
+    int addLikeNum(@Param("ansCommId") Integer ansCommId);
 }

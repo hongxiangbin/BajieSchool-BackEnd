@@ -176,5 +176,9 @@
           que_comment = #{queComment,jdbcType=INTEGER},
           que_time = #{queTime,jdbcType=TIMESTAMP}
         WHERE que_id = #{queId,jdbcType=VARCHAR}
-  </update>
+    </update>
+
+    <update id="addCommNum" parameterType="java.lang.Integer">
+        UPDATE question SET que_comment = que_comment + 1 WHERE que_id = #{queId}
+    </update>
 </mapper>

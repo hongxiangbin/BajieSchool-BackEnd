@@ -1,26 +1,45 @@
 package com.zlfinfo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Administrator on 2016/9/10.
- */
-public class AnswerComment {
+public class AnswerComment implements Serializable {
+    private Integer ansCommId;
+
     private Integer ansId;
-    private String username;
-    private String content;
-    private Date time;
-    private Integer like;
+
+    private String ansCommUsername;
+
+    private String ansCommContent;
+
+    private Date ansCommTime;
+
+    private Integer ansCommLike;
+
+    private String avatar;
+
+    private static final long serialVersionUID = 1L;
 
     public AnswerComment() {
     }
 
-    public AnswerComment(Integer ansId, String username, String content, Date time, Integer like) {
+    public AnswerComment(Integer ansCommId, Integer ansId, String ansCommUsername, String ansCommContent, Date
+            ansCommTime, Integer ansCommLike, String avatar) {
+        this.ansCommId = ansCommId;
         this.ansId = ansId;
-        this.username = username;
-        this.content = content;
-        this.time = time;
-        this.like = like;
+        this.ansCommUsername = ansCommUsername;
+        this.ansCommContent = ansCommContent;
+        this.ansCommTime = ansCommTime;
+        this.ansCommLike = ansCommLike;
+        this.avatar = avatar;
+    }
+
+    public Integer getAnsCommId() {
+        return ansCommId;
+    }
+
+    public void setAnsCommId(Integer ansCommId) {
+        this.ansCommId = ansCommId;
     }
 
     public Integer getAnsId() {
@@ -31,46 +50,43 @@ public class AnswerComment {
         this.ansId = ansId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAnsCommUsername() {
+        return ansCommUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAnsCommUsername(String ansCommUsername) {
+        this.ansCommUsername = ansCommUsername == null ? null : ansCommUsername.trim();
     }
 
-    public String getContent() {
-        return content;
+    public String getAnsCommContent() {
+        return ansCommContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAnsCommContent(String ansCommContent) {
+        this.ansCommContent = ansCommContent == null ? null : ansCommContent.trim();
     }
 
-    public Date getTime() {
-        return time;
+    public Date getAnsCommTime() {
+        return ansCommTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setAnsCommTime(Date ansCommTime) {
+        this.ansCommTime = ansCommTime;
     }
 
-    public Integer getLike() {
-        return like;
+    public Integer getAnsCommLike() {
+        return ansCommLike;
     }
 
-    public void setLike(Integer like) {
-        this.like = like;
+    public void setAnsCommLike(Integer ansCommLike) {
+        this.ansCommLike = ansCommLike;
     }
 
-    @Override
-    public String toString() {
-        return "AnswerComment{" +
-                "ansId=" + ansId +
-                ", username='" + username + '\'' +
-                ", content='" + content + '\'' +
-                ", time=" + time +
-                ", like=" + like +
-                '}';
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
