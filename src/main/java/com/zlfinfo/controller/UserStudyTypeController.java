@@ -37,18 +37,23 @@ public class UserStudyTypeController extends BaseController {
             return renderError("学习类型获取失败", httpServletResponse);
         }
     }
+
     @RequestMapping(value = "/updateStu", method = RequestMethod.POST)
-    public Object updateStu(String username,Integer[] typeId ,HttpServletResponse httpServletResponse) {
-    List<UserStudyType> ustlist = new ArrayList<>();
-        if(typeId!=null) {
+    @ResponseBody
+    public Object updateStu(String username, Integer[] typeId, HttpServletResponse httpServletResponse) {
+        List<UserStudyType> ustlist = new ArrayList<>();
+        if (null != typeId) {
             for (int i = 0; i < typeId.length; i++) {
                 UserStudyType userst = new UserStudyType();
                 userst.setUsername(username);
                 userst.setStudyType(typeId[i]);
                 ustlist.add(userst);
             }
-            userStudyTypeService.insertBatch(ustlist,username);
+            int i = userStudyTypeService.insertBatch(ustlist, username);
+            return i > 0 ? renderSuccess("保存成功", httpServletResponse) : renderError("保存失败", httpServletResponse);
+
+        } else {
+            return renderError("保存失败", httpServletResponse);
         }
-        return renderSuccess("保存成功", httpServletResponse);
     }
 }

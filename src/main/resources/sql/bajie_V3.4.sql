@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-09-25 14:10:05
+Date: 2016-10-07 17:28:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -242,6 +242,7 @@ INSERT INTO `feedback` VALUES ('admin', '亲，APP太卡了呀~ T_T', '2016-08-2
 INSERT INTO `feedback` VALUES ('admin', '不好看', '2016-08-23 17:20:35', '10086', '1231', '1231@qq.com', '', '');
 INSERT INTO `feedback` VALUES ('admin', '卡卡卡卡啊卡卡', '2016-08-23 17:29:55', '', '10001', null, '', '');
 INSERT INTO `feedback` VALUES ('LucasX', '卡死啦  垃圾APP！！！', '2016-09-10 15:30:09', null, null, null, '', '');
+INSERT INTO `feedback` VALUES ('LucasX', '卡死了', '2016-10-07 10:01:22', '249048056', null, null, '', '');
 
 -- ----------------------------
 -- Table structure for login_status
@@ -309,7 +310,7 @@ CREATE TABLE `question` (
   `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
   PRIMARY KEY (`que_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30019 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30009 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question
@@ -317,6 +318,7 @@ CREATE TABLE `question` (
 INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器学习', '985在读大二，对机器学习很感兴趣，如何入门呢？', 'img/shelock.jpeg', '1', '4', '2016-08-09 19:13:15');
 INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '0', '0', '2016-08-04 19:14:09');
 INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', '深度学习；人工智能', 'rt', '', '0', '0', '2016-08-29 13:06:47');
+INSERT INTO `question` VALUES ('30008', '如何科学的健身？', '健身', '如题。。。', '', '0', '0', '2016-10-07 09:49:43');
 
 -- ----------------------------
 -- Table structure for reminder
@@ -365,7 +367,7 @@ CREATE TABLE `study` (
   `std_comment` int(5) DEFAULT '0',
   `std_time` datetime DEFAULT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50023 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50019 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of study
@@ -689,6 +691,7 @@ INSERT INTO `user_question` VALUES ('LucasX', '30015', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30016', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30017', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30018', '0');
+INSERT INTO `user_question` VALUES ('LucasX', '30008', '0');
 
 -- ----------------------------
 -- Table structure for user_study
@@ -748,7 +751,7 @@ INSERT INTO `user_studytype` VALUES ('admin', '8');
 INSERT INTO `user_studytype` VALUES ('admin', '9');
 INSERT INTO `user_studytype` VALUES ('admin', '5');
 INSERT INTO `user_studytype` VALUES ('LucasX', '0');
-INSERT INTO `user_studytype` VALUES ('LucasX', '3');
+INSERT INTO `user_studytype` VALUES ('LucasX', '1');
 
 -- ----------------------------
 -- Table structure for visitor
