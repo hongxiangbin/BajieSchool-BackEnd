@@ -14,6 +14,16 @@ public class Captcha implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Captcha(Integer id, String captcha, String email, Date date) {
+        this.id = id;
+        this.captcha = captcha;
+        this.email = email;
+        this.date = date;
+    }
+
+    public Captcha() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -25,6 +25,8 @@ public class MailSender {
     public static final String PASSWORD = "19930620";
     public static final String SUBJECT = "八戒上学验证码";
 
+    public static String captchaCode = "";
+
     /**
      * send one by one
      *
@@ -33,7 +35,8 @@ public class MailSender {
      */
     public boolean send(String receiver) {
 
-        String message = "[请勿回复]<br/>您的八戒上学APP验证码为 <b>" + MathToolkit.generateCaptcha() + " </b>; 该验证码10分钟内有效！";
+        MailSender.captchaCode = MathToolkit.generateCaptcha();
+        String message = "[请勿回复]<br/>您的八戒上学APP验证码为 <b>" + MailSender.captchaCode + " </b>; 该验证码10分钟内有效！";
         Mail mail = new Mail(MailSender.HOST, MailSender.SENDER, receiver, MailSender.NAME, MailSender.USERNAME, MailSender.PASSWORD, MailSender.SUBJECT, message);
         HtmlEmail htmlEmail = new HtmlEmail();
         try {
@@ -44,7 +47,6 @@ public class MailSender {
             htmlEmail.setAuthentication(mail.getUsername(), mail.getPassword());
             htmlEmail.setSubject(mail.getSubject());
             htmlEmail.setMsg(mail.getMessage());
-            htmlEmail.send();
             return true;
         } catch (EmailException e) {
             e.printStackTrace();

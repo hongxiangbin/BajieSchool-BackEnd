@@ -22,4 +22,9 @@ public class CaptchaServiceImpl implements CaptchaService {
     public List<Captcha> selectCaptchaDate(String email) {
         return captchaMapper.selectDate(email);
     }
+
+    @Override
+    public void insertCaptcha(Captcha captcha) {
+        captchaMapper.insertSelective(captcha);
+    }
 }

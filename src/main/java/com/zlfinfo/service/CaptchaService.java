@@ -12,4 +12,6 @@ public interface CaptchaService {
 
     List<Captcha> selectCaptchaDate(String email);
 
+    void insertCaptcha(Captcha captcha);
+
 }

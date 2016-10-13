@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-13 15:43:12
+Date: 2016-10-13 18:30:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -209,12 +209,18 @@ CREATE TABLE `captcha` (
   `email` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of captcha
 -- ----------------------------
 INSERT INTO `captcha` VALUES ('1', '12sa', '249048056@qq.com', '2016-10-13 15:41:26');
+INSERT INTO `captcha` VALUES ('2', '36kj', 'xulu0620@qq.com', '2016-10-05 17:42:43');
+INSERT INTO `captcha` VALUES ('3', 'eq90', 'xulu0620@qq.com', '2016-10-13 18:17:26');
+INSERT INTO `captcha` VALUES ('4', 'sh52', 'xulu0620@qq.com', '2016-10-13 18:20:03');
+INSERT INTO `captcha` VALUES ('5', 'HW85', 'xulu0620@qq.com', '2016-10-13 18:21:40');
+INSERT INTO `captcha` VALUES ('6', 'JZ74', '249048056@qq.com', '2016-10-13 18:23:38');
+INSERT INTO `captcha` VALUES ('7', 'wC32', 'm13207145966@qq.com', '2016-10-13 18:26:04');
 
 -- ----------------------------
 -- Table structure for collection
@@ -277,7 +283,7 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '0', '2016-09-24 17:32:57');
 INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
-INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-09-20 14:56:01');
+INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-10-13 17:21:10');
 
 -- ----------------------------
 -- Table structure for notification
