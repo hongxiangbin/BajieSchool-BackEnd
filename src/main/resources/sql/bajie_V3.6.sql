@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-13 18:30:11
+Date: 2016-10-13 21:33:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -209,7 +209,7 @@ CREATE TABLE `captcha` (
   `email` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of captcha
@@ -221,6 +221,10 @@ INSERT INTO `captcha` VALUES ('4', 'sh52', 'xulu0620@qq.com', '2016-10-13 18:20:
 INSERT INTO `captcha` VALUES ('5', 'HW85', 'xulu0620@qq.com', '2016-10-13 18:21:40');
 INSERT INTO `captcha` VALUES ('6', 'JZ74', '249048056@qq.com', '2016-10-13 18:23:38');
 INSERT INTO `captcha` VALUES ('7', 'wC32', 'm13207145966@qq.com', '2016-10-13 18:26:04');
+INSERT INTO `captcha` VALUES ('8', 'vD96', 'xulu0620@qq.com', '2016-10-13 20:49:59');
+INSERT INTO `captcha` VALUES ('9', 'Hh99', '249048056@qq.com', '2016-10-13 20:59:12');
+INSERT INTO `captcha` VALUES ('10', 'bM29', '249048056@qq.com', '2016-10-13 21:09:54');
+INSERT INTO `captcha` VALUES ('11', 'VG97', 'xulu0620@qq.com', '2016-10-13 21:25:32');
 
 -- ----------------------------
 -- Table structure for collection
@@ -281,9 +285,10 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 -- Records of login_status
 -- ----------------------------
-INSERT INTO `login_status` VALUES ('admin', '0', '2016-09-24 17:32:57');
-INSERT INTO `login_status` VALUES ('Jack', '0', '2016-08-31 17:51:25');
+INSERT INTO `login_status` VALUES ('admin', '1', '2016-09-24 17:32:57');
+INSERT INTO `login_status` VALUES ('Jack', '1', '2016-08-31 17:51:25');
 INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-10-13 17:21:10');
+INSERT INTO `login_status` VALUES ('XuLu', '0', '2016-10-13 21:31:49');
 
 -- ----------------------------
 -- Table structure for notification
@@ -333,7 +338,7 @@ CREATE TABLE `question` (
   `que_comment` int(5) DEFAULT '0' COMMENT '评论数',
   `que_time` datetime DEFAULT NULL,
   PRIMARY KEY (`que_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30009 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30010 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question
@@ -342,6 +347,7 @@ INSERT INTO `question` VALUES ('30000', '如何入门机器学习？', '机器�
 INSERT INTO `question` VALUES ('30001', '如何规划自己的大学生活', '大学', '大学生如何正确地规划自己的大学生活呢？好好学习，天天向上！', 'img/whu.png', '0', '0', '2016-08-04 19:14:09');
 INSERT INTO `question` VALUES ('30007', '如何入门deep learning？', '深度学习；人工智能', 'rt', '', '0', '0', '2016-08-29 13:06:47');
 INSERT INTO `question` VALUES ('30008', '如何科学的健身？', '健身', '如题。。。', '', '0', '0', '2016-10-07 09:49:43');
+INSERT INTO `question` VALUES ('30009', '如何练人鱼线？', '健身', '如何练出迷人的人鱼线', '', '1', '0', '2016-10-13 21:27:57');
 
 -- ----------------------------
 -- Table structure for reminder
@@ -623,7 +629,7 @@ CREATE TABLE `user` (
   `no_id` varchar(12) DEFAULT NULL COMMENT '通知ID',
   `password` varchar(255) NOT NULL COMMENT '密码',
   `sex` char(4) DEFAULT NULL COMMENT '性别',
-  `cellphone` char(11) NOT NULL COMMENT '手机号',
+  `cellphone` char(11) DEFAULT NULL COMMENT '手机号',
   `avatar` varchar(100) DEFAULT 'img/avatar-default-boy.png' COMMENT '头像',
   `motto` varchar(255) DEFAULT NULL,
   `university` int(5) NOT NULL COMMENT '大学',
@@ -633,7 +639,7 @@ CREATE TABLE `user` (
   `qq` varchar(10) DEFAULT NULL,
   `wechat` varchar(20) DEFAULT NULL,
   `weibo` varchar(50) DEFAULT NULL,
-  `reserve1` varchar(255) DEFAULT NULL COMMENT '预留字段',
+  `email` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserve2` varchar(255) DEFAULT NULL,
   `reserve3` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`username`)
@@ -646,6 +652,7 @@ INSERT INTO `user` VALUES ('admin', '1110831116', '21232f297a57a5a743894a0e4a801
 INSERT INTO `user` VALUES ('Jack', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '2', '计算机学院', '2016', '1', null, null, null, null, null, null);
 INSERT INTO `user` VALUES ('Kevin', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '3', '经济管理学院', '2016', '1', null, null, null, null, null, null);
 INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '1', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
+INSERT INTO `user` VALUES ('XuLu', null, '024943466b984c68717de7d6614fb98a', '0', null, null, null, '1', '信息管理学院', '2016', '1', null, null, null, 'xulu0620@qq.com', null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -715,6 +722,7 @@ INSERT INTO `user_question` VALUES ('LucasX', '30016', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30017', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30018', '0');
 INSERT INTO `user_question` VALUES ('LucasX', '30008', '0');
+INSERT INTO `user_question` VALUES ('XuLu', '30009', '0');
 
 -- ----------------------------
 -- Table structure for user_study

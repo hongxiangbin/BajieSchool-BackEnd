@@ -52,4 +52,23 @@ public class CaptchaController extends BaseController {
 
     }
 
+    @RequestMapping(value = "/checkCaptcha", method = RequestMethod.GET)
+    @ResponseBody
+    public Object checkCaptcha(@RequestParam String captcha, @RequestParam String email, HttpServletResponse httpServletResponse) {
+        List<Captcha> captchaList = captchaService.selectCaptchaDate(email);
+        if (null != captchaList && captchaList.size() > 0) {
+            if (new Date().getTime() - captchaList.get(0).getDate().getTime() <= 10 * 60 * 1000) {
+                if (captchaList.get(0).getCaptcha().equalsIgnoreCase(captcha.trim())) {
+                    return renderSuccess("CAPTCHA验证成功!", httpServletResponse);
+                } else {
+                    return renderError("CAPTCHA差验证失败!", httpServletResponse);
+                }
+            } else {
+                return renderError("该验证码已失效,请重新发送...", httpServletResponse);
+            }
+        } else {
+            return renderError("CAPTCHA差验证失败!", httpServletResponse);
+        }
+    }
+
 }

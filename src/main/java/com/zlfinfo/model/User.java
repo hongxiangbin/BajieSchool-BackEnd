@@ -31,7 +31,7 @@ public class User implements Serializable {
 
     private String weibo;
 
-    private String reserve1;
+    private String email;
 
     private String reserve2;
 
@@ -61,7 +61,7 @@ public class User implements Serializable {
 
     public User(String username, String noId, String password, String sex, String cellphone, String avatar, String
             motto, Integer university, String institution, String enrollYear, String level, String qq, String wechat,
-                String weibo, String reserve1, String reserve2) {
+                String weibo, String email, String reserve2) {
         this.username = username;
         this.noId = noId;
         this.password = password;
@@ -76,7 +76,7 @@ public class User implements Serializable {
         this.qq = qq;
         this.wechat = wechat;
         this.weibo = weibo;
-        this.reserve1 = reserve1;
+        this.email = email;
         this.reserve2 = reserve2;
     }
 
@@ -187,12 +187,12 @@ public class User implements Serializable {
         this.weibo = weibo == null ? null : weibo.trim();
     }
 
-    public String getReserve1() {
-        return reserve1;
+    public String getEmail() {
+        return email;
     }
 
-    public void setReserve1(String reserve1) {
-        this.reserve1 = reserve1 == null ? null : reserve1.trim();
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getReserve2() {
@@ -244,7 +244,7 @@ public class User implements Serializable {
                 ", qq='" + qq + '\'' +
                 ", wechat='" + wechat + '\'' +
                 ", weibo='" + weibo + '\'' +
-                ", reserve1='" + reserve1 + '\'' +
+                ", email='" + email + '\'' +
                 ", reserve2='" + reserve2 + '\'' +
                 ", reserve3='" + reserve3 + '\'' +
                 ", schoolname='" + schoolname + '\'' +

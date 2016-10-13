@@ -31,6 +31,7 @@ public class UserController extends BaseController {
 
     @Autowired
     private UniversityService universityService;
+
     /**
      * 根据username查用户
      *
@@ -82,14 +83,18 @@ public class UserController extends BaseController {
                           @RequestParam(required = false) String enrollYear, @RequestParam(required = false) Integer
                                   university,
                           @RequestParam(required = false) String institution,
-                          @RequestParam(required = false) String level, HttpServletResponse response) throws
+                          @RequestParam(required = false) String level, @RequestParam(required = false) String email, HttpServletResponse response) throws
             UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = new User(username, null, Encryption.encrypt(password), sex, cellphone, null, null, university,
-                institution, enrollYear, level, null, null, null, null, null);
+                institution, enrollYear, level, null, null, null, email, null);
 
         System.out.println(user.toString());
-        userService.insert(user);
-        return renderSuccess("注册成功", response);
+        if (userService.insert(user) > 0) {
+            loginStatusService.insertStatus(new LoginStatus(username, 0, null));
+            return renderSuccess("注册成功", response);
+        } else {
+            return renderError("注册失败", response);
+        }
     }
 
     /**
@@ -131,19 +136,19 @@ public class UserController extends BaseController {
     @ResponseBody
     public Object findUserByUsername(@PathVariable String username, HttpServletResponse httpServletResponse) {
         User user = userService.findUserByUsername(username);
-        if(null != user){
-            if(user.getUniversity()!=null){
+        if (null != user) {
+            if (user.getUniversity() != null) {
                 University u = new University();
-                 u = universityService.selectUniversity(user.getUniversity());
-                if(null != u){
-                    System.out.println(u.toString()+"===1");
+                u = universityService.selectUniversity(user.getUniversity());
+                if (null != u) {
+                    System.out.println(u.toString() + "===1");
                     user.setSchoolname(u.getUnivName());
-                    System.out.println(u.getUnivName()+"===getUnivName");
+                    System.out.println(u.getUnivName() + "===getUnivName");
 
                 }
             }
         }
-        System.out.println(user.getSchoolname()+"===getSchoolname");
+        System.out.println(user.getSchoolname() + "===getSchoolname");
         return null != user ? renderSuccess(user, httpServletResponse) : renderError("用户查询失败!", httpServletResponse);
     }
 

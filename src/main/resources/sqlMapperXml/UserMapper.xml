@@ -16,7 +16,7 @@
         <result column="qq" property="qq" jdbcType="VARCHAR"/>
         <result column="wechat" property="wechat" jdbcType="VARCHAR"/>
         <result column="weibo" property="weibo" jdbcType="VARCHAR"/>
-        <result column="reserve1" property="reserve1" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="reserve2" property="reserve2" jdbcType="VARCHAR"/>
         <result column="reserve3" property="reserve3" jdbcType="VARCHAR"/>
     </resultMap>
@@ -29,7 +29,7 @@
 
     <sql id="Base_Column_List">
         username, no_id, password, sex, cellphone, avatar, motto, university, institution, enroll_year,
-        level, qq, wechat, weibo, reserve1, reserve2, reserve3
+        level, qq, wechat, weibo, email, reserve2, reserve3
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -65,12 +65,12 @@
           sex, cellphone, avatar, motto, university,
           institution, enroll_year, level,
           qq, wechat, weibo,
-          reserve1, reserve2, reserve3)
+          email, reserve2, reserve3)
         values (#{username,jdbcType=VARCHAR}, #{noId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
           #{sex,jdbcType=CHAR}, #{cellphone,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, #{motto,jdbcType=VARCHAR}, #{university,jdbcType=INTEGER},
           #{institution,jdbcType=VARCHAR}, #{enrollYear,jdbcType=CHAR}, #{level,jdbcType=CHAR},
           #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR},
-          #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR})
+          #{email,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.zlfinfo.model.User">
         insert into user
@@ -117,8 +117,8 @@
             <if test="weibo != null">
                 weibo,
             </if>
-            <if test="reserve1 != null">
-                reserve1,
+            <if test="email != null">
+                email,
             </if>
             <if test="reserve2 != null">
                 reserve2,
@@ -167,8 +167,8 @@
             <if test="weibo != null">
                 #{weibo,jdbcType=VARCHAR},
             </if>
-            <if test="reserve1 != null">
-                #{reserve1,jdbcType=VARCHAR},
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
             </if>
             <if test="reserve2 != null">
                 #{reserve2,jdbcType=VARCHAR},
@@ -217,8 +217,8 @@
             <if test="weibo != null">
                 weibo = #{weibo,jdbcType=VARCHAR},
             </if>
-            <if test="reserve1 != null">
-                reserve1 = #{reserve1,jdbcType=VARCHAR},
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
             </if>
             <if test="reserve2 != null">
                 reserve2 = #{reserve2,jdbcType=VARCHAR},
@@ -243,7 +243,7 @@
       qq = #{qq,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
       weibo = #{weibo,jdbcType=VARCHAR},
-      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       reserve2 = #{reserve2,jdbcType=VARCHAR},
       reserve3 = #{reserve3,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
