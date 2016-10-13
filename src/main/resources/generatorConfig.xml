@@ -6,7 +6,7 @@
 <!-- 使用 mvn mybatis-generator:generate -->
 <generatorConfiguration>
     <classPathEntry
-            location="C:\\Users\\Administrator\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.38\\mysql-connector-java-5.1.38.jar"/>
+            location="C:\\Users\\29140\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.38\\mysql-connector-java-5.1.38.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
 
         <!-- plugin -->
@@ -22,7 +22,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/bajie?useUnicode=true&amp;characterEncoding=utf-8"
                         userId="root"
-                        password="123456">
+                        password="19930620">
         </jdbcConnection>
 
         <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
@@ -49,7 +49,7 @@
          <generatedKey column="id" sqlStatement="MySql" identity="true"/>
          </table>-->
 
-        <table schema="bajie" tableName="answer_comment" domainObjectName="AnswerComment"
+        <table schema="bajie" tableName="captcha" domainObjectName="Captcha"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableUpdateByExample="false"

@@ -1,4 +1,4 @@
-package com.zlfinfo.util;
+package com.zlfinfo.model;
 
 /**
  * Created by Administrator on 2016/4/9.

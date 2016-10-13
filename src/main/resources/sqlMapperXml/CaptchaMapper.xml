@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlfinfo.mapper.CaptchaMapper" >
+  <resultMap id="BaseResultMap" type="com.zlfinfo.model.Captcha" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="captcha" property="captcha" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, captcha, email, date
+  </sql>
+
+  <select id="selectDate" resultMap="BaseResultMap" parameterType="java.lang.String">
+      SELECT date FROM captcha WHERE email = #{email} ORDER BY DATE DESC
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from captcha
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from captcha
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlfinfo.model.Captcha" >
+    insert into captcha (id, captcha, email, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{captcha,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlfinfo.model.Captcha" >
+    insert into captcha
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="captcha != null" >
+        captcha,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="captcha != null" >
+        #{captcha,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlfinfo.model.Captcha" >
+    update captcha
+    <set >
+      <if test="captcha != null" >
+        captcha = #{captcha,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlfinfo.model.Captcha" >
+    update captcha
+    set captcha = #{captcha,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -20,9 +20,9 @@
           init-method="init" destroy-method="close">
         <!-- 基本属性 url、testUser、password -->
         <property name="url"
-                  value="jdbc:mysql://127.0.0.1:3306/bajie?useUnicode=true&amp;characterEncoding=utf-8"/>
+                  value="jdbc:mysql://127.0.0.1:3306/bajie?useUnicode=true&amp;characterEncoding=utf-8&amp;userSSL=false"/>
         <property name="username" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="password" value="19930620"/>
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>

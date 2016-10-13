@@ -4,17 +4,11 @@ package com.zlfinfo.util;
  * Created by Administrator on 2016/4/9.
  */
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.LogManager;
-
+import com.zlfinfo.model.Mail;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
-import org.slf4j.Logger;
+
+import java.util.List;
 
 
 /**
@@ -24,28 +18,33 @@ import org.slf4j.Logger;
  */
 public class MailSender {
 
-    private static String host, sender, name, username, password;
+    public static final String HOST = "smtp.ym.163.com";
+    public static final String SENDER = "bajieschool@zlfinfo.com.cn";
+    public static final String NAME = "八戒上学网络科技有限公司";
+    public static final String USERNAME = "bajieschool@zlfinfo.com.cn";
+    public static final String PASSWORD = "19930620";
+    public static final String SUBJECT = "八戒上学验证码";
 
-    static {
-        host = "smtp.163.com";
-        sender = "15071243361@163.com";
-        name = "15071243361@163.com";
-        username = "15071243361@163.com";
-        password = "NYY54312";
-    }
+    /**
+     * send one by one
+     *
+     * @param receiver
+     * @return
+     */
+    public boolean send(String receiver) {
 
-    public boolean send(Mail mail) {
-
-        HtmlEmail email = new HtmlEmail();
+        String message = "[请勿回复]<br/>您的八戒上学APP验证码为 <b>" + MathToolkit.generateCaptcha() + " </b>; 该验证码10分钟内有效！";
+        Mail mail = new Mail(MailSender.HOST, MailSender.SENDER, receiver, MailSender.NAME, MailSender.USERNAME, MailSender.PASSWORD, MailSender.SUBJECT, message);
+        HtmlEmail htmlEmail = new HtmlEmail();
         try {
-            email.setHostName(mail.getHost());
-            email.setCharset(Mail.ENCODEING);
-            email.addTo(mail.getReceiver());
-            email.setFrom(mail.getSender(), mail.getName());
-            email.setAuthentication(mail.getUsername(), mail.getPassword());
-            email.setSubject(mail.getSubject());
-            email.setMsg(mail.getMessage());
-            email.send();
+            htmlEmail.setHostName(mail.getHost());
+            htmlEmail.setCharset(Mail.ENCODEING);
+            htmlEmail.addTo(mail.getReceiver());
+            htmlEmail.setFrom(mail.getSender(), mail.getName());
+            htmlEmail.setAuthentication(mail.getUsername(), mail.getPassword());
+            htmlEmail.setSubject(mail.getSubject());
+            htmlEmail.setMsg(mail.getMessage());
+            htmlEmail.send();
             return true;
         } catch (EmailException e) {
             e.printStackTrace();
@@ -53,9 +52,14 @@ public class MailSender {
         }
     }
 
-    public void sendGroup(List<Mail> mails) {
-        for (int i = 0; i < mails.size(); i++) {
-            this.send(mails.get(i));
+    /**
+     * send via group
+     *
+     * @param recieverList
+     */
+    public void sendGroup(List<String> recieverList) {
+        for (int i = 0; i < recieverList.size(); i++) {
+            this.send(recieverList.get(i));
         }
     }
 

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : BajieSchool
-Source Server Version : 50632
+Source Server         : bajie
+Source Server Version : 50715
 Source Host           : localhost:3306
 Source Database       : bajie
 
 Target Server Type    : MYSQL
-Target Server Version : 50632
+Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-07 17:28:26
+Date: 2016-10-13 15:43:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -198,6 +198,23 @@ INSERT INTO `banner` VALUES ('https://www.baidu.com', 'img/activity/ad/4.jpg');
 INSERT INTO `banner` VALUES ('http://www.qq.com/', 'img/activity/ad/3.jpg');
 INSERT INTO `banner` VALUES ('https://www.douban.com/', 'img/activity/ad/2.jpg');
 INSERT INTO `banner` VALUES ('https://www.zhihu.com/', 'img/activity/ad/1.jpg');
+
+-- ----------------------------
+-- Table structure for captcha
+-- ----------------------------
+DROP TABLE IF EXISTS `captcha`;
+CREATE TABLE `captcha` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `captcha` varchar(4) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of captcha
+-- ----------------------------
+INSERT INTO `captcha` VALUES ('1', '12sa', '249048056@qq.com', '2016-10-13 15:41:26');
 
 -- ----------------------------
 -- Table structure for collection
