@@ -1,8 +1,11 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
+import com.zlfinfo.commons.constant.PointsAddNumber;
 import com.zlfinfo.model.Answer;
+import com.zlfinfo.model.Points;
 import com.zlfinfo.service.AnswerService;
+import com.zlfinfo.service.PointsService;
 import com.zlfinfo.service.QuestionService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class AnswerController extends BaseController {
     private AnswerService answerService;
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private PointsService pointsService;
 
     @RequestMapping(value = "/answer/{queId}", method = RequestMethod.GET)
     @ResponseBody
@@ -49,6 +54,7 @@ public class AnswerController extends BaseController {
 
         int i = answerService.insertAnswer(answer);
         int j = questionService.addCommNum(queId);
+        pointsService.updatePoints(new Points(username, pointsService.selectPoint(username) + PointsAddNumber.POINT_ANSWER_QUESTION, "回答问题+5"));
 
         return i > 0 && j > 0 ? renderSuccess("回答成功!", httpServletResponse) : renderError("回答失败!", httpServletResponse);
     }

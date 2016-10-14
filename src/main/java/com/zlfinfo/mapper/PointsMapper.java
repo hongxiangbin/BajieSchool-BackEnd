@@ -1,11 +1,14 @@
 package com.zlfinfo.mapper;
 
-import org.apache.ibatis.annotations.Param;
+import com.zlfinfo.model.Points;
 
-/**
- * Created by Administrator on 2016/8/26.
- */
 public interface PointsMapper {
 
-    Integer selectPoints(@Param("username") String username);
+    Integer selectPoints(String username);
+
+    Integer updatePoints(Points points);
+
+    int insert(Points record);
+
+    int insertSelective(Points record);
 }

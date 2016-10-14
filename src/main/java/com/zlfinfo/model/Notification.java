@@ -11,6 +11,10 @@ public class Notification implements Serializable {
 
     private String noUrl;
 
+    private String username;
+
+    private Integer isRead;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getNoId() {
@@ -43,5 +47,21 @@ public class Notification implements Serializable {
 
     public void setNoUrl(String noUrl) {
         this.noUrl = noUrl == null ? null : noUrl.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(Integer isRead) {
+        this.isRead = isRead;
     }
 }

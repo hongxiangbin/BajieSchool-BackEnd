@@ -1,6 +1,7 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
+import com.zlfinfo.commons.constant.PointsAddNumber;
 import com.zlfinfo.model.*;
 import com.zlfinfo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class ActivityController extends BaseController {
     private LoginStatusService loginStatusService;
     @Autowired
     private UserActivityService userActivityService;
+    @Autowired
+    private PointsService pointsService;
 
     /**
      * 发布活动
@@ -56,6 +59,8 @@ public class ActivityController extends BaseController {
             userActivity.setUsername(username);
             userActivity.setLaunFlag(0);
             actService.insertuserActivity(userActivity);
+            Points points = new Points(username, pointsService.selectPoint(username) + PointsAddNumber.POINT_LAUNCH_ACTIVITY, "发起活动+20");
+            pointsService.updatePoints(points);
             return renderSuccess("保存成功", response);
         }
     }

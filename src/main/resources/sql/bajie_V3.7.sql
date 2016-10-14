@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-10-13 21:33:40
+Date: 2016-10-14 22:33:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ CREATE TABLE `activity` (
   `reserve1` varchar(255) DEFAULT NULL,
   `reserve2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10011 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10016 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of activity
@@ -70,6 +70,9 @@ INSERT INTO `activity` VALUES ('10007', '4', '鹿晗最新电影', '盗墓笔记
 INSERT INTO `activity` VALUES ('10008', '5', '周杰伦的床边故事', '新专辑哦~', 'img/activity/act/周杰伦.jpg', '2016-08-02 14:16:32', '0', '0', '0', '0', '0', '北京', '', null);
 INSERT INTO `activity` VALUES ('10009', '6', '军训', '天气转凉快了。。', null, '2016-08-02 14:17:15', '0', '0', '0', '0', '0', '武汉', null, null);
 INSERT INTO `activity` VALUES ('10010', '7', '恋爱。。。', '你们当时都是怎么认识对方的？', null, '2016-08-22 14:17:54', '0', '0', '0', '0', '0', null, null, null);
+INSERT INTO `activity` VALUES ('10013', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
+INSERT INTO `activity` VALUES ('10014', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
+INSERT INTO `activity` VALUES ('10015', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
 
 -- ----------------------------
 -- Table structure for activity_comment
@@ -209,7 +212,7 @@ CREATE TABLE `captcha` (
   `email` varchar(50) DEFAULT NULL,
   `date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of captcha
@@ -225,6 +228,9 @@ INSERT INTO `captcha` VALUES ('8', 'vD96', 'xulu0620@qq.com', '2016-10-13 20:49:
 INSERT INTO `captcha` VALUES ('9', 'Hh99', '249048056@qq.com', '2016-10-13 20:59:12');
 INSERT INTO `captcha` VALUES ('10', 'bM29', '249048056@qq.com', '2016-10-13 21:09:54');
 INSERT INTO `captcha` VALUES ('11', 'VG97', 'xulu0620@qq.com', '2016-10-13 21:25:32');
+INSERT INTO `captcha` VALUES ('12', 'ML96', 'xulu0620@qq.com', '2016-10-14 22:10:09');
+INSERT INTO `captcha` VALUES ('13', 'Gz82', 'xulu@qq.com', '2016-10-14 22:16:14');
+INSERT INTO `captcha` VALUES ('14', 'WG66', '291406886@qq.com', '2016-10-14 22:30:16');
 
 -- ----------------------------
 -- Table structure for collection
@@ -287,24 +293,28 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-09-24 17:32:57');
 INSERT INTO `login_status` VALUES ('Jack', '1', '2016-08-31 17:51:25');
-INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-10-13 17:21:10');
-INSERT INTO `login_status` VALUES ('XuLu', '0', '2016-10-13 21:31:49');
+INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-10-14 22:09:20');
+INSERT INTO `login_status` VALUES ('XuLu', '1', '2016-10-14 21:51:23');
+INSERT INTO `login_status` VALUES ('Yuanyujie', '0', '2016-10-14 22:31:04');
 
 -- ----------------------------
 -- Table structure for notification
 -- ----------------------------
 DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
-  `no_id` int(12) NOT NULL,
+  `no_id` int(12) NOT NULL AUTO_INCREMENT,
   `no_content` varchar(255) DEFAULT NULL,
-  `type` int(1) DEFAULT NULL,
-  `no_url` varchar(50) DEFAULT NULL,
+  `type` varchar(4) DEFAULT NULL,
+  `no_url` varchar(80) DEFAULT NULL,
+  `username` varchar(20) DEFAULT NULL,
+  `is_read` int(1) DEFAULT NULL,
   PRIMARY KEY (`no_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of notification
 -- ----------------------------
+INSERT INTO `notification` VALUES ('1', '@Kris评论了您提的问题“如何科学的健身”', '3', null, 'XuLu', '0');
 
 -- ----------------------------
 -- Table structure for points
@@ -312,17 +322,16 @@ CREATE TABLE `notification` (
 DROP TABLE IF EXISTS `points`;
 CREATE TABLE `points` (
   `username` varchar(16) NOT NULL,
-  `point` int(8) DEFAULT NULL,
-  `date` datetime NOT NULL
+  `point` int(8) unsigned DEFAULT NULL,
+  `remark` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of points
 -- ----------------------------
-INSERT INTO `points` VALUES ('LucasX', '5', '2016-08-08 11:08:59');
-INSERT INTO `points` VALUES ('LucasX', '10', '2016-08-24 11:09:35');
-INSERT INTO `points` VALUES ('admin', '15', '2016-08-16 11:11:30');
-INSERT INTO `points` VALUES ('admin', '20', '2016-08-16 11:11:40');
+INSERT INTO `points` VALUES ('LucasX', '20', '发起活动+20');
+INSERT INTO `points` VALUES ('Yuanyujie', '0', '新注册用户');
 
 -- ----------------------------
 -- Table structure for question
@@ -407,7 +416,6 @@ INSERT INTO `study` VALUES ('50003', '0', '推荐系统', '推荐系统在电子
 INSERT INTO `study` VALUES ('50004', '2', 'GRE', '烤鸡。。。', '0', '0', '2016-08-17 15:24:34');
 INSERT INTO `study` VALUES ('50005', '3', '高数', '傅立叶变换。。。', '0', '0', '2016-08-23 15:25:00');
 INSERT INTO `study` VALUES ('50006', '4', '二级', '有什么用么', '0', '0', '2016-08-03 15:25:23');
-INSERT INTO `study` VALUES ('50007', '5', '财务管理', 'CFO。。。', '0', '0', '2016-08-01 15:25:44');
 INSERT INTO `study` VALUES ('50008', '6', '生物', 'DNA。。。', '0', '0', '2016-08-09 10:18:48');
 INSERT INTO `study` VALUES ('50009', '7', '机械', '机械购期末考。。。', '0', '0', '2016-08-02 10:19:15');
 INSERT INTO `study` VALUES ('50010', '8', '土建', 'CAD。。CAD', '0', '0', '2016-08-26 10:20:02');
@@ -653,6 +661,7 @@ INSERT INTO `user` VALUES ('Jack', null, '25d55ad283aa400af464c76d713c07ad', '0'
 INSERT INTO `user` VALUES ('Kevin', null, '25d55ad283aa400af464c76d713c07ad', '0', '13207145966', null, null, '3', '经济管理学院', '2016', '1', null, null, null, null, null, null);
 INSERT INTO `user` VALUES ('LucasX', '1234567894', 'e10adc3949ba59abbe56e057f20f883e', '1', '13207145966', 'img/avatar-default-girl.png', '~~', '1', '经济管理学院', '2016', '1', '249048056', 'xulu0620', 'xldev', null, null, null);
 INSERT INTO `user` VALUES ('XuLu', null, '024943466b984c68717de7d6614fb98a', '0', null, null, null, '1', '信息管理学院', '2016', '1', null, null, null, 'xulu0620@qq.com', null, null);
+INSERT INTO `user` VALUES ('Yuanyujie', null, '25d55ad283aa400af464c76d713c07ad', '0', null, null, null, '1', '计算机学院', '2016', '1', null, null, null, '291406886@qq.com', null, null);
 
 -- ----------------------------
 -- Table structure for user_activity
@@ -675,6 +684,11 @@ CREATE TABLE `user_activity` (
 INSERT INTO `user_activity` VALUES ('LucasX', '10000', '1', '0', '0', '1', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10001', '0', '0', '0', '1', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10002', '1', '1', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10011', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10012', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10013', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10014', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10015', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for user_acttype

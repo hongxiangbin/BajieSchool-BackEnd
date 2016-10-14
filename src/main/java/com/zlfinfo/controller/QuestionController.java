@@ -1,8 +1,11 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
+import com.zlfinfo.commons.constant.PointsAddNumber;
+import com.zlfinfo.model.Points;
 import com.zlfinfo.model.Question;
 import com.zlfinfo.model.UserQuestion;
+import com.zlfinfo.service.PointsService;
 import com.zlfinfo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +23,8 @@ public class QuestionController extends BaseController {
 
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private PointsService pointsService;
 
     @RequestMapping(value = "/quora/{username}/{flag}", method = RequestMethod.GET)
     @ResponseBody
@@ -59,6 +64,8 @@ public class QuestionController extends BaseController {
             userQuestion.setQueId(qid);
             userQuestion.setFlag(0);
             questionService.addUserque(userQuestion);
+
+            pointsService.updatePoints(new Points(username, pointsService.selectPoint(username) + PointsAddNumber.POINT_RAISE_QUESTION, "提问+10"));
         }
         return render(msg, status, httpServletResponse);
     }

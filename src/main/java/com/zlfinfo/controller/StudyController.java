@@ -1,7 +1,9 @@
 package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
+import com.zlfinfo.model.Points;
 import com.zlfinfo.model.Study;
+import com.zlfinfo.service.PointsService;
 import com.zlfinfo.service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.List;
 public class StudyController extends BaseController {
     @Autowired
     private StudyService studyService;
+    @Autowired
+    private PointsService pointsService;
 
     @RequestMapping(value = "/study/{type}", method = RequestMethod.POST)
     @ResponseBody
@@ -39,6 +43,8 @@ public class StudyController extends BaseController {
         study.setStdLike(0);
         study.setStdComment(0);
         study.setStdTime(new Date());
+//        pointsService.updatePoints(new Points(u))
+
         return 0 != studyService.insert(study) ? renderSuccess("学习问题发表成功!", httpServletResponse) : renderError
                 ("学习问题发表失败!", httpServletResponse);
     }

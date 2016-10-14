@@ -2,9 +2,11 @@ package com.zlfinfo.controller;
 
 import com.zlfinfo.commons.base.BaseController;
 import com.zlfinfo.model.LoginStatus;
+import com.zlfinfo.model.Points;
 import com.zlfinfo.model.University;
 import com.zlfinfo.model.User;
 import com.zlfinfo.service.LoginStatusService;
+import com.zlfinfo.service.PointsService;
 import com.zlfinfo.service.UniversityService;
 import com.zlfinfo.service.UserService;
 import com.zlfinfo.util.Encryption;
@@ -31,6 +33,9 @@ public class UserController extends BaseController {
 
     @Autowired
     private UniversityService universityService;
+
+    @Autowired
+    private PointsService pointsService;
 
     /**
      * 根据username查用户
@@ -91,6 +96,7 @@ public class UserController extends BaseController {
         System.out.println(user.toString());
         if (userService.insert(user) > 0) {
             loginStatusService.insertStatus(new LoginStatus(username, 0, null));
+            pointsService.insertPoints(new Points(username, 0, "新注册用户"));
             return renderSuccess("注册成功", response);
         } else {
             return renderError("注册失败", response);
