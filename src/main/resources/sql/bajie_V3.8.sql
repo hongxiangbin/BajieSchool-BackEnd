@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : bajie
-Source Server Version : 50715
+Source Server         : BajieSchool
+Source Server Version : 50632
 Source Host           : localhost:3306
 Source Database       : bajie
 
 Target Server Type    : MYSQL
-Target Server Version : 50715
+Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2016-10-14 22:33:28
+Date: 2016-10-16 13:49:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,12 +54,12 @@ CREATE TABLE `activity` (
   `reserve1` varchar(255) DEFAULT NULL,
   `reserve2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`act_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10016 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10020 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of activity
 -- ----------------------------
-INSERT INTO `activity` VALUES ('10000', '0', '周杰伦演唱会', '8月17日，周杰伦将在武汉光谷广场举办演唱会', 'img/activity/act/周杰伦.jpg', '2016-08-16 14:49:44', '6', '7', '0', '2', '0', '湖北武汉', '', null);
+INSERT INTO `activity` VALUES ('10000', '0', '周杰伦演唱会', '8月17日，周杰伦将在武汉光谷广场举办演唱会', 'img/activity/act/周杰伦.jpg', '2016-08-16 14:49:44', '6', '7', '0', '3', '0', '湖北武汉', '', null);
 INSERT INTO `activity` VALUES ('10001', '0', '科技展览', 'VR，无人机，无人驾驶，机器人等在武汉大学开办展会', 'img/activity/act/科技展览.jpeg', '2016-08-15 14:49:44', '1', '0', '0', '1', '0', '湖北武汉', '', null);
 INSERT INTO `activity` VALUES ('10002', '0', '数学建模大赛', '阿里巴巴天池大数据竞赛', 'img/activity/act/阿里巴巴.jpg', '2016-08-14 14:49:44', '1', '0', '0', '0', '0', '浙江杭州', '', null);
 INSERT INTO `activity` VALUES ('10003', '1', '黄河落日', '大漠孤烟直，长河落日圆', 'img/activity/tabs/旅游/1.jpg', '2016-08-09 17:51:26', '0', '0', '0', '0', '0', '甘肃', null, null);
@@ -73,6 +73,10 @@ INSERT INTO `activity` VALUES ('10010', '7', '恋爱。。。', '你们当时都
 INSERT INTO `activity` VALUES ('10013', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
 INSERT INTO `activity` VALUES ('10014', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
 INSERT INTO `activity` VALUES ('10015', null, '黑客马拉松', '面向武汉211高校大学生', null, '1970-01-01 12:12:00', null, null, null, null, null, '武汉大学', null, null);
+INSERT INTO `activity` VALUES ('10016', null, '校园联谊', '武汉大学校园联谊', null, '1970-01-01 11:11:00', null, null, null, null, null, '武汉大学', null, null);
+INSERT INTO `activity` VALUES ('10017', null, 'ACM大赛', '大学生编程大赛', null, '1970-01-01 22:22:00', null, null, null, null, null, '华中科技大学', null, null);
+INSERT INTO `activity` VALUES ('10018', null, '校园交友', '大学生交友', null, '1970-01-01 22:22:00', null, null, null, null, null, '湖北工业大学', null, null);
+INSERT INTO `activity` VALUES ('10019', null, 'AAA', 'AAAAAA', null, '1970-01-01 03:33:00', null, null, null, null, null, '武汉大学', null, null);
 
 -- ----------------------------
 -- Table structure for activity_comment
@@ -293,8 +297,8 @@ CREATE TABLE `login_status` (
 -- ----------------------------
 INSERT INTO `login_status` VALUES ('admin', '1', '2016-09-24 17:32:57');
 INSERT INTO `login_status` VALUES ('Jack', '1', '2016-08-31 17:51:25');
-INSERT INTO `login_status` VALUES ('LucasX', '1', '2016-10-14 22:09:20');
-INSERT INTO `login_status` VALUES ('XuLu', '1', '2016-10-14 21:51:23');
+INSERT INTO `login_status` VALUES ('LucasX', '0', '2016-10-16 10:24:39');
+INSERT INTO `login_status` VALUES ('XuLu', '1', '2016-10-16 10:24:12');
 INSERT INTO `login_status` VALUES ('Yuanyujie', '0', '2016-10-14 22:31:04');
 
 -- ----------------------------
@@ -330,7 +334,7 @@ CREATE TABLE `points` (
 -- ----------------------------
 -- Records of points
 -- ----------------------------
-INSERT INTO `points` VALUES ('LucasX', '20', '发起活动+20');
+INSERT INTO `points` VALUES ('LucasX', '620', '发起活动+20');
 INSERT INTO `points` VALUES ('Yuanyujie', '0', '新注册用户');
 
 -- ----------------------------
@@ -681,14 +685,18 @@ CREATE TABLE `user_activity` (
 -- ----------------------------
 -- Records of user_activity
 -- ----------------------------
-INSERT INTO `user_activity` VALUES ('LucasX', '10000', '1', '0', '0', '1', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10000', '0', '0', '0', '1', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10001', '0', '0', '0', '1', '0');
-INSERT INTO `user_activity` VALUES ('LucasX', '10002', '1', '1', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10002', '0', '0', '0', '1', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10011', '0', '0', '0', '0', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10012', '0', '0', '0', '0', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10013', '0', '0', '0', '0', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10014', '0', '0', '0', '0', '0');
 INSERT INTO `user_activity` VALUES ('LucasX', '10015', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10016', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10017', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10018', '0', '0', '0', '0', '0');
+INSERT INTO `user_activity` VALUES ('LucasX', '10019', '0', '0', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for user_acttype

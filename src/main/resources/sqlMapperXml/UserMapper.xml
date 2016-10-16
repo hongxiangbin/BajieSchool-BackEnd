@@ -23,8 +23,13 @@
 
     <resultMap id="studyUserResultMap" type="com.zlfinfo.model.User">
         <id column="username" property="username" jdbcType="VARCHAR"></id>
-        <result column="avatar" property="avatar" jdbcType="VARCHAR"></result>
-        <result column="motto" property="motto" jdbcType="VARCHAR"></result>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="joinPeopleMap" type="com.zlfinfo.model.User">
+        <id column="username" property="username" jdbcType="VARCHAR"></id>
+        <result column=""></result>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -57,8 +62,8 @@
     </select>
 
 
-    <select id="selectJoinUser" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-      SELECT * FROM user
+    <select id="selectJoinUser" resultMap="studyUserResultMap" parameterType="java.lang.Integer">
+      SELECT username, avatar, sex FROM user
       WHERE username IN (
         SELECT username
         FROM user_activity
