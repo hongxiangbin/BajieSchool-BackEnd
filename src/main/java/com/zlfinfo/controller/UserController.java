@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/22.
@@ -62,6 +63,23 @@ public class UserController extends BaseController {
         }
     }
 
+
+    /**
+     * 查询某活动下的参加人数
+     *
+     * @param actId
+     * @param httpServletResponse
+     * @return
+     */
+    @RequestMapping(value = "/joinpeople/{actId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object showJoinPeople(@PathVariable Integer actId, HttpServletResponse httpServletResponse) {
+        List<User> userList = userService.showJoinUser(actId);
+
+        return null != userList ? renderSuccess(userList, httpServletResponse) : renderError("活动参加人数查询失败!",
+                httpServletResponse);
+    }
+
     /**
      * 显示学习发帖人的用户信息
      *
@@ -88,7 +106,8 @@ public class UserController extends BaseController {
                           @RequestParam(required = false) String enrollYear, @RequestParam(required = false) Integer
                                   university,
                           @RequestParam(required = false) String institution,
-                          @RequestParam(required = false) String level, @RequestParam(required = false) String email, HttpServletResponse response) throws
+                          @RequestParam(required = false) String level, @RequestParam(required = false) String email,
+                          HttpServletResponse response) throws
             UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = new User(username, null, Encryption.encrypt(password), sex, cellphone, null, null, university,
                 institution, enrollYear, level, null, null, null, email, null);

@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
     public UserMapper userMapper;
 
     @Override
+    public List<User> showJoinUser(Integer actId) {
+        return userMapper.selectJoinUser(actId);
+    }
+
+    @Override
     public User findUserByUsername(String username) {
         return userMapper.selectByPrimaryKey(username);
     }

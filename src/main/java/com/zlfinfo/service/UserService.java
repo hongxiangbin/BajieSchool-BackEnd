@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface UserService {
 
+    List<User> showJoinUser(Integer actId);
+
     User findUserByUsername(String username);
 
     List<User> findAllUsers();

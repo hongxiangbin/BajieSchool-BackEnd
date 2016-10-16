@@ -5,6 +5,9 @@ import com.zlfinfo.model.User;
 import java.util.List;
 
 public interface UserMapper {
+
+    List<User> selectJoinUser(Integer actId);
+
     int deleteByPrimaryKey(String username);
 
     int insert(User record);

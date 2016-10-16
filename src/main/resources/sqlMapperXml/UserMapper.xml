@@ -56,6 +56,16 @@
         AND user_study.flag = 0
     </select>
 
+
+    <select id="selectJoinUser" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      SELECT * FROM user
+      WHERE username IN (
+        SELECT username
+        FROM user_activity
+        WHERE act_id = #{actId}
+        AND join_flag = 1)
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete from user
         where username = #{username,jdbcType=VARCHAR}
